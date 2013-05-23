@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Pomodoro, a small timmer.</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="resources/pom.png" type="image/png" />
+
+    <link href="resources/styles/Grid_Normalize.css" rel="stylesheet" />
+    <link href="resources/styles/styles.css" rel="stylesheet" />
+    <link href="resources/AwesomeFont/css/font-awesome.min.css" rel="stylesheet" />
+
+    <link href='https://plus.google.com/102986296317731631979' rel='publisher' />
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300|Nothing+You+Could+Do' rel='stylesheet' type='text/css' />
+
+    <script type="text/javascript">
+        //Google Analytics API
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-36671151-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</head>
+<body>
+    <h1>Pomodoro.</h1>
+    <div id="CurrentPomodoro" class="pomTime">0 mins 0 sec</div>
+    <section class="container times">
+        <div class="currentTime">
+            Current Time:<div id="LocalTime">00:00:00</div>
+        </div>
+        <div class="startTime">
+            Start Time:<div id="StartTime">00:00:00</div>
+        </div>
+    </section>
+
+    <section class="container">
+        <section>
+            <div class="grid_4">
+                <a id="Start">
+                    <div class="button"><i class="icon-play"></i></div>
+                </a>
+            </div>
+            <div class="grid_4">
+                <a id="Pause">
+                    <div class="button"><i class="icon-pause"></i></div>
+                </a>
+            </div>
+            <div class="grid_4 omega">
+                <a id="Stop">
+                    <div class="button"><i class="icon-stop"></i></div>
+                </a>
+            </div>
+        </section>
+
+        <div id="Alarm" class="button testAlarmButton"><i class="icon-music"></i></div>
+
+        <section class="selections">
+            <select id="SoundSelection" class="selection">
+                <option value="On">On</option>
+                <option value="Off">Off</option>
+            </select>
+
+            <select id="TimeSelection" class="selection">
+                <option value="1">1 min</option>
+                <option value="25">25 min</option>
+                <option value="10">10 min</option>
+                <option value="15">15 min</option>
+                <option value="20">20 min</option>
+                <option value="30">30 min</option>
+                <option value="0.1">( test )</option>
+            </select>
+        </section>
+
+        <br />
+        <div class="about">
+            The Pomodoro technique is a time management method developed by Francesco Cirillo in the late 1980s. The technique uses a timer to break down periods of work into 25-minute intervals called 'Pomodoros' (from the Italian word for 'tomato') separated by breaks. Closely related to concepts such as timeboxing and iterative and incremental development used in software design, the method has been adopted in pair programming contexts. The method is based on the idea that frequent breaks can improve mental agility.
+            <br />
+            <br />
+            Wiki Source:
+            <a href="http://en.wikipedia.org/wiki/Pomodoro_Technique" target="_blank">Pomodoro</a>
+            <br />
+            Constructed by: Cory Bateman <a href="http://www.webdesignis.me" target="_blank">webdesignis.me</a>
+        </div>
+    </section>
+
+    <script src="resources/scripts/jquery2.0.js"></script>
+    <script src="resources/scripts/jquery.fittext.js"></script>
+    <script src="resources/scripts/scripts.js"></script>
+</body>
+</html>
