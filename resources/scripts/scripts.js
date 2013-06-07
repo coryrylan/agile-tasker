@@ -1,6 +1,5 @@
 ﻿/*! Cory Bateman www.webdesignis.me */
 $(document).ready(function () {
-
     $("#CurrentPomodoro").fitText();
     $("#CurrentPomodoro").fitText(0.75);
 
@@ -16,25 +15,25 @@ $(document).ready(function () {
     timerDate.setSeconds(0);
 
     /* Button Events */
-    $('#Start').click(function () {
+    $('#Start').fastClick(function () {
         Start();
         $(".button").removeClass("boxShadowRed");
         $("#Start > div").addClass("boxShadowRed");
     });
 
-    $('#Stop').click(function () {
+    $('#Stop').fastClick(function () {
         Stop();
         $(".button").removeClass("boxShadowRed");
         $("#Stop > div").addClass("boxShadowRed");
     });
 
-    $('#Pause').click(function () {
+    $('#Pause').fastClick(function () {
         Pause();
         $(".button").removeClass("boxShadowRed");
         $("#Pause > div").addClass("boxShadowRed");
     });
 
-    $('#Alarm').click(function () {
+    $('#Alarm').fastClick(function () {
         PlaySound();
     });
 
