@@ -1,7 +1,7 @@
 ﻿/*! Cory Bateman www.webdesignis.me */
 $(document).ready(function () {
-    $("#CurrentPomodoro").fitText();
-    $("#CurrentPomodoro").fitText(0.75);
+    //$("#CurrentPomodoro").fitText();
+    //$("#CurrentPomodoro").fitText(0.75);
 
     var snd1 = new Audio("resources/alarm2.mp3"); // buffers automatically when created
     var snd2 = new Audio("resources/alarm2.wav"); // buffers automatically when created
@@ -34,7 +34,9 @@ $(document).ready(function () {
     });
 
     $('#Alarm').fastClick(function () {
-        PlaySound();
+        if (!$('#SoundSelection:checked').is(':checked')) {
+            PlaySound();
+        }
     });
 
     // If Webkit and supports Desktop Notifications Request Permission
@@ -106,7 +108,7 @@ $(document).ready(function () {
 
     function Alarm() {
         FlashTitle();
-        if ($("#SoundSelection").val() === 'On') {
+        if ($('#SoundSelection:checked').is(':checked')) {
             PlaySound();
         }
 
