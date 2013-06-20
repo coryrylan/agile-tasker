@@ -14,34 +14,31 @@
     <link href='http://fonts.googleapis.com/css?family=Lato:100,300|Nothing+You+Could+Do' rel='stylesheet' type='text/css' />
 </head>
 <body>
-    <h1>Pomodoro.</h1>
+    <h1></h1>
     <div class="pomTime_container">
-    <div id="CurrentPomodoro" class="pomTime">0 mins 0 sec</div>
+        <div id="CurrentPomodoro" class="pomTime">0 mins 0 sec</div>
     </div>
-                <div class="grid_12">
-                <section class="selections">
-                    
-<!--                    <select id="SoundSelection" class="selection">
-                        <option value="On">On</option>
-                        <option value="Off">Off</option>
-                    </select>-->
 
-                    <input type="checkbox" id="SoundSelection" checked="" /><label for="SoundSelection"><span id="Alarm" class="testAlarmButton"><i class="icon-music"></i></span></label><br />
+    <div class="grid_12">
+        <section class="selections">
+            <section class="soundCheckbox">
+                <input type="checkbox" id="SoundSelection" checked="" />
+                <label for="SoundSelection"><span id="Alarm" class="testAlarmButton"><i class="icon-music"></i></span></label><br />
+            </section>
 
-                    <select id="TimeSelection" class="selection">
-                        <option value="1">1 min</option>
-                        <option value="25">25 min</option>
-                        <option value="10">10 min</option>
-                        <option value="15">15 min</option>
-                        <option value="20">20 min</option>
-                        <option value="30">30 min</option>
-                        <option value="0.1">( test )</option>
-                    </select>
-                </section>
+            <select id="TimeSelection" class="selection">
+                <!--<option value="1">1 min</option>-->
+                <option value="25">25 min</option>
+                <option value="10">10 min</option>
+                <option value="15">15 min</option>
+                <option value="20">20 min</option>
+                <option value="30">30 min</option>
+                <!--<option value="0.1">( test )</option>-->
+            </select>
+        </section>
+    </div>
 
-            </div>
-
-<!--    <section class="times">
+    <!--    <section class="times">
         <div class="currentTime">
             Current Time:<div id="LocalTime">00:00:00</div>
         </div>
@@ -50,7 +47,7 @@
         </div>
     </section>-->
 
-<!--        <div class="about">
+    <!--        <div class="about">
             The Pomodoro technique is a time management method developed by Francesco Cirillo in the late 1980s. The technique uses a timer to break down periods of work into 25-minute intervals called 'Pomodoros' (from the Italian word for 'tomato') separated by breaks. Closely related to concepts such as timeboxing and iterative and incremental development used in software design, the method has been adopted in pair programming contexts. The method is based on the idea that frequent breaks can improve mental agility.
             <br />
             <br />
@@ -60,11 +57,11 @@
             Constructed by: Cory Bateman <a href="http://www.webdesignis.me" target="_blank">webdesignis.me</a>
         </div>-->
 
-        <nav>
-            <div id="Pause" class="button"><i class="icon-pause"></i></div>
-            <div id="Start" class="button"><i class="icon-play"></i></div>
-            <div id="Stop" class="button"><i class="icon-stop"></i></div>
-        </nav>
+    <nav>
+        <div id="Pause" class="button"><i class="icon-pause"></i></div>
+        <div id="Start" class="button"><i class="icon-play"></i></div>
+        <div id="Stop" class="button"><i class="icon-stop"></i></div>
+    </nav>
 
 
 

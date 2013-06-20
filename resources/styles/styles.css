@@ -36,9 +36,10 @@ a
 h1
 {
     font-family: 'Lato', sans-serif;
-    text-align: center;
+    text-align: left;
     font-size: 2.2em;
     margin: 0px;
+    margin-left:5px;
 }
 
 .about
@@ -96,7 +97,7 @@ h1
 .selections
 {
     font-size: 1.3em;
-    margin: 20px 0px 20px 10px;
+    margin: 5px 0px 20px 10px;
     float: left;
 }
 
@@ -107,13 +108,8 @@ h1
     font-size: 1em;
     margin-top: 10px;
     border-radius: 5px;
+    width:100px;
 }
-
-    .selection .icon-time
-    {
-        font-size: 1.6em;
-        margin-left: 15px;
-    }
 
 #Alarm
 {
@@ -170,6 +166,61 @@ nav
         font-size: 1.5em;
     }
 
+/* #region Check Box */
+.soundCheckbox
+{
+    position:absolute;
+    top:10px;
+    right:10px;
+    width:60px;
+    font-size:1.5em;
+}
+
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+  position: absolute;
+  left: -9999px;
+}
+[type="checkbox"]:not(:checked) + label,
+[type="checkbox"]:checked + label {
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+  float:right;
+}
+[type="checkbox"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before {
+  content: '';
+  position: absolute;
+  left:0; top: 2px;
+  width: 20px; height: 20px;
+  border: 1px solid #ddd;
+  background: #FAFAFA;
+  border-radius: 3px;
+}
+[type="checkbox"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after {
+  content: '\2713';
+  font-size: 20px;
+  position: absolute;
+  top: 0px; left: 3px;
+  transition: all .2s;
+  color:#454545;
+}
+[type="checkbox"]:not(:checked) + label:after {
+  opacity: 0;
+  transform: scale(0);
+}
+[type="checkbox"]:checked + label:after {
+  opacity: 1;
+  transform: scale(1);
+}
+/* accessibility */
+[type="checkbox"]:checked:focus + label:before,
+[type="checkbox"]:not(:checked):focus + label:before {
+  border: 2px solid #EB7A08;
+}
+/* #endregion */
 
 @media all and (min-width: 37em)
 {
@@ -184,6 +235,29 @@ nav
         height: 200px;
         font-weight: 300;
         font-size: 5em;
+    }
+
+    h1
+    {
+        text-align:center;
+    }
+
+    .selection
+    {
+        position:absolute;
+        top:0px;
+        right:10px;
+        font-size: 1.3em;
+        width:140px;
+    }
+
+    .soundCheckbox
+    {
+        position:absolute;
+        top:10px;
+        right:180px;
+        width:60px;
+        font-size:1.5em;
     }
 }
 
