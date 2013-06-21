@@ -10,3 +10,9 @@ Wiki: <a href="http://en.wikipedia.org/wiki/Pomodoro_Technique" target="_blank">
 
 <p>Please feel free to contribute. I plan on launching and adding the features for a Firefox OS app and a
 enabled IOS Web App soon.</p>
+
+<h2>License</h2>
+<p>
+This code is free to use under the MIT License.
+Read more at <a href="http://opensource.org/licenses/MIT" target="_blank">MIT License</a>
+</p>
