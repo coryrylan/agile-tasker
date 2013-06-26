@@ -1,7 +1,7 @@
 ﻿/*! Cory Bateman www.webdesignis.me */
 $(document).ready(function () {
-    //$("#CurrentPomodoro").fitText();
-    //$("#CurrentPomodoro").fitText(0.75);
+    //$("#CurrentTime").fitText();
+    //$("#CurrentTime").fitText(0.75);
 
     var snd1 = new Audio("resources/alarm2.mp3"); // buffers automatically when created
     var snd2 = new Audio("resources/alarm2.wav"); // buffers automatically when created
@@ -92,7 +92,7 @@ $(document).ready(function () {
         $('#LocalTime').html(t);
     }
 
-    /* Set Current Pomodoro Timer */
+    /* Set Current Agility Timer */
     function Timer() {
         if (timerDate.getMinutes() === 0 && timerDate.getSeconds() === 0) {
             Alarm();
@@ -101,7 +101,7 @@ $(document).ready(function () {
             timerDate.setSeconds(timerDate.getSeconds() - 1);
             var sec = timerDate.getSeconds();
             var min = timerDate.getMinutes();
-            $('#CurrentPomodoro').html(min + " mins" + " " + sec + " sec");
+            $('#CurrentTime').html(min + " mins" + " " + sec + " sec");
             document.title = min + " Mins" + " " + sec + " Sec";
         }
     }
@@ -120,7 +120,7 @@ $(document).ready(function () {
     function alertDesktopNotification() {
         if (window.webkitNotifications.checkPermission() == 0) {
             notification_test = window.webkitNotifications.createNotification(
-            'resources/pom.png', 'Pomodoro!', 'Time to take a break!');
+            'resources/pom.png', 'Agility!', 'Time to take a break!');
             notification_test.ondisplay = function () { };
             notification_test.onclose = function () { };
             notification_test.show();
@@ -145,14 +145,14 @@ $(document).ready(function () {
 
     function FlashTitle() {
         var t = isOldTitle ? oldTitle : newTitle;
-        $('#CurrentPomodoro').html(t);
+        $('#CurrentTime').html(t);
         document.title = isOldTitle ? oldTitle : newTitle;
         isOldTitle = !isOldTitle;
     }
 
     function ResetHTML() {
-        $("#CurrentPomodoro").html('Pomodoro');
-        $('#CurrentPomodoro').html("0 mins 0 sec");
-        document.title = 'Pomodoro';
+        $("#CurrentTime").html('Agility');
+        $('#CurrentTime').html("0 mins 0 sec");
+        document.title = 'Agility';
     }
 });
