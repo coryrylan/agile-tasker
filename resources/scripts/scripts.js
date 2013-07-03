@@ -17,20 +17,20 @@ $(document).ready(function () {
     /* Button Events */
     $('#Start').fastClick(function () {
         Start();
-        $(".button").removeClass("boxShadowRed");
-        $("#Start > div").addClass("boxShadowRed");
+        $(".button").removeClass("boxRed");
+        $("#Start").addClass("boxRed");
     });
 
     $('#Stop').fastClick(function () {
         Stop();
-        $(".button").removeClass("boxShadowRed");
-        $("#Stop > div").addClass("boxShadowRed");
+        $(".button").removeClass("boxRed");
+        $("#Stop").addClass("boxRed");
     });
 
     $('#Pause').fastClick(function () {
         Pause();
-        $(".button").removeClass("boxShadowRed");
-        $("#Pause > div").addClass("boxShadowRed");
+        $(".button").removeClass("boxRed");
+        $("#Pause").addClass("boxRed");
     });
 
     $('#Alarm').fastClick(function () {
