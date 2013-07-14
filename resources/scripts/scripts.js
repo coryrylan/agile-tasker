@@ -1,4 +1,7 @@
-﻿/*! Cory Bateman www.webdesignis.me */
+﻿/* 
+    Cory Bateman http://www.webdesignis.me 
+    MIT License http://opensource.org/licenses/MIT 
+*/
 $(document).ready(function () {
     //$("#CurrentTime").fitText();
     //$("#CurrentTime").fitText(0.75);
