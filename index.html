@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Agility</title>
+    <title>Agility App</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="resources/pom.png" type="image/png" />
@@ -17,7 +17,7 @@
     <meta name="msapplication-square70x70logo" content="tiny.png" />
 
     <!-- HTML5 DNS Prefetching/Reslove DNS -->
-    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
     <link href='https://plus.google.com/102986296317731631979' rel='publisher' />
     <link href='http://fonts.googleapis.com/css?family=Lato:100,300|Nothing+You+Could+Do' rel='stylesheet' type='text/css' />
@@ -37,7 +37,6 @@
             </section>
 
             <select id="TimeSelection" class="selection">
-                <!--<option value="1">1 min</option>-->
                 <option value="25">25 min</option>
                 <option value="10">10 min</option>
                 <option value="15">15 min</option>
@@ -63,10 +62,10 @@
             Constructed by: Cory Bateman <a href="http://www.webdesignis.me" target="_blank">webdesignis.me</a>
         </div>-->
 
-    <nav>
-        <div id="Pause" class="button"><i class="icon-pause"></i></div>
-        <div id="Start" class="button boxRed"><i class="icon-play"></i></div>
-        <div id="Stop" class="button"><i class="icon-stop"></i></div>
+    <nav role="navigation">
+        <button id="Pause" class="button"><i class="icon-pause"></i></button>
+        <button id="Start" class="button boxRed"><i class="icon-play"></i></button>
+        <button id="Stop" class="button"><i class="icon-stop"></i></button>
     </nav>
 
     <script src="resources/scripts/jquery2.0.js"></script>

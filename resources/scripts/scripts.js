@@ -22,18 +22,24 @@ $(document).ready(function () {
         Start();
         $(".button").removeClass("boxRed");
         $("#Start").addClass("boxRed");
+
+        return false;
     });
 
     $('#Stop').fastClick(function () {
         Stop();
         $(".button").removeClass("boxRed");
         $("#Stop").addClass("boxRed");
+
+        return false;
     });
 
     $('#Pause').fastClick(function () {
         Pause();
         $(".button").removeClass("boxRed");
         $("#Pause").addClass("boxRed");
+
+        return false;
     });
 
     $('#Alarm').fastClick(function () {
