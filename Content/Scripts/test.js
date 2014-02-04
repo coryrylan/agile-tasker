@@ -73,7 +73,7 @@ $(document).ready(function () {
     function Stop() {
         ResetHTML();
         clearInterval(timerInterval);
-        isPaused = false; 
+        isPaused = false;
         desktopNotificationCalled = false; //reset notification
     }
 

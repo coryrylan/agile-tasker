@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" ng-app>
 <head>
     <title>Agility App</title>
     <meta charset="UTF-8" />
@@ -7,9 +7,8 @@
     <link rel="shortcut icon" href="resources/pom.png" type="image/png" />
 
     <!-- Resources -->
-    <link href="resources/styles/Grid_Normalize.css" rel="stylesheet" />
-    <link href="resources/styles/styles.css" rel="stylesheet" />
-    <link href="resources/AwesomeFont/css/font-awesome.min.css" rel="stylesheet" />
+    <!--<link href="Content/Sass/all.css" rel="stylesheet" />-->
+    <link href="Content/AwesomeFont/css/font-awesome.min.css" rel="stylesheet" />
 
     <!-- MS Pinned site App -->
     <meta name="application-name" content="Think Agile" />
@@ -17,62 +16,27 @@
     <meta name="msapplication-square70x70logo" content="tiny.png" />
 
     <!-- HTML5 DNS Prefetching/Reslove DNS -->
-    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-
+    <!--<link rel="dns-prefetch" href="//fonts.googleapis.com" />
     <link href='https://plus.google.com/102986296317731631979' rel='publisher' />
-    <link href='http://fonts.googleapis.com/css?family=Lato:100,300|Nothing+You+Could+Do' rel='stylesheet' type='text/css' />
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300|Nothing+You+Could+Do' rel='stylesheet' type='text/css' />-->
+
+
+    <style>
+        body {
+            font-size: 2em;
+        }
+    </style>
+    <script src="Content/Scripts/angular.js"></script>
+    <script src="Content/Scripts/scripts.js"></script>
 </head>
 <body>
-    <h1></h1>
-    <div class="pomTime_container">
-        <div id="CurrentTime" class="pomTime">0 mins 0 sec</div>
-    </div>
+    <div ng-controller="TimerCtrl">
+        <div>{{currentTime}}</div>
 
-    <div class="grid_12">
-        <section class="selections">
-            <section class="soundCheckbox">
-                <input type="checkbox" id="SoundSelection" checked="" />
-                <label for="SoundSelection"><span id="Alarm" class="testAlarmButton"><i class="icon-music"></i></span></label>
-                <br />
-            </section>
+        <button ng-click="startTimer()">{{playState}}</button>
+        <button ng-click="stopTimer()">Stop</button>
 
-            <select id="TimeSelection" class="selection">
-                <option value="25">25 min</option>
-                <option value="10">10 min</option>
-                <option value="15">15 min</option>
-                <option value="20">20 min</option>
-                <option value="30">30 min</option>
-                <option value="45">45 min</option>
-                <option value="55">55 min</option>
-                <!--<option value="0.1">( test )</option>-->
-            </select>
-        </section>
-    </div>
-
-    <!--    
-	<section class="times">
-        <div class="currentTime">
-            Current Time:<div id="LocalTime">00:00:00</div>
-        </div>
-        <div class="startTime">
-            Start Time:<div id="StartTime">00:00:00</div>
-        </div>
-    </section>
-    
-	<div class="about">
-		Constructed by: Cory Bateman <a href="http://www.webdesignis.me" target="_blank">webdesignis.me</a>
-    </div>
-	-->
-
-    <nav role="navigation">
-        <button id="Pause" class="button"><i class="icon-pause"></i></button>
-        <button id="Start" class="button boxRed"><i class="icon-play"></i></button>
-        <button id="Stop" class="button"><i class="icon-stop"></i></button>
-    </nav>
-
-    <script src="resources/scripts/jquery2.0.js"></script>
-    <script src="resources/scripts/fastButton.js"></script>
-    <script src="resources/scripts/jquery.fittext.js"></script>
-    <script src="resources/scripts/scripts.js"></script>
+        <select ng-options="o.value for o in options" ng-model="selectedOption" ng-change="stopTimer()"></select>
+    </div>   
 </body>
 </html>

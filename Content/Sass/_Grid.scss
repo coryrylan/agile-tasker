@@ -1,0 +1,77 @@
+/*! 
+    https://github.com/splintercode/DualGrid
+    MIT License http://opensource.org/licenses/MIT
+    Dual Grid 
+*/
+
+/* --- All columns --- */
+.col_1,
+.col_2,
+.col_3,
+.col_4,
+.col_5,
+.col_6,
+.col_7,
+.col_8,
+.col_9,
+.col_10,
+.col_11,
+.col_12,
+.col__1,
+.col__2,
+.col__3,
+.col__4,
+.col__5,
+.col__6,
+.col__7,
+.col__8,
+.col__9,
+.col__10,
+.col__11,
+.col__12 {
+    width:100%;
+    margin: 0 2% 2% 0;
+    float: left;
+    display: block;
+}
+
+/* --- Primary Auto Grid --- */
+@media all and (min-width: 44em) {
+	.col_1 { width: 6.5%; } 
+	.col_2 { width: 15%; } 
+	.col_3 { width: 23.5%; } 
+	.col_4 { width: 32%; } 
+	.col_5 { width: 40.5%; } 
+	.col_6 { width: 49%; } 
+	.col_7 { width: 57.5%; }
+	.col_8 { width: 66%; } 
+	.col_9 { width: 74.5%; } 
+	.col_10 { width: 83%; } 
+	.col_11 { width: 91.5%; } 
+	.col_12 { width: 100%; } 
+}
+
+/* --- Secondary Control Grid ---
+.col__1 { width: 6.5%; } 
+.col__2 { width: 15%; } 
+.col__3 { width: 23.5%; } 
+.col__4 { width: 32%; } 
+.col__5 { width: 40.5%; } 
+.col__6 { width: 49%; } 
+.col__7 { width: 57.5%; }
+.col__8 { width: 66%; } 
+.col__9 { width: 74.5%; } 
+.col__10 { width: 83%; } 
+.col__11 { width: 91.5%; } 
+.col__12 { width: 100%; } */
+
+
+.alpha { margin-left:0; }
+.omega { margin-right:0; }
+
+.container {
+    width: 96%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding:0 2%;
+}
