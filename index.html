@@ -36,7 +36,14 @@
         <button ng-click="startTimer()">{{playState}}</button>
         <button ng-click="stopTimer()">Stop</button>
 
-        <select ng-options="o.value for o in options" ng-model="selectedOption" ng-change="stopTimer()"></select>
+        <select ng-model="selectedOption" ng-options="o.value for o in options" ng-change="stopTimer()"></select>
+
+        <ul>
+            <li ng-repeat="result in results">
+                <p>{{result.start}}</p>
+                <p>{{result.stop}}</p>
+            </li>
+        </ul>
     </div>   
 </body>
 </html>
