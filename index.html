@@ -7,7 +7,7 @@
     <link rel="shortcut icon" href="resources/pom.png" type="image/png" />
 
     <!-- Resources -->
-    <!--<link href="Content/Sass/all.css" rel="stylesheet" />-->
+    <link href="Content/Sass/all.css" rel="stylesheet" />
     <link href="Content/AwesomeFont/css/font-awesome.min.css" rel="stylesheet" />
 
     <!-- MS Pinned site App -->
@@ -16,34 +16,45 @@
     <meta name="msapplication-square70x70logo" content="tiny.png" />
 
     <!-- HTML5 DNS Prefetching/Reslove DNS -->
-    <!--<link rel="dns-prefetch" href="//fonts.googleapis.com" />
-    <link href='https://plus.google.com/102986296317731631979' rel='publisher' />
-    <link href='http://fonts.googleapis.com/css?family=Lato:100,300|Nothing+You+Could+Do' rel='stylesheet' type='text/css' />-->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
 
-
-    <style>
-        body {
-            font-size: 2em;
-        }
-    </style>
     <script src="Content/Scripts/angular.js"></script>
     <script src="Content/Scripts/scripts.js"></script>
 </head>
 <body>
-    <div ng-controller="TimerCtrl">
-        <div>{{currentTime}}</div>
+    <section class="appWidth">
+        <header>
+            AGILE TASKER
+        </header>
+        <main role="main" class="appContainer">
+            <div ng-controller="TimerCtrl">
+                <div class="timerBox">
+                    <div class="col_7">{{currentTime}}</div>
+                    <div class="col_5 omega">
+                        <nav>
+                            <button ng-click="startTimer()" ng-disabled="isPlaying">{{playState}}</button>
+                            <button ng-click="stopTimer()">Stop</button>
+                            <select ng-model="selectedOption" ng-options="o.value for o in options" ng-change="stopTimer()"></select>
+                        </nav>
+                    </div>
+                </div>
 
-        <button ng-click="startTimer()">{{playState}}</button>
-        <button ng-click="stopTimer()">Stop</button>
+                <section class="taskListWrapper">
+                    <div class="col_7">
+                        <div class="listLabel">Completed Tasks <a href="#0" ng-click="clearList()" class="floatRight small">Clear All</a></div>
+                        <ul class="taskList">
+                            <li ng-repeat="task in tasks">
+                                <span>{{task.start}}</span>&nbsp;<strong>to</strong>&nbsp;<span>{{task.stop}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col_5 omega">
 
-        <select ng-model="selectedOption" ng-options="o.value for o in options" ng-change="stopTimer()"></select>
-
-        <ul>
-            <li ng-repeat="result in results">
-                <p>{{result.start}}</p>
-                <p>{{result.stop}}</p>
-            </li>
-        </ul>
-    </div>   
+                    </div>
+                </section>
+            </div>
+        </main>
+    </section>
 </body>
 </html>

@@ -1,0 +1,57 @@
+$effeckt-list-item-transition-duration: 2s;
+
+/* // Expand in
+[data-effeckt-type='expand-in']  {
+  max-height: 0;
+  opacity: 0;
+  -moz-transform: scale(0);
+  -moz-animation: growHeight 2s ease forwards;
+  -webkit-transform: scale(0);
+  -webkit-animation: growHeight 1s ease forwards;
+  transform: scale(0);
+  animation: growHeight 2s ease forwards;
+}
+
+@-moz-keyframes growHeight {
+  to {
+    // max-height kinda janky way to do this
+    max-height: 50px;
+    opacity: 1;
+    -moz-transform: scale(1);
+  }
+}
+
+@-webkit-keyframes growHeight {
+  to {
+    // max-height kinda janky way to do this
+    max-height: 50px;
+    opacity: 1;
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes growHeight {
+  to {
+    // max-height kinda janky way to do this
+    max-height: 50px;
+    opacity: 1;
+	transform: scale(1);
+  }
+} */
+
+/* .effeckt-list[data-effeckt-type='expand-in'] .remove-item {
+  animation: shrinkHeight $effeckt-list-item-transition-duration ease forwards;
+}
+
+@keyframes shrinkHeight {
+  to {
+    max-height: 0;
+    opacity: 1;
+    transform: scale(0);
+  }
+  from {
+    max-height: 50px;
+    opacity: 1;
+    transform: scale(1);
+  }
+}*/
