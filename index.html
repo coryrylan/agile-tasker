@@ -33,7 +33,7 @@
                     <div class="col_7">{{currentTime}}</div>
                     <div class="col_5 omega">
                         <nav>
-                            <button ng-click="startTimer()" ng-disabled="isPlaying">{{playState}}</button>
+                            <button id="Startbtn" ng-click="startTimer()" ng-disabled="isPlaying">{{playState}}</button>
                             <button ng-click="stopTimer()">Stop</button>
                             <select ng-model="selectedOption" ng-options="o.value for o in options" ng-change="stopTimer()"></select>
                         </nav>
@@ -41,16 +41,18 @@
                 </div>
 
                 <section class="taskListWrapper">
-                    <div class="col_7">
-                        <div class="listLabel">Completed Tasks <a href="#0" ng-click="clearList()" class="floatRight small">Clear All</a></div>
+                    <div class="col_7 omega">
+                        <div class="label">Completed Tasks <a href="#0" ng-click="clearList()" class="floatRight small">Clear All</a></div>
                         <ul class="taskList">
                             <li ng-repeat="task in tasks">
+                                <span>{{task.text}}</span>
                                 <span>{{task.start}}</span>&nbsp;<strong>to</strong>&nbsp;<span>{{task.stop}}</span>
                             </li>
                         </ul>
                     </div>
                     <div class="col_5 omega">
-
+                        <div class="label">Current Task</div>
+                        <textarea ng-model="taskText" placeholder="Current Task" ng-maxlength="100" ng-disabled="isPlaying"></textarea>
                     </div>
                 </section>
             </div>

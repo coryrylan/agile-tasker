@@ -545,15 +545,10 @@ header {
 .taskListWrapper .col_7 {
   border-right: 1px solid #A6A6A6;
   min-height: 300px; }
+.taskListWrapper .col_5 {
+  width: 42.5%; }
 .taskListWrapper .col_7, .taskListWrapper .col_5 {
   margin-bottom: 0; }
-.taskListWrapper .listLabel {
-  padding: 10px 1%;
-  border-bottom: 1px solid #A6A6A6;
-  font-size: 1.4em; }
-  .taskListWrapper .listLabel a {
-    font-size: 0.8em;
-    margin: 2px 4px; }
 
 .taskList {
   list-style: none;
@@ -588,6 +583,26 @@ select {
   font-size: 1.6em;
   padding: 4px;
   border: 2px solid #636363; }
+
+textarea {
+  width: 95%;
+  display: block;
+  padding: 1%;
+  margin: 2%;
+  margin: 10px auto;
+  height: 100px;
+  background: #FFF;
+  color: #2d2d2d;
+  border: 1px solid #A6A6A6;
+  border-radius: 2px; }
+
+.label {
+  padding: 10px 1% 10px 2.5%;
+  border-bottom: 1px solid #A6A6A6;
+  font-size: 1.4em; }
+  .label a {
+    font-size: 0.8em;
+    margin: 2px 4px; }
 
 /* // Expand in
 [data-effeckt-type='expand-in']  {
