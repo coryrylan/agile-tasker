@@ -525,7 +525,7 @@ header {
   text-align: center;
   width: 100%;
   padding: 6px;
-  margin: 20px auto 0 auto;
+  margin: 6% auto 0 auto;
   max-width: 800px;
   border: 1px solid #2d2d2d;
   border-bottom: 0;
@@ -537,7 +537,7 @@ header {
   padding: 40px 10px;
   background: #FFF;
   overflow: auto;
-  border-bottom: 1px solid #A6A6A6; }
+  border-bottom: 2px solid #A6A6A6; }
   .timerBox .col_7 {
     font-size: 5em;
     text-align: center; }
@@ -545,11 +545,12 @@ header {
 .taskListWrapper .col_7 {
   border-right: 1px solid #A6A6A6;
   min-height: 300px; }
-.taskListWrapper .col_5 {
-  width: 42.5%; }
 .taskListWrapper .col_7, .taskListWrapper .col_5 {
   margin-bottom: 0; }
 
+@media all and (min-width: 44em) {
+  .taskListWrapper .col_5 {
+    width: 42.5%; } }
 .taskList {
   list-style: none;
   padding: 0;
@@ -561,6 +562,9 @@ header {
     border-bottom: 1px solid #A6A6A6; }
     .taskList li:nth-child(odd) {
       background: #FAFAFA; }
+
+.smallText {
+  font-size: 0.9em; }
 
 nav {
   margin-top: 30px; }
@@ -603,6 +607,19 @@ textarea {
   .label a {
     font-size: 0.8em;
     margin: 2px 4px; }
+
+.clearBoth {
+  clear: both; }
+
+.taskInputWrapper {
+  position: relative;
+  min-height: 300px; }
+  .taskInputWrapper .icon-cog {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 1.3em;
+    cursor: pointer; }
 
 /* // Expand in
 [data-effeckt-type='expand-in']  {

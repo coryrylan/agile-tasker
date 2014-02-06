@@ -1,11 +1,9 @@
 ﻿function TimerCtrl($scope) {
 
-    $scope.options = [{ value: 1, label: 1 },{ value: 25, label: 25 }, { value: 20, label: 20 }, { value: 15, label: 15 }, { value: 10, label: 10 }];
+    $scope.options = [{ value: 15, label: 15 }, { value: 20, label: 20 }, { value: 25, label: 25 }, { value: 30, label: 30 }, { value: 1, label: 1 }, ];
     $scope.tasks = [];
-
     $scope.selectedOption = $scope.options[1];
     $scope.currentTime = $scope.selectedOption.value + ":" + "00";
-    $scope.playState = "Play";
     $scope.taskText = "";
     $scope.isPlaying = false;
 
@@ -63,13 +61,14 @@
 
     function pushTask() {
         $scope.tasks.push({ start: startTime, stop: endTime, text: $scope.taskText });
+        $scope.taskText = "";
     };
 
     function resetTimer() {
         clearInterval(timerInterval);
         $scope.currentTime = $scope.selectedOption.value + ":" + "00";
-        timerDate.setMinutes(0);
-        timerDate.setSeconds($scope.selectedOption.value); // Switch
+        timerDate.setMinutes($scope.selectedOption.value);
+        timerDate.setSeconds(0); // Switch
     };
 
     function alertNotification() {
@@ -84,7 +83,7 @@
         if (window.webkitNotifications) {
             if (window.webkitNotifications.checkPermission() == 0) {
                 var notification_test = window.webkitNotifications.createNotification(
-                'Content/pom.png', 'Agility!', 'Time to take a break!');
+                'Content/pom.png', 'Agile Task Complete', 'Time to take a break!');
                 notification_test.ondisplay = function () { };
                 notification_test.onclose = function () { };
                 notification_test.onClick = function () { };

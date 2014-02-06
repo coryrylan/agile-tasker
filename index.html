@@ -8,7 +8,7 @@
 
     <!-- Resources -->
     <link href="Content/Sass/all.css" rel="stylesheet" />
-    <link href="Content/AwesomeFont/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="Content/Fontello/css/fontello.css" rel="stylesheet" />
 
     <!-- MS Pinned site App -->
     <meta name="application-name" content="Think Agile" />
@@ -33,8 +33,8 @@
                     <div class="col_7">{{currentTime}}</div>
                     <div class="col_5 omega">
                         <nav>
-                            <button id="Startbtn" ng-click="startTimer()" ng-disabled="isPlaying">{{playState}}</button>
-                            <button ng-click="stopTimer()">Stop</button>
+                            <button id="Startbtn" ng-click="startTimer()" ng-disabled="isPlaying"><i class="icon-play"></i></button>
+                            <button ng-click="stopTimer()"><i class="icon-stop"></i></button>
                             <select ng-model="selectedOption" ng-options="o.value for o in options" ng-change="stopTimer()"></select>
                         </nav>
                     </div>
@@ -45,14 +45,16 @@
                         <div class="label">Completed Tasks <a href="#0" ng-click="clearList()" class="floatRight small">Clear All</a></div>
                         <ul class="taskList">
                             <li ng-repeat="task in tasks">
-                                <span>{{task.text}}</span>
-                                <span>{{task.start}}</span>&nbsp;<strong>to</strong>&nbsp;<span>{{task.stop}}</span>
+                                <div>{{task.text}}</div>
+                                <span class="smallText"><span>{{task.start}}</span>&nbsp;<strong>to</strong>&nbsp;<span>{{task.stop}}</span></span>
                             </li>
                         </ul>
                     </div>
-                    <div class="col_5 omega">
+                    <div class="col_5 omega taskInputWrapper">
                         <div class="label">Current Task</div>
                         <textarea ng-model="taskText" placeholder="Current Task" ng-maxlength="100" ng-disabled="isPlaying"></textarea>
+                        <div class="clearBoth"></div>
+                        <i class="icon-cog"></i>
                     </div>
                 </section>
             </div>

@@ -1,0 +1,22 @@
+
+.icon-spin1:before { content: '\e80d'; } /* '' */
+.icon-terminal:before { content: '\e810'; } /* '' */
+.icon-chrome:before { content: '\e801'; } /* '' */
+.icon-ie:before { content: '\e800'; } /* '' */
+.icon-ok:before { content: '\e803'; } /* '' */
+.icon-ok-circled:before { content: '\e804'; } /* '' */
+.icon-cancel:before { content: '\e807'; } /* '' */
+.icon-cancel-circled:before { content: '\e806'; } /* '' */
+.icon-help-circled:before { content: '\e808'; } /* '' */
+.icon-info-circled:before { content: '\e805'; } /* '' */
+.icon-firefox:before { content: '\e802'; } /* '' */
+.icon-cog:before { content: '\e812'; } /* '' */
+.icon-play:before { content: '\e80a'; } /* '' */
+.icon-stop:before { content: '\e809'; } /* '' */
+.icon-chart-bar:before { content: '\e813'; } /* '' */
+.icon-floppy:before { content: '\e814'; } /* '' */
+.icon-css3:before { content: '\e80b'; } /* '' */
+.icon-github-circled-1:before { content: '\e815'; } /* '' */
+.icon-html5:before { content: '\e80c'; } /* '' */
+.icon-music:before { content: '\e80f'; } /* '' */
+.icon-folder:before { content: '\e811'; } /* '' */
