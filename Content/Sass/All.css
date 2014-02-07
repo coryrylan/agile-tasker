@@ -600,7 +600,8 @@ footer {
   font-size: 0.9em; }
 
 nav {
-  margin-top: 30px; }
+  margin: 30px auto 0 auto;
+  width: 235px; }
 
 button {
   background: #5EBD6A;
@@ -609,7 +610,7 @@ button {
   font-size: 1.5em;
   padding: 8px;
   margin: 4px;
-  min-width: 100px; }
+  min-width: 70px; }
   button:hover {
     background: #52A35C; }
   button:focus {

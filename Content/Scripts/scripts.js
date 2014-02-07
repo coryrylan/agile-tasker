@@ -25,6 +25,13 @@
         timerInterval = setInterval(intervalTimer, 1000);
         startTime = new Date().toLocaleTimeString();
         $scope.isPlaying = true;
+
+        // Get desktop Permission
+        if (window.webkitNotifications.checkPermission() === 0) { // 0 is PERMISSION_ALLOWED
+            // function defined 
+        } else {
+            window.webkitNotifications.requestPermission();
+        }
     };
 
     $scope.stopTimer = function () {
@@ -36,7 +43,12 @@
         $scope.tasks = [];
     };
 
-    /* --- Helper Functons --- */
+    $scope.toggleSound = function () {
+        $scope.sound = !$scope.sound;
+        playSound();
+    }
+
+    /* --- Timmer Helper Functons --- */
     setInterval(updateLocalTime, 1000);
     function updateLocalTime() {
         $scope.localTime = toLocalTime(new Date());
@@ -89,6 +101,8 @@
         return minutes + ':' + seconds;
     }
 
+
+    /* --- Alert/Notification Helper Functions -- */
     function pushTask() {
         var _text = "Unknown";
         if ($scope.taskText !== "") {
@@ -101,9 +115,7 @@
 
     function alertNotification() {
         //FlashTitle();
-        if ($scope.sound) {
-            playSound();
-        }
+        playSound();
         alertDesktopNotification();
     };
 
@@ -121,15 +133,15 @@
     };
 
     function playSound() {
-        snd1.play();
-        snd2.play();
-    }
-
-    document.querySelector('#Startbtn').addEventListener('click', function () {
-        if (window.webkitNotifications.checkPermission() === 0) { // 0 is PERMISSION_ALLOWED
-            // function defined 
-        } else {
-            window.webkitNotifications.requestPermission();
+        if ($scope.sound) {
+            snd1.play();
+            snd2.play();
         }
-    }, false);
+        else {
+            snd1.pause();
+            snd2.pause();
+            snd1.currentTime = 0;
+            snd2.currentTime = 0;
+        }
+    }
 }
