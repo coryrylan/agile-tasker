@@ -37,16 +37,21 @@ body
 .floatRight{float:right;}
 
 .appWidth {
+	padding:2%;
+	width:100%;
+	max-width:850px;
+	margin:0 auto 30px auto;
+}
+
+.app {
+	border-radius:4px;
+	max-width:800px;
 	-moz-box-shadow: 0px 0px 2px 2px #4C4C4C;
 	-webkit-box-shadow: 0px 0px 2px 2px #4C4C4C;
 	box-shadow: 0px 0px 2px 2px #4C4C4C;
-	width:100%;
-	max-width:800px;
-	margin:0 auto 30px auto;
-	border-radius:4px;
 }
 
-.appContainer {
+main {
 	width:100%;
 	border:1px solid #2d2d2d;
 	background:#EDEDED;
@@ -76,12 +81,21 @@ header {
 	text-align:center;
 	width:100%;
 	padding:6px;
-	margin:6% auto 0 auto;
-	max-width:800px;
 	border:1px solid #2d2d2d;
 	border-bottom:0;
 	border-top-left-radius:4px;
 	border-top-right-radius:4px;
+}
+
+footer {
+	border-top:1px solid #A6A6A6;
+	clear:both;
+	padding:4px;
+
+	i {
+		font-size:1.2em;
+		cursor:pointer;
+	}
 }
 
 .timerBox {
@@ -92,15 +106,18 @@ header {
 	border-bottom:2px solid #A6A6A6;
 
 	.col_7 {
-		font-size:5em;
+		font-size:5.7em;
 		text-align:center;
 	}
 }
 
 .taskListWrapper {
 	.col_7 {
-		border-right:1px solid #A6A6A6;
-		min-height:300px;
+		border-left:1px solid #A6A6A6;
+
+		ul {
+			min-height:84px;
+		}
 	}
 
 	.col_7, .col_5 {
@@ -108,10 +125,46 @@ header {
 	}
 }
 
+.settings {
+	border-top:1px solid #A6A6A6;
+	min-height:50px;
+	padding:6px 16px;
+	overflow:auto;
+
+	a {
+		text-decoration:none;
+	}
+
+	i {
+		font-size:2.1em;
+		color:#2d2d2d;
+	}
+
+	img {
+		margin-bottom:-8px;
+	}
+
+	.icon-github-circled-1 {
+		font-size:2.5em;
+	}
+}
+
 @media all and (min-width: 44em) {
+	.appWidth {
+		margin:20px auto 30px auto;
+	}
+
 	.taskListWrapper {
 		.col_5 {
 			width:42.5%;
+		}
+
+		.col_7 {
+			ul {
+				height:220px;
+				overflow-y:scroll;
+				max-width:99.8%;
+			}
 		}
 	}
 }
@@ -142,7 +195,7 @@ nav {
 }
 
 button {
-	background:#58b063;
+	background:#5EBD6A;
 	border:none;
 	color:#FFF;
 	font-size:1.5em;
@@ -192,17 +245,4 @@ textarea{
 
 .clearBoth {
 	clear:both;
-}
-
-.taskInputWrapper {
-	position:relative;
-	min-height: 300px;
-
-	.icon-cog {
-		position:absolute;
-		bottom:10px;
-		right:10px;
-		font-size:1.3em;
-		cursor:pointer;
-	}
 }

@@ -1,19 +1,19 @@
 ﻿<!DOCTYPE html>
 <html lang="en" ng-app>
 <head>
-    <title>Agility App</title>
+    <title>Agile Tasker</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="resources/pom.png" type="image/png" />
+    <link rel="shortcut icon" href="Content/logo.png" type="image/png" />
 
     <!-- Resources -->
     <link href="Content/Sass/All.css" rel="stylesheet" />
     <link href="Content/Fontello/css/fontello.css" rel="stylesheet" />
 
     <!-- MS Pinned site App -->
-    <meta name="application-name" content="Think Agile" />
+    <!--<meta name="application-name" content="Think Agile" />
     <meta name="msapplication-TileColor" content="#B52D0E" />
-    <meta name="msapplication-square70x70logo" content="tiny.png" />
+    <meta name="msapplication-square70x70logo" content="tiny.png" />-->
 
     <!-- HTML5 DNS Prefetching/Reslove DNS -->
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
@@ -23,42 +23,72 @@
     <script src="Content/Scripts/scripts.js"></script>
 </head>
 <body>
-    <section class="appWidth">
-        <header>
-            AGILE TASKER
-        </header>
-        <main role="main" class="appContainer">
-            <div ng-controller="TimerCtrl">
-                <div class="timerBox">
-                    <div class="col_7">{{currentTime}}</div>
-                    <div class="col_5 omega">
-                        <nav>
-                            <button id="Startbtn" ng-click="startTimer()" ng-disabled="isPlaying"><i class="icon-play"></i></button>
-                            <button ng-click="stopTimer()"><i class="icon-stop"></i></button>
-                            <select ng-model="selectedOption" ng-options="o.value for o in options" ng-change="stopTimer()"></select>
-                        </nav>
+    <div class="appWidth">
+        <section class="app">
+            <header>
+                AGILE TASKER
+            </header>
+            <main role="main">
+                <div ng-controller="TimerCtrl">
+                    <div class="timerBox">
+                        <div class="col_7 currentTime">{{currentTime}}</div>
+                        <div class="col_5 omega">
+                            <nav>
+                                <button id="Startbtn" ng-click="startTimer()" ng-disabled="isPlaying"><i class="icon-play"></i></button>
+                                <button ng-click="stopTimer()"><i class="icon-stop"></i></button>
+                                <select ng-model="selectedOption" ng-options="o.value for o in options" ng-change="stopTimer()"></select>
+                            </nav>
+                        </div>
                     </div>
-                </div>
 
-                <section class="taskListWrapper">
-                    <div class="col_7 omega">
-                        <div class="label">Completed Tasks <a href="#0" ng-click="clearList()" class="floatRight small">Clear All</a></div>
-                        <ul class="taskList">
-                            <li ng-repeat="task in tasks">
-                                <div>{{task.text}}</div>
-                                <span class="smallText"><span>{{task.start}}</span>&nbsp;<strong>to</strong>&nbsp;<span>{{task.stop}}</span></span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col_5 omega taskInputWrapper">
-                        <div class="label">Current Task</div>
-                        <textarea ng-model="taskText" placeholder="Current Task" ng-maxlength="100" ng-disabled="isPlaying"></textarea>
-                        <div class="clearBoth"></div>
-                        <i class="icon-cog"></i>
-                    </div>
-                </section>
-            </div>
-        </main>
-    </section>
+                    <section class="taskListWrapper">
+                        <div class="col_5 omega taskInputWrapper">
+                            <div class="label">Current Task</div>
+                            <textarea ng-model="taskText" placeholder="Add Task" ng-maxlength="100" ng-disabled="isPlaying"></textarea>
+                        </div>
+                        <div class="col_7 omega">
+                            <div class="label">Completed Tasks <a href="#0" ng-click="clearList()" class="floatRight small">Clear All</a></div>
+                            <ul class="taskList">
+                                <li ng-repeat="task in tasks">
+                                    <div>{{task.text}}</div>
+                                    <span class="smallText"><span>{{task.start}}</span>&nbsp;<strong>to</strong>&nbsp;<span>{{task.stop}}</span></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section ng-hide="settingVisible" class="settings">
+                        <div class="col_4">
+                            <div>Built with:</div>
+                            <a href="http://angularjs.org/" target="_blank">
+                                <img src="Content/AngularJS.png" width="40" height="40" />
+                            </a>
+                            <i class="icon-html5"></i>
+                            <i class="icon-css3"></i>
+                            <a href="https://github.com/splintercode/ThinkAgile" target="_blank"><i class="icon-github-circled-1"></i> </a>
+                        </div>
+
+                        <div class="col_8 omega">
+                            <div>Built by:</div>
+                            <a href="http://corycode.me" target="_blank">Cory Bateman</a>
+                            <div class="clearBoth"></div><br /><br />
+                            
+                        </div>
+                        <div class="col_12">
+                            <div class="clearBoth"></div><br />
+                            <div>Supported Browsers</div>
+                            <i class="icon-chrome"></i>
+                            <i class="icon-firefox"></i>
+                            <i class="icon-ie"></i>8+ <br />To recieve desktop notifications use Chrome.
+                        </div>
+                    </section>
+                    <footer>
+                        <i class="icon-cog" ng-click="settingVisible=!settingVisible"></i>
+                        <i ng-class="{true: 'icon-volume-up', false: 'icon-volume-off'}[sound]" ng-click="sound = !sound"></i>
+                        <span class="localTime floatRight">{{localTime}}</span>
+                    </footer>
+                </div>
+            </main>
+        </section>
+    </div>
 </body>
 </html>

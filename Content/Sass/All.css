@@ -11,7 +11,7 @@ html {
   /* 2 */
   -webkit-text-size-adjust: 100%;
   /* 2 */ }
- 
+
 /**
  * Remove default margin.
  */
@@ -484,15 +484,19 @@ body {
   float: right; }
 
 .appWidth {
+  padding: 2%;
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto 30px auto; }
+
+.app {
+  border-radius: 4px;
+  max-width: 800px;
   -moz-box-shadow: 0px 0px 2px 2px #4C4C4C;
   -webkit-box-shadow: 0px 0px 2px 2px #4C4C4C;
-  box-shadow: 0px 0px 2px 2px #4C4C4C;
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto 30px auto;
-  border-radius: 4px; }
+  box-shadow: 0px 0px 2px 2px #4C4C4C; }
 
-.appContainer {
+main {
   width: 100%;
   border: 1px solid #2d2d2d;
   background: #EDEDED;
@@ -525,12 +529,18 @@ header {
   text-align: center;
   width: 100%;
   padding: 6px;
-  margin: 6% auto 0 auto;
-  max-width: 800px;
   border: 1px solid #2d2d2d;
   border-bottom: 0;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px; }
+
+footer {
+  border-top: 1px solid #A6A6A6;
+  clear: both;
+  padding: 4px; }
+  footer i {
+    font-size: 1.2em;
+    cursor: pointer; }
 
 .timerBox {
   width: 100%;
@@ -539,18 +549,41 @@ header {
   overflow: auto;
   border-bottom: 2px solid #A6A6A6; }
   .timerBox .col_7 {
-    font-size: 5em;
+    font-size: 5.7em;
     text-align: center; }
 
 .taskListWrapper .col_7 {
-  border-right: 1px solid #A6A6A6;
-  min-height: 300px; }
+  border-left: 1px solid #A6A6A6; }
+  .taskListWrapper .col_7 ul {
+    min-height: 84px; }
 .taskListWrapper .col_7, .taskListWrapper .col_5 {
   margin-bottom: 0; }
 
+.settings {
+  border-top: 1px solid #A6A6A6;
+  min-height: 50px;
+  padding: 6px 16px;
+  overflow: auto; }
+  .settings a {
+    text-decoration: none; }
+  .settings i {
+    font-size: 2.1em;
+    color: #2d2d2d; }
+  .settings img {
+    margin-bottom: -8px; }
+  .settings .icon-github-circled-1 {
+    font-size: 2.5em; }
+
 @media all and (min-width: 44em) {
+  .appWidth {
+    margin: 20px auto 30px auto; }
+
   .taskListWrapper .col_5 {
-    width: 42.5%; } }
+    width: 42.5%; }
+  .taskListWrapper .col_7 ul {
+    height: 220px;
+    overflow-y: scroll;
+    max-width: 99.8%; } }
 .taskList {
   list-style: none;
   padding: 0;
@@ -570,7 +603,7 @@ nav {
   margin-top: 30px; }
 
 button {
-  background: #58b063;
+  background: #5EBD6A;
   border: none;
   color: #FFF;
   font-size: 1.5em;
@@ -610,16 +643,6 @@ textarea {
 
 .clearBoth {
   clear: both; }
-
-.taskInputWrapper {
-  position: relative;
-  min-height: 300px; }
-  .taskInputWrapper .icon-cog {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    font-size: 1.3em;
-    cursor: pointer; }
 
 /* // Expand in
 [data-effeckt-type='expand-in']  {
