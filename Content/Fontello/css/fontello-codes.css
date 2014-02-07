@@ -9,8 +9,10 @@
 .icon-cancel-circled:before { content: '\e806'; } /* '' */
 .icon-help-circled:before { content: '\e808'; } /* '' */
 .icon-info-circled:before { content: '\e805'; } /* '' */
+.icon-folder:before { content: '\e811'; } /* '' */
 .icon-firefox:before { content: '\e802'; } /* '' */
-.icon-cog:before { content: '\e812'; } /* '' */
+.icon-volume-off:before { content: '\e80f'; } /* '' */
+.icon-volume-up:before { content: '\e80e'; } /* '' */
 .icon-play:before { content: '\e80a'; } /* '' */
 .icon-stop:before { content: '\e809'; } /* '' */
 .icon-chart-bar:before { content: '\e813'; } /* '' */
@@ -18,5 +20,4 @@
 .icon-css3:before { content: '\e80b'; } /* '' */
 .icon-github-circled-1:before { content: '\e815'; } /* '' */
 .icon-html5:before { content: '\e80c'; } /* '' */
-.icon-music:before { content: '\e80f'; } /* '' */
-.icon-folder:before { content: '\e811'; } /* '' */
+.icon-cog:before { content: '\e812'; } /* '' */

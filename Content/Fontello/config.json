@@ -79,6 +79,18 @@
       "src": "fontawesome"
     },
     {
+      "uid": "e44601720c64e6bb6a2d5cba6b0c588c",
+      "css": "volume-off",
+      "code": 59407,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "76857a03fbaa6857fe063b6c25aa98ed",
+      "css": "volume-up",
+      "code": 59406,
+      "src": "fontawesome"
+    },
+    {
       "uid": "ce06b5805120d0c2f8d60cd3f1a4fdb5",
       "css": "play",
       "code": 59402,
@@ -119,12 +131,6 @@
       "css": "html5",
       "code": 59404,
       "src": "fontawesome"
-    },
-    {
-      "uid": "5rarhtgcreeh8evuaqd8zoekgehkt3mm",
-      "css": "music",
-      "code": 59407,
-      "src": "typicons"
     },
     {
       "uid": "e92e6cad2da0ee4bc374a1ef4c6ab12b",
