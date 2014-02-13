@@ -12,8 +12,15 @@
   "icons": {
     "128": "Content/logo.png"
   },
+  "background": {
+    "scripts": ["Content/Scripts/angular.js", "Content/Scripts/app.js"]
+  },
   "permissions": [
     "background",
     "notifications"
   ]
 }
+
+
+http://developer.chrome.com/extensions/background_pages.html#example
+http://www.slideshare.net/benlau/making-chrome-extension-with-angularjs
