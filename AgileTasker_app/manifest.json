@@ -1,7 +1,8 @@
 ﻿{
   "name": "Agile Tasker",
   "description": "A small task timer to help agile thinking methodologies.",
-  "version": "1.0",
+  "manifest_version": 2,
+  "version": "1.0.1",
   "app": {
     "urls": [
       "*://splintercode.github.io/AgileTasker/"
