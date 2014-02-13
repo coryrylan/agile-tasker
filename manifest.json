@@ -3,16 +3,14 @@
   "description": "A small task timer to help agile thinking methodologies.",
   "manifest_version": 2,
   "version": "1.0.1",
-  "app": {
-    "urls": [
-      "*://splintercode.github.io/AgileTasker/"
-    ],
-    "launch": {
-      "web_url": "http://splintercode.github.io/AgileTasker/"
-    }
+  "browser_action": {
+    "default_icon": "Content/logo.png",
+    "default_popup":"index.html",
+	"width":"300",
+	"height":"300"
   },
   "icons": {
-    "128": "logo.png"
+    "128": "Content/logo.png"
   },
   "permissions": [
     "background",
