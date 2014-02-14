@@ -12,7 +12,7 @@
     }
   },
   "icons": {
-    "128": "logo.png"
+    "128": "Content/icon.png"
   },
   "permissions": [
     "background",
