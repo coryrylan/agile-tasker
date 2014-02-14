@@ -601,7 +601,7 @@ footer {
 
 nav {
   margin: 30px auto 0 auto;
-  width: 238px; }
+  max-width: 280px; }
 
 button {
   background: #5EBD6A;
@@ -610,7 +610,8 @@ button {
   font-size: 1.5em;
   padding: 8px;
   margin: 4px;
-  min-width: 70px; }
+  width: 28.333%;
+  max-width: 80px; }
   button:hover {
     background: #52A35C; }
   button:focus {
@@ -618,8 +619,10 @@ button {
 
 select {
   background: #FFF;
+  border-radius: 0;
+  background: #FFF;
   font-size: 1.6em;
-  padding: 4px;
+  padding: 4px 8px;
   margin-left: 4px;
   border: 2px solid #636363; }
 
