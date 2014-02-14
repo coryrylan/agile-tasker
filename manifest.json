@@ -1,16 +1,14 @@
 ﻿{
+  "manifest_version": 2,
   "name": "Agile Tasker",
   "description": "A small task timer to help agile thinking methodologies.",
-  "manifest_version": 2,
   "version": "1.0.1",
   "browser_action": {
-    "default_icon": "Content/icon.png",
-    "default_popup":"index.html",
-	"width":"100",
-	"height":"100"
+    "default_icon": "/Content/icon.png",
+    "default_popup":"index.html"
   },
   "icons": {
-    "128": "Content/logo.png"
+    "128": "/Content/icon.png"
   },
   "background": {
     "scripts": ["Content/Scripts/angular.js", "Content/Scripts/app.js"]
