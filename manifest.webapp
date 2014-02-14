@@ -1,14 +1,14 @@
 {
   "name": "My App",
-  "version": "0.1",
-  "description": "Pomodoro timer.",
+  "version": "1.0.1",
+  "description": "Agile Tasker",
   "launch_path": "/",
   "icons": {
-    "30": "/resources/pom.png"
+    "30": "/Content/icon.png"
   },
   "developer": {
     "name": "Cory Bateman",
-    "url": "http://www.webdesignis.me"
+    "url": "http://www.corycode.me"
   },
   "default_locale": "en"
 }
