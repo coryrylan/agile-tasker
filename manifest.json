@@ -4,10 +4,10 @@
   "manifest_version": 2,
   "version": "1.0.1",
   "browser_action": {
-    "default_icon": "Content/logo.png",
+    "default_icon": "Content/icon.png",
     "default_popup":"index.html",
-	"width":"300",
-	"height":"300"
+	"width":"100",
+	"height":"100"
   },
   "icons": {
     "128": "Content/logo.png"
@@ -20,7 +20,3 @@
     "notifications"
   ]
 }
-
-
-http://developer.chrome.com/extensions/background_pages.html#example
-http://www.slideshare.net/benlau/making-chrome-extension-with-angularjs
