@@ -601,7 +601,7 @@ footer {
 
 nav {
   margin: 30px auto 0 auto;
-  width: 235px; }
+  width: 238px; }
 
 button {
   background: #5EBD6A;
@@ -620,6 +620,7 @@ select {
   background: #FFF;
   font-size: 1.6em;
   padding: 4px;
+  margin-left: 4px;
   border: 2px solid #636363; }
 
 textarea {
