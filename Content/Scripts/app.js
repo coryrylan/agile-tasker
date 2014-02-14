@@ -123,7 +123,7 @@
         if (window.webkitNotifications) {
             if (window.webkitNotifications.checkPermission() == 0) {
                 var notification_test = window.webkitNotifications.createNotification(
-                'Content/logo.png', 'Agile Task Complete', 'Time to take a break!');
+                'Content/icon.png', 'Agile Task Complete', 'Time to take a break!');
                 notification_test.ondisplay = function () { };
                 notification_test.onclose = function () { };
                 notification_test.onClick = function () { };
