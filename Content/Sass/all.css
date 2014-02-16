@@ -655,8 +655,8 @@ th {
 */
 @font-face {
   font-family: 'open_sanslight';
-  src: url("/Content/OpenSans/OpenSans-Light-webfont.eot");
-  src: url("/Content/OpenSans/OpenSans-Light-webfont.eot?#iefix") format("embedded-opentype"), url("/Content/OpenSans/OpenSans-Light-webfont.woff") format("woff"), url("/Content/OpenSans/OpenSans-Light-webfont.ttf") format("truetype"), url("/Content/OpenSans/OpenSans-Light-webfont.svg#open_sanslight") format("svg");
+  src: url("../OpenSans/OpenSans-Light-webfont.eot");
+  src: url("../OpenSans/OpenSans-Light-webfont.eot?#iefix") format("embedded-opentype"), url("../OpenSans/OpenSans-Light-webfont.woff") format("woff"), url("../OpenSans/OpenSans-Light-webfont.ttf") format("truetype"), url("../OpenSans/OpenSans-Light-webfont.svg#open_sanslight") format("svg");
   font-weight: normal;
   font-style: normal; }
 
