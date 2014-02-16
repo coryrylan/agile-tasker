@@ -822,6 +822,9 @@ textarea {
 .col__7, .col__5 {
   padding: 0; }
 
+html {
+  overflow-y: scroll; }
+
 @media all and (min-width: 38em) {
   .col__7 {
     width: 58.331%; }
