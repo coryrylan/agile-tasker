@@ -4,18 +4,14 @@
   "manifest_version": 2,
   "version": "1.0.2",
   "app": {
-    "urls": [
-      "*://splintercode.github.io/AgileTasker/"
-    ],
-    "launch": {
-      "web_url": "http://splintercode.github.io/AgileTasker/"
+    "background": {
+      "scripts": ["Content/Scripts/background.js"]
     }
   },
   "icons": {
     "128": "Content/icon.png"
   },
   "permissions": [
-    "background",
     "notifications"
   ]
 }
