@@ -2,8 +2,10 @@
 
 app.controller('TimerCtrl', function ($scope) {
 
+    /* --- Models --- */
     $scope.options = [{ value: 15, label: 15 }, { value: 20, label: 20 }, { value: 25, label: 25 }, { value: 30, label: 30 }];
     $scope.tasks = [];
+
     $scope.selectedOption = $scope.options[2];
     $scope.currentTime = $scope.selectedOption.value + ":" + "00";
     $scope.localTime = "";
