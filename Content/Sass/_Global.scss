@@ -238,8 +238,10 @@ textarea{
 	padding: 0;
 }
 
-html {
-	overflow-y:scroll; // Chrome App Override
+@media all and (max-width: 38em) {
+	html {
+		overflow-y:scroll; // Chrome App Override
+	}
 }
 
 /* ::-webkit-scrollbar {

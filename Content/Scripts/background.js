@@ -7,6 +7,6 @@
         maxWidth: 740,
         maxHeight: 490,
         minWidth: 300,
-        minHeight:320
+        minHeight:490
     });
 });

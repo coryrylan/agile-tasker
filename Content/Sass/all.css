@@ -822,9 +822,9 @@ textarea {
 .col__7, .col__5 {
   padding: 0; }
 
-html {
-  overflow-y: scroll; }
-
+@media all and (max-width: 38em) {
+  html {
+    overflow-y: scroll; } }
 /* ::-webkit-scrollbar {
     height: 12px;
     width: 12px;

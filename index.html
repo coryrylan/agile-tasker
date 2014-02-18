@@ -21,13 +21,6 @@
 
     <!-- IOS Pinned Site App-->
     <link rel="apple-touch-icon-precomposed" href="Content/icon.png" />
-
-    <!-- HTML5 DNS Prefetching/Reslove DNS -->
-    <!--<link rel="dns-prefetch" href="//fonts.googleapis.com" />
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>-->
-
-    <script src="Content/Scripts/angular.js"></script>
-    <script src="Content/Scripts/app.js"></script>
 </head>
 <body>
     <div class="appWidth" ng-controller="TimerCtrl">
@@ -67,10 +60,12 @@
                 </div>
             </main>
             <footer ng-controller="Dialog">
-                <i class="icon-cog" ng-click="toggleModal()"></i><!--settingVisible=!settingVisible-->
+                <i class="icon-cog" ng-click="toggleModal()"></i>
                 <modal-dialog show='modalShown' width='100%' height='70%'>
                     <section class="settings">
                         <div class="col_12">
+                            <p>A agile task timer to help you get things done! Take a focused 20 to 25 mins of work and take a small
+                             5 min break between each task. This helps keep your mental edge and gives your brain a change to recoup.</p>
                             <div>Built with:</div>
                             <a href="http://angularjs.org/" target="_blank">
                                 <img src="Content/AngularJS.png" width="40" height="40" alt="Angular.js Logo" title="Angular.js" />
@@ -80,11 +75,10 @@
                             <a href="https://github.com/splintercode/ThinkAgile" target="_blank"><i class="icon-github-circled-1" title="Git/Github"></i> </a>
                         </div>
                         <div class="col_12">
-                            <div class="clearBoth"></div><br />
-                            <div>Supported Browsers</div>
+                            <div>Supported Browsers:</div>
                             <i class="icon-chrome" title="Chrome"></i>
                             <i class="icon-firefox" title="Firefox"></i>
-                            <i class="icon-ie" title="Internet Explorer"></i>9+ <br />To recieve desktop notifications use Chrome.
+                            <i class="icon-ie" title="Internet Explorer"></i>9+
                         </div>
                         <div class="col_12">
                             <div>Built by:</div>
@@ -98,5 +92,8 @@
             </footer>
         </section>
     </div>
+    <script src="Content/Scripts/angular.js"></script>
+    <script src="Content/Scripts/notifications.js"></script>
+    <script src="Content/Scripts/app.js"></script>
 </body>
 </html>

@@ -27,12 +27,9 @@ app.controller('TimerCtrl', function ($scope) {
         timerInterval = setInterval(intervalTimer, 1000);
         startTime = new Date().toLocaleTimeString();
         $scope.isPlaying = true;
-
-        // Get desktop Permission
-        if (window.webkitNotifications.checkPermission() === 0) { // 0 is PERMISSION_ALLOWED
-            // function defined 
-        } else {
-            window.webkitNotifications.requestPermission();
+        
+        if (notify.permissionLevel() === notify.PERMISSION_DEFAULT) {
+            notify.requestPermission();
         }
     };
 
@@ -86,7 +83,7 @@ app.controller('TimerCtrl', function ($scope) {
     function resetTimer() {
         clearInterval(timerInterval);
         $scope.currentTime = $scope.selectedOption.value + ":" + "00";
-        timerDate.setMinutes($scope.selectedOption.value);
+        timerDate.setMinutes($scope.selectedOption.value); //$scope.selectedOption.value
         timerDate.setSeconds(0); // Test Switch 
     };
 
@@ -117,19 +114,24 @@ app.controller('TimerCtrl', function ($scope) {
     function alertNotification() {
         //FlashTitle();
         playSound();
-        alertDesktopNotification();
+        nativeNotification();
     };
 
-    function alertDesktopNotification() {
-        if (window.webkitNotifications) {
-            if (window.webkitNotifications.checkPermission() == 0) {
-                var notification_test = window.webkitNotifications.createNotification(
-                'Content/icon.png', 'Agile Task Complete', 'Time to take a break!');
-                notification_test.ondisplay = function () { };
-                notification_test.onclose = function () { };
-                notification_test.onClick = function () { };
-                notification_test.show();
-            }
+    function nativeNotification() {
+        if (notify.permissionLevel() === notify.PERMISSION_DEFAULT) {
+            notify.requestPermission();
+        }
+        else if (notify.permissionLevel() === notify.PERMISSION_GRANTED) {
+            notify.createNotification('Agile Task Complete', {
+                body: 'Time to take a break!',
+                icon: 'Content/icon.png'
+            });
+        }
+        else if (notify.permissionLevel() === notify.PERMISSION_DENIED) {
+            alert("Agile Task Complete");
+        }
+        else {
+            alert("Agile Task Complete");
         }
     };
 
