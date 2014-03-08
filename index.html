@@ -23,16 +23,16 @@
     <link rel="apple-touch-icon-precomposed" href="Content/icon.png" />
 </head>
 <body>
-    <div class="appWidth" ng-controller="TimerCtrl">
+    <div class="app-width" ng-controller="TimerCtrl">
         <section class="app">
             <header>
                 AGILE TASKER
             </header>
             <main role="main">
                 <div>
-                    <div class="timerBox">
-                        <div class="col__7 currentTime">{{currentTime}}</div>
-                        <div class="col__5">
+                    <div class="timer-box">
+                        <div class="col-7-c currentTime">{{currentTime}}</div>
+                        <div class="col-5-c">
                             <nav>
                                 <button id="Startbtn" ng-click="startTimer()" ng-disabled="isPlaying"><i class="icon-play"></i></button>
                                 <button ng-click="stopTimer()"><i class="icon-stop"></i></button>
@@ -41,14 +41,14 @@
                         </div>
                     </div>
 
-                    <section class="taskListWrapper">
-                        <div class="col__5">
+                    <section class="task-list-wrapper">
+                        <div class="col-5-c">
                             <div class="label">Current Task</div>
                             <textarea ng-model="taskText" placeholder="Add Task" ng-maxlength="100" ng-disabled="isPlaying"></textarea>
                         </div>
-                        <div class="col__7">
-                            <div class="label">Completed Tasks <a href="#0" ng-click="clearList()" class="floatRight small">Clear All</a></div>
-                            <ul class="taskList">
+                        <div class="col-7-c">
+                            <div class="label">Completed Tasks <a href="#0" ng-click="clearList()" class="float-right small">Clear All</a></div>
+                            <ul class="task-list">
                                 <li ng-repeat="task in tasks">
                                     <div>{{task.text}}</div>
                                     <span class="smallText"><span>{{task.start}}</span>&nbsp;<strong>to</strong>&nbsp;<span>{{task.stop}}</span></span>
@@ -63,7 +63,7 @@
                 <i class="icon-cog" ng-click="toggleModal()"></i>
                 <modal-dialog show='modalShown' width='100%' height='70%'>
                     <section class="settings">
-                        <div class="col_12">
+                        <div class="col-12">
                             <p>A agile task timer to help you get things done! Take a focused 20 to 25 mins of work and take a small
                              5 min break between each task. This helps keep your mental edge and gives your brain a chance to recoup.</p>
                             <div>Built with:</div>
@@ -74,21 +74,21 @@
                             <i class="icon-css3" title="CSS3"></i>
                             <a href="https://github.com/splintercode/ThinkAgile" target="_blank"><i class="icon-github-circled-1" title="Git/Github"></i> </a>
                         </div>
-                        <div class="col_12">
+                        <div class="col-12">
                             <div>Supported Browsers:</div>
                             <i class="icon-chrome" title="Chrome"></i>
                             <i class="icon-firefox" title="Firefox"></i>
                             <i class="icon-ie" title="Internet Explorer"></i>9+
                         </div>
-                        <div class="col_12">
+                        <div class="col-12">
                             <div>Built by:</div>
                             <a href="http://corycode.me" target="_blank">Cory Bateman</a>
-                            <div class="clearBoth"></div>
+                            <div class="clear-both"></div>
                         </div>
                     </section>
                 </modal-dialog>
                 <i ng-class="{true: 'icon-volume-up', false: 'icon-volume-off'}[sound]" ng-click="toggleSound()"></i>
-                <span class="localTime floatRight">{{localTime}}</span>
+                <span class="localTime float-right">{{localTime}}</span>
             </footer>
         </section>
     </div>

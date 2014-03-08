@@ -46,10 +46,10 @@ body
     color: #FFF;
 }
 
-.floatLeft{float:left;}
-.floatRight{float:right;}
+.float-left{float:left;}
+.float-right{float:right;}
 
-.appWidth {
+.app-width {
 	width:100%;
 	margin:0 auto 0 auto;
 }
@@ -75,21 +75,13 @@ a {
 }
 
 header {
-	background: #5EBD6A;
-	//background: -moz-linear-gradient(top,  #89cf82 2%, #58b063 65%); /* FF3.6+ */
-	//background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,#89cf82), color-stop(65%,#58b063)); /* Chrome,Safari4+ */
-	//background: -webkit-linear-gradient(top,  #89cf82 2%,#58b063 65%); /* Chrome10+,Safari5.1+ */
-	//background: -o-linear-gradient(top,  #89cf82 2%,#58b063 65%); /* Opera 11.10+ */
-	//background: -ms-linear-gradient(top,  #89cf82 2%,#58b063 65%); /* IE10+ */
-	//background: linear-gradient(to bottom,  #89cf82 2%,#58b063 65%); /* W3C */
-	//filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#89cf82', endColorstr='#58b063',GradientType=0 ); /* IE6-9 */
-	
-	color:#FFF;
-	font-size:1.5em;
-	text-align:center;
 	width:100%;
 	padding:6px;
 	border-bottom:0;
+	background: #5EBD6A;
+	color:#FFF;
+	font-size:1.5em;
+	text-align:center;
 }
 
 footer {
@@ -103,21 +95,21 @@ footer {
 	}
 }
 
-.timerBox {
+.timer-box {
 	width:100%;
 	padding:40px 10px;
 	background:#FFF;
 	overflow:auto;
 	border-bottom:2px solid #A6A6A6;
 
-	.col__7 {
+	.col-7-c {
 		font-size:5.7em;
 		text-align:center;
 	}
 }
 
-.taskListWrapper {
-	.col__7 {
+.task-list-wrapper {
+	.col-7-c {
 		border-left:1px solid #A6A6A6;
 
 		ul {
@@ -125,7 +117,7 @@ footer {
 		}
 	}
 
-	.col__7, .col___5 {
+	.col-7-c, .col-5-c {
 		margin-bottom:0;
 	}
 }
@@ -150,7 +142,7 @@ footer {
 	}
 }
 
-.taskList {
+.task-list {
 	list-style:none;
 	padding:0;
 	margin:0;
@@ -167,7 +159,7 @@ footer {
 	}
 }
 
-.smallText {
+.text-small {
 	font-size:0.9em;
 }
 
@@ -229,12 +221,7 @@ textarea{
 	}
 }
 
-.clearBoth {
-	clear:both;
-}
-
-
-.col__7, .col__5 {
+.col-7-c, .col-5-c {
 	padding: 0;
 }
 
@@ -260,11 +247,11 @@ textarea{
 } */
 
 @media all and (min-width: 38em) {
-	.col__7 {
+	.col-7-c {
 		width:58.331%;
 	}
 
-	.col__5 {
+	.col-5-c {
 		width:41.665%;
 	}
 
@@ -295,14 +282,14 @@ textarea{
 		border-top:0;
 	}
 
-	.appWidth {
+	.app-width {
 		padding:2%;
 		margin:20px auto 30px auto;
 		max-width:850px;
 	}
 
-	.taskListWrapper {
-		.col__7 {
+	.task-list-wrapper {
+		.col-7-c {
 			ul {
 				min-height:190px;
 			}
