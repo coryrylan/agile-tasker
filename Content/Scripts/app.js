@@ -18,8 +18,11 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
     $scope.settingVisible = true;
     $scope.sound = true;
 
-    var snd1 = new Audio("Content/Audio/chime.mp3"); // buffers automatically when created
-    var snd2 = new Audio("Content/Audio/chime.wav"); // buffers automatically when created
+    var audio = new Audio();
+    audio.src = Modernizr.audio.ogg ? 'Content/Audio/chime.ogg' :
+                Modernizr.audio.mp3 ? 'Content/Audio/chime.mp3' :
+                                      'Content/Audio/chime.m4a';
+    
     var startTime = new Date().toLocaleTimeString();
     var endTime = new Date().toLocaleTimeString();
     var timerInterval = 0;
@@ -143,14 +146,11 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
 
     function playSound() {
         if ($scope.sound) {
-            snd1.play();
-            snd2.play();
+            audio.play();
         }
         else {
-            snd1.pause();
-            snd2.pause();
-            snd1.currentTime = 0;
-            snd2.currentTime = 0;
+            audio.pause();
+            audio.currentTime = 0;
         }
     }
 }]);
