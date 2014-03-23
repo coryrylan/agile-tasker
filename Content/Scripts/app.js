@@ -1,10 +1,14 @@
-﻿app = angular.module('AgileTasker', []);
-
-app.controller('TimerCtrl', function ($scope) {
+﻿app = angular.module('AgileTasker', ['LocalForageModule']);
+app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localForage) {
 
     /* --- Models --- */
     $scope.options = [{ value: 15, label: 15 }, { value: 20, label: 20 }, { value: 25, label: 25 }, { value: 30, label: 30 }];
     $scope.tasks = [];
+    $localForage.bind($scope, {     // Bind Task list history to local storage
+        key: 'tasks',
+        defaultValue: { tasksJSON: ' ' },
+        storeName: 'agileTaskStorage'
+    });
 
     $scope.selectedOption = $scope.options[2];
     $scope.currentTime = $scope.selectedOption.value + ":" + "00";
@@ -14,8 +18,8 @@ app.controller('TimerCtrl', function ($scope) {
     $scope.settingVisible = true;
     $scope.sound = true;
 
-    var snd1 = new Audio("Content/chime.mp3"); // buffers automatically when created
-    var snd2 = new Audio("Content/chime.wav"); // buffers automatically when created
+    var snd1 = new Audio("Content/Audio/chime.mp3"); // buffers automatically when created
+    var snd2 = new Audio("Content/Audio/chime.wav"); // buffers automatically when created
     var startTime = new Date().toLocaleTimeString();
     var endTime = new Date().toLocaleTimeString();
     var timerInterval = 0;
@@ -85,7 +89,7 @@ app.controller('TimerCtrl', function ($scope) {
     function resetTimer() {
         clearInterval(timerInterval);
         $scope.currentTime = $scope.selectedOption.value + ":" + "00";
-        timerDate.setMinutes($scope.selectedOption.value); //$scope.selectedOption.value
+        timerDate.setMinutes(0); //$scope.selectedOption.value
         timerDate.setSeconds(0); // Test Switch 
     };
 
@@ -149,7 +153,7 @@ app.controller('TimerCtrl', function ($scope) {
             snd2.currentTime = 0;
         }
     }
-});
+}]);
 
 app.controller('Dialog', function ($scope) {
     $scope.modalShown = false;
