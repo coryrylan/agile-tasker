@@ -679,12 +679,12 @@ body {
   box-sizing: border-box; }
 
 *::selection {
-  background: #74af7b;
+  background: #5EBD6A;
   /* Safari */
   color: #FFF; }
 
 *::-moz-selection {
-  background: #74af7b;
+  background: #5EBD6A;
   /* Firefox */
   color: #FFF; }
 

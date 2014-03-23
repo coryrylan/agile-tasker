@@ -10,6 +10,7 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
         storeName: 'agileTaskStorage'
     });
 
+    
     $scope.selectedOption = $scope.options[2];
     $scope.currentTime = $scope.selectedOption.value + ":" + "00";
     $scope.localTime = "";
@@ -44,7 +45,8 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
 
     $scope.stopTimer = function () {
         resetTimer();
-        $scope.isPlaying = "";
+        $scope.isPlaying = '';
+        document.title = 'Agile Tasker';
     };
 
     $scope.clearList = function () {
@@ -92,7 +94,7 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
     function resetTimer() {
         clearInterval(timerInterval);
         $scope.currentTime = $scope.selectedOption.value + ":" + "00";
-        timerDate.setMinutes(0); //$scope.selectedOption.value
+        timerDate.setMinutes($scope.selectedOption.value); //$scope.selectedOption.value
         timerDate.setSeconds(0); // Test Switch 
     };
 
