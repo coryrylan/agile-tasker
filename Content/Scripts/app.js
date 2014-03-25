@@ -8,8 +8,7 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
         key: 'tasks',
         defaultValue: { tasksJSON: ' ' },
         storeName: 'agileTaskStorage'
-    });
-
+    }); 
     
     $scope.selectedOption = $scope.options[2];
     $scope.currentTime = $scope.selectedOption.value + ":" + "00";
@@ -82,8 +81,7 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
             endTime = new Date().toLocaleTimeString();
             alertNotification();
             pushTask();
-        }
-        else {
+        } else {
             timerDate.setSeconds(timerDate.getSeconds() - 1);
             $scope.currentTime = getCurrentTime(timerDate);
             document.title = $scope.currentTime;
@@ -102,11 +100,13 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
         var minutes = currentTime.getMinutes();
         var seconds = currentTime.getSeconds();
 
-        if (minutes < 10)
+        if (minutes < 10) {
             minutes = '0' + minutes;
+        }
 
-        if (seconds < 10)
+        if (seconds < 10) {
             seconds = '0' + seconds;
+        }
 
         return minutes + ':' + seconds;
     }

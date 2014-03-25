@@ -9,4 +9,4 @@
         minWidth: 300,
         minHeight:490
     });
-});
+}); 
