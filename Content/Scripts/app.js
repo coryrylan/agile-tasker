@@ -8,8 +8,7 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
         key: 'tasks',
         defaultValue: { tasksJSON: ' ' },
         storeName: 'agileTaskStorage'
-    });
-
+    }); 
     
     $scope.selectedOption = $scope.options[2];
     $scope.currentTime = $scope.selectedOption.value + ":" + "00";
@@ -82,8 +81,7 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
             endTime = new Date().toLocaleTimeString();
             alertNotification();
             pushTask();
-        }
-        else {
+        } else {
             timerDate.setSeconds(timerDate.getSeconds() - 1);
             $scope.currentTime = getCurrentTime(timerDate);
             document.title = $scope.currentTime;
@@ -94,19 +92,21 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
     function resetTimer() {
         clearInterval(timerInterval);
         $scope.currentTime = $scope.selectedOption.value + ":" + "00";
-        timerDate.setMinutes($scope.selectedOption.value); //$scope.selectedOption.value
-        timerDate.setSeconds(0); // Test Switch 
+        timerDate.setMinutes($scope.selectedOption.value);  // $scope.selectedOption.value
+        timerDate.setSeconds(0);                            // Test Switch 
     };
 
     function getCurrentTime(currentTime) {
         var minutes = currentTime.getMinutes();
         var seconds = currentTime.getSeconds();
 
-        if (minutes < 10)
+        if (minutes < 10) {
             minutes = '0' + minutes;
+        }
 
-        if (seconds < 10)
+        if (seconds < 10) {
             seconds = '0' + seconds;
+        }
 
         return minutes + ':' + seconds;
     }
@@ -125,6 +125,7 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
     function alertNotification() {
         //FlashTitle();
         playSound();
+        vibrationNotification();
         nativeNotification();
     };
 
@@ -148,6 +149,8 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
 
     function playSound() {
         if ($scope.sound) {
+            audio.pause();
+            audio.currentTime = 0;
             audio.play();
         }
         else {
@@ -155,6 +158,12 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
             audio.currentTime = 0;
         }
     }
+
+    function vibrationNotification() {
+        if (navigator.vibrate) {
+            navigator.vibrate([600, 300, 600, 300, 600]);
+        }
+    };
 }]);
 
 app.controller('Dialog', function ($scope) {
