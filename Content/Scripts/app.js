@@ -92,7 +92,7 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
     function resetTimer() {
         clearInterval(timerInterval);
         $scope.currentTime = $scope.selectedOption.value + ":" + "00";
-        timerDate.setMinutes($scope.selectedOption.value); //$scope.selectedOption.value
+        timerDate.setMinutes(0); //$scope.selectedOption.value
         timerDate.setSeconds(0); // Test Switch 
     };
 
@@ -125,6 +125,7 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
     function alertNotification() {
         //FlashTitle();
         playSound();
+        vibrationNotification();
         nativeNotification();
     };
 
@@ -155,6 +156,10 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
             audio.currentTime = 0;
         }
     }
+
+    function vibrationNotification() {
+        navigator.vibrate([1000, 500, 1000]);
+    };
 }]);
 
 app.controller('Dialog', function ($scope) {

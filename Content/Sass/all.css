@@ -1,4 +1,4 @@
-/* normalize.css v3.0.0 | MIT License | git.io/normalize */
+﻿/*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 /**
  * 1. Set default font family to sans-serif.
  * 2. Prevent iOS text size adjust after orientation change, without disabling
@@ -23,28 +23,14 @@ body {
 /**
  * Correct `block` display not defined in IE 8/9.
  */
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-main,
-nav,
-section,
-summary {
+article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
   display: block; }
 
 /**
  * 1. Correct `inline-block` display not defined in IE 8/9.
  * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
  */
-audio,
-canvas,
-progress,
-video {
+audio, canvas, progress, video {
   display: inline-block;
   /* 1 */
   vertical-align: baseline;
@@ -62,8 +48,7 @@ audio:not([controls]) {
  * Address `[hidden]` styling not present in IE 8/9.
  * Hide the `template` element in IE, Safari, and Firefox < 22.
  */
-[hidden],
-template {
+[hidden], template {
   display: none; }
 
 /* Links
@@ -77,8 +62,7 @@ a {
 /**
  * Improve readability when focused and also mouse hovered in all browsers.
  */
-a:active,
-a:hover {
+a:active, a:hover {
   outline: 0; }
 
 /* Text-level semantics
@@ -92,8 +76,7 @@ abbr[title] {
 /**
  * Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome.
  */
-b,
-strong {
+b, strong {
   font-weight: bold; }
 
 /**
@@ -126,8 +109,7 @@ small {
 /**
  * Prevent `sub` and `sup` affecting `line-height` in all browsers.
  */
-sub,
-sup {
+sub, sup {
   font-size: 75%;
   line-height: 0;
   position: relative;
@@ -178,10 +160,7 @@ pre {
 /**
  * Address odd `em`-unit font size rendering in all browsers.
  */
-code,
-kbd,
-pre,
-samp {
+code, kbd, pre, samp {
   font-family: monospace, monospace;
   font-size: 1em; }
 
@@ -197,11 +176,7 @@ samp {
  * 2. Correct font properties not being inherited.
  * 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome.
  */
-button,
-input,
-optgroup,
-select,
-textarea {
+button, input, optgroup, select, textarea {
   color: inherit;
   /* 1 */
   font: inherit;
@@ -221,8 +196,7 @@ button {
  * Correct `button` style inheritance in Firefox, IE 8+, and Opera
  * Correct `select` style inheritance in Firefox.
  */
-button,
-select {
+button, select {
   text-transform: none; }
 
 /**
@@ -232,10 +206,7 @@ select {
  * 3. Improve usability and consistency of cursor style between image-type
  *    `input` and others.
  */
-button,
-html input[type="button"],
-input[type="reset"],
-input[type="submit"] {
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
   -webkit-appearance: button;
   /* 2 */
   cursor: pointer;
@@ -244,15 +215,13 @@ input[type="submit"] {
 /**
  * Re-set default cursor for disabled elements.
  */
-button[disabled],
-html input[disabled] {
+button[disabled], html input[disabled] {
   cursor: default; }
 
 /**
  * Remove inner padding and border in Firefox 4+.
  */
-button::-moz-focus-inner,
-input::-moz-focus-inner {
+button::-moz-focus-inner, input::-moz-focus-inner {
   border: 0;
   padding: 0; }
 
@@ -270,8 +239,7 @@ input {
  * 1. Address box sizing set to `content-box` in IE 8/9/10.
  * 2. Remove excess padding in IE 8/9/10.
  */
-input[type="checkbox"],
-input[type="radio"] {
+input[type="checkbox"], input[type="radio"] {
   box-sizing: border-box;
   /* 1 */
   padding: 0;
@@ -282,8 +250,7 @@ input[type="radio"] {
  * `font-size` values of the `input`, it causes the cursor style of the
  * decrement button to change from `default` to `text`.
  */
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
+input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {
   height: auto; }
 
 /**
@@ -304,8 +271,7 @@ input[type="search"] {
  * Safari (but not Chrome) clips the cancel button when the search input has
  * padding (and `textfield` appearance).
  */
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-decoration {
+input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none; }
 
 /**
@@ -348,11 +314,10 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
-td,
-th {
+td, th {
   padding: 0; }
 
-/* 
+/*! 
     https://github.com/splintercode/CoreGrid
     MIT License http://opensource.org/licenses/MIT
     Core Grid 1.0
@@ -366,79 +331,7 @@ th {
   box-sizing: border-box; }
 
 /* --- Column Set Up --- */
-.row,
-.col-1-xs,
-.col-2-xs,
-.col-3-xs,
-.col-4-xs,
-.col-5-xs,
-.col-6-xs,
-.col-7-xs,
-.col-8-xs,
-.col-9-xs,
-.col-10-xs,
-.col-11-xs,
-.col-12-xs,
-.col-1-sm,
-.col-2-sm,
-.col-3-sm,
-.col-4-sm,
-.col-5-sm,
-.col-6-sm,
-.col-7-sm,
-.col-8-sm,
-.col-9-sm,
-.col-10-sm,
-.col-11-sm,
-.col-12-sm,
-.col-1-md,
-.col-2-md,
-.col-3-md,
-.col-4-md,
-.col-5-md,
-.col-6-md,
-.col-7-md,
-.col-8-md,
-.col-9-md,
-.col-10-md,
-.col-11-md,
-.col-12-md,
-.col-1,
-.col-2,
-.col-3,
-.col-4,
-.col-5,
-.col-6,
-.col-7,
-.col-8,
-.col-9,
-.col-10,
-.col-11,
-.col-12,
-.col-1-lg,
-.col-2-lg,
-.col-3-lg,
-.col-4-lg,
-.col-5-lg,
-.col-6-lg,
-.col-7-lg,
-.col-8-lg,
-.col-9-lg,
-.col-10-lg,
-.col-11-lg,
-.col-12-lg,
-.col-1-c,
-.col-2-c,
-.col-3-c,
-.col-4-c,
-.col-5-c,
-.col-6-c,
-.col-7-c,
-.col-8-c,
-.col-9-c,
-.col-10-c,
-.col-11-c,
-.col-12-c {
+.row, .col-1-xs, .col-2-xs, .col-3-xs, .col-4-xs, .col-5-xs, .col-6-xs, .col-7-xs, .col-8-xs, .col-9-xs, .col-10-xs, .col-11-xs, .col-12-xs, .col-1-sm, .col-2-sm, .col-3-sm, .col-4-sm, .col-5-sm, .col-6-sm, .col-7-sm, .col-8-sm, .col-9-sm, .col-10-sm, .col-11-sm, .col-12-sm, .col-1-md, .col-2-md, .col-3-md, .col-4-md, .col-5-md, .col-6-md, .col-7-md, .col-8-md, .col-9-md, .col-10-md, .col-11-md, .col-12-md, .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col-1-lg, .col-2-lg, .col-3-lg, .col-4-lg, .col-5-lg, .col-6-lg, .col-7-lg, .col-8-lg, .col-9-lg, .col-10-lg, .col-11-lg, .col-12-lg, .col-1-c, .col-2-c, .col-3-c, .col-4-c, .col-5-c, .col-6-c, .col-7-c, .col-8-c, .col-9-c, .col-10-c, .col-11-c, .col-12-c {
   width: 100%;
   padding: 0 8px 16px 8px;
   float: left;
@@ -498,131 +391,95 @@ th {
 @media screen and (min-width: 33.75em) {
   .col-1-sm {
     width: 8.333%; }
-
   .col-2-sm {
     width: 16.666%; }
-
   .col-3-sm {
     width: 25%; }
-
   .col-4-sm {
     width: 33.333%; }
-
   .col-5-sm {
     width: 41.665%; }
-
   .col-6-sm {
     width: 50%; }
-
   .col-7-sm {
     width: 58.331%; }
-
   .col-8-sm {
     width: 66.664%; }
-
   .col-9-sm {
     width: 75%; }
-
   .col-10-sm {
     width: 83.33%; }
-
   .col-11-sm {
     width: 91.663%; }
-
   .col-12-sm {
     width: 100%; }
-
   .visble-sm {
     display: block; }
-
   .hidden_sm {
     display: none; } }
+
 /* --- Primary Medium Auto Grid 720px and greater --- */
 @media screen and (min-width: 45em) {
   .col-1, .col-1-md {
     width: 8.333%; }
-
   .col-2, .col-2-md {
     width: 16.666%; }
-
   .col-3, .col-3-md {
     width: 25%; }
-
   .col-4, .col-4-md {
     width: 33.333%; }
-
   .col-5, .col-5-md {
     width: 41.665%; }
-
   .col-6, .col-6-md {
     width: 50%; }
-
   .col-7, .col-7-md {
     width: 58.331%; }
-
   .col-8, .col-8-md {
     width: 66.664%; }
-
   .col-9, .col-9-md {
     width: 75%; }
-
   .col-10, .col_10-md {
     width: 83.33%; }
-
   .col-11, .col_11-md {
     width: 91.663%; }
-
   .col-12, .col_12-md {
     width: 100%; }
-
   .visible-md {
     display: block; }
-
   .hidden-md {
     display: none; } }
+
 /* --- Large Auto Grid 960px and greater --- */
 @media screen and (min-width: 60em) {
   .col-1-lg {
     width: 8.333%; }
-
   .col-2-lg {
     width: 16.666%; }
-
   .col-3-lg {
     width: 25%; }
-
   .col-4-lg {
     width: 33.333%; }
-
   .col-5-lg {
     width: 41.665%; }
-
   .col-6-lg {
     width: 50%; }
-
   .col-7-lg {
     width: 58.331%; }
-
   .col-8-lg {
     width: 66.664%; }
-
   .col-9-lg {
     width: 75%; }
-
   .col-10-lg {
     width: 83.33%; }
-
   .col-11-lg {
     width: 91.663%; }
-
   .col-12-lg {
     width: 100%; }
-
   .visible-lg {
     display: block; }
-
   .hidden-lg {
     display: none; } }
+
 /* --- Secondary Semantic Control Grid ---
 .col-1-c { width: 8.333%; } 
 .col-2-c { width: 16.666%; } 
@@ -652,14 +509,14 @@ th {
   margin: 0 auto;
   padding: 0 2%; }
 
-/*
+/*!
     Cory Bateman http://www.corycode.me 
     MIT License http://opensource.org/licenses/MIT 
 */
 @font-face {
   font-family: 'open_sanslight';
-  src: url("../OpenSans/OpenSans-Light-webfont.eot");
-  src: url("../OpenSans/OpenSans-Light-webfont.eot?#iefix") format("embedded-opentype"), url("../OpenSans/OpenSans-Light-webfont.woff") format("woff"), url("../OpenSans/OpenSans-Light-webfont.ttf") format("truetype"), url("../OpenSans/OpenSans-Light-webfont.svg#open_sanslight") format("svg");
+  src: url('../OpenSans/OpenSans-Light-webfont.eot');
+  src: url('../OpenSans/OpenSans-Light-webfont.eot?#iefix') format('embedded-opentype'), url('../OpenSans/OpenSans-Light-webfont.woff') format('woff'), url('../OpenSans/OpenSans-Light-webfont.ttf') format('truetype'), url('../OpenSans/OpenSans-Light-webfont.svg#open_sanslight') format('svg');
   font-weight: normal;
   font-style: normal; }
 
@@ -825,6 +682,7 @@ textarea {
 @media all and (max-width: 38em) {
   html {
     overflow-y: scroll; } }
+
 /* ::-webkit-scrollbar {
     height: 12px;
     width: 12px;
@@ -842,37 +700,32 @@ textarea {
 @media all and (min-width: 38em) {
   .col-7-c {
     width: 58.331%; }
-
   .col-5-c {
     width: 41.665%; }
-
   ul {
     height: 148px;
     overflow-y: scroll;
     max-width: 99.8%; } }
+
 @media all and (min-width: 50em) {
   header {
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     border: 1px solid #2d2d2d;
     border-bottom: 0px; }
-
   nav {
     margin: 30px 0 0 0; }
-
   main, footer {
     border: 1px solid #2d2d2d; }
-
   footer {
     border-top: 0; }
-
   .app-width {
     padding: 2%;
     margin: 20px auto 30px auto;
     max-width: 850px; }
-
   .task-list-wrapper .col-7-c ul {
     min-height: 190px; } }
+
 /* // Expand in
 [data-effeckt-type='expand-in']  {
   max-height: 0;
@@ -1019,3 +872,4 @@ textarea {
   font-size: 1.4em;
   display: inline-block; }
 
+/*# sourceMappingURL=all.css.map */
