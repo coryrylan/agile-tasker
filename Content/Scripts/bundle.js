@@ -661,8 +661,8 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
     function resetTimer() {
         clearInterval(timerInterval);
         $scope.currentTime = $scope.selectedOption.value + ":" + "00";
-        timerDate.setMinutes($scope.selectedOption.value); //$scope.selectedOption.value
-        timerDate.setSeconds(0); // Test Switch 
+        timerDate.setMinutes($scope.selectedOption.value);  // $scope.selectedOption.value
+        timerDate.setSeconds(0);                            // Test Switch 
     };
 
     function getCurrentTime(currentTime) {
