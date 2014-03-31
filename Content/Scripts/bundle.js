@@ -718,6 +718,8 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
 
     function playSound() {
         if ($scope.sound) {
+            audio.pause();
+            audio.currentTime = 0;
             audio.play();
         }
         else {
