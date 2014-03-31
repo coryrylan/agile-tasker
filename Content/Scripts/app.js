@@ -159,7 +159,7 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
 
     function vibrationNotification() {
         if (navigator.vibrate) {
-            navigator.vibrate([600, 300, 600, 300, 600]);
+            //navigator.vibrate([600, 300, 600, 300, 600]);
         }
     };
 }]);
