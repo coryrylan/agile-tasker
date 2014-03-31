@@ -661,7 +661,7 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
     function resetTimer() {
         clearInterval(timerInterval);
         $scope.currentTime = $scope.selectedOption.value + ":" + "00";
-        timerDate.setMinutes(0); //$scope.selectedOption.value
+        timerDate.setMinutes($scope.selectedOption.value); //$scope.selectedOption.value
         timerDate.setSeconds(0); // Test Switch 
     };
 
@@ -730,7 +730,7 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
 
     function vibrationNotification() {
         if (navigator.vibrate) {
-            //navigator.vibrate([600, 300, 600, 300, 600]);
+            navigator.vibrate([600, 300, 600, 300, 600]);
         }
     };
 }]);
