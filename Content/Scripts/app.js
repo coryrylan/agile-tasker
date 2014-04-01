@@ -55,7 +55,7 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
     $scope.toggleSound = function () {
         $scope.sound = !$scope.sound;
         playSound();
-    }
+    };
 
     /* --- Timmer Helper Functons --- */
     setInterval(updateLocalTime, 1000);
@@ -87,14 +87,14 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
             document.title = $scope.currentTime;
         }
         $scope.$apply();
-    };
+    }
 
     function resetTimer() {
         clearInterval(timerInterval);
         $scope.currentTime = $scope.selectedOption.value + ":" + "00";
         timerDate.setMinutes($scope.selectedOption.value);  // $scope.selectedOption.value
         timerDate.setSeconds(0);                            // Test Switch 
-    };
+    }
 
     function getCurrentTime(currentTime) {
         var minutes = currentTime.getMinutes();
@@ -120,40 +120,36 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
 
         $scope.tasks.push({ start: startTime, stop: endTime, text: _text });
         $scope.taskText = "";
-    };
+    }
 
     function alertNotification() {
         //FlashTitle();
-        playSound();
         vibrationNotification();
+        playSound();
         nativeNotification();
-    };
+    }
 
     function nativeNotification() {
         if (notify.permissionLevel() === notify.PERMISSION_DEFAULT) {
             notify.requestPermission();
-        }
-        else if (notify.permissionLevel() === notify.PERMISSION_GRANTED) {
+        } else if (notify.permissionLevel() === notify.PERMISSION_GRANTED) {
             notify.createNotification('Agile Task Complete', {
                 body: 'Time to take a break!',
                 icon: 'Content/icon.png'
             });
-        }
-        else if (notify.permissionLevel() === notify.PERMISSION_DENIED) {
+        } else if (notify.permissionLevel() === notify.PERMISSION_DENIED) {
+            alert("Agile Task Complete");
+        } else {
             alert("Agile Task Complete");
         }
-        else {
-            alert("Agile Task Complete");
-        }
-    };
+    }
 
     function playSound() {
         if ($scope.sound) {
             audio.pause();
             audio.currentTime = 0;
             audio.play();
-        }
-        else {
+        } else {
             audio.pause();
             audio.currentTime = 0;
         }
@@ -163,7 +159,7 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
         if (navigator.vibrate) {
             navigator.vibrate([600, 300, 600, 300, 600]);
         }
-    };
+    }
 }]);
 
 app.controller('Dialog', function ($scope) {
@@ -183,10 +179,15 @@ app.directive('modalDialog', function () {
         transclude: true, // we want to insert custom content inside the directive
         link: function (scope, element, attrs) {
             scope.dialogStyle = {};
-            if (attrs.width)
+
+            if (attrs.width) {
                 scope.dialogStyle.width = attrs.width;
-            if (attrs.height)
+            }
+
+            if (attrs.height) {
                 scope.dialogStyle.height = attrs.height;
+            }
+
             scope.hideModal = function () {
                 scope.show = false;
             };
