@@ -1,4 +1,4 @@
-<h1>Agile Tasker Web App Version 1.3</h1>
+<h1>Agile Tasker Web App Version 1.3.1</h1>
 <a href="http://splintercode.github.io/AgileTasker/" target="_blank">Agile Tasker</a>
 <p>A small productivity Web App that simply is a countdown timer. The idea is to work in small sprints to help increase
 productivity and efficiency. I have found this invaluable in programming. Take 20 to 25 focused minutes on your problem. Then 
@@ -11,6 +11,7 @@ enabled IOS Web App soon.</p>
 
 <h2>Latest changes</h2>
 <ul>
+<li>Version 1.3.1 - Minor bug fix for local storage</li>
 <li>Version 1.3 - Minor bug fix for Vibration Notification API</li>
 </ul>
 
