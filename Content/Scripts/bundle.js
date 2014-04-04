@@ -659,7 +659,7 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
     function resetTimer() {
         clearInterval(timerInterval);
         $scope.currentTime = $scope.selectedOption.value + ":" + "00";
-        timerDate.setMinutes(0);  // $scope.selectedOption.value
+        timerDate.setMinutes($scope.selectedOption.value);  // $scope.selectedOption.value
         timerDate.setSeconds(0);                            // Test Switch 
     }
 
@@ -691,8 +691,9 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
 
     function alertNotification() {
         //FlashTitle();
-        vibrationNotification(nativeNotification());
+        vibrationNotification();
         playSound();
+        setTimeout(nativeNotification(), 1000); // Set timeout because html5 Vibrate API does not take a callback
     }
 
     function nativeNotification() {
@@ -721,21 +722,10 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
         }
     }
 
-    function vibrationNotification(callback) {
-        navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
-
+    function vibrationNotification() {
         if (navigator.vibrate) {
             navigator.vibrate([600, 300, 600, 300, 600]);
-            if (callback) {
-                callback();
-            }
         }
-        else {
-            if (callback) {
-                callback();
-            }
-        }
-
     }
 }]);
 
