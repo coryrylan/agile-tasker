@@ -50,7 +50,7 @@
                         <div class="col-7-c">
                             <div class="label">Completed Tasks <a href="#0" ng-click="clearList()" class="float-right small">Clear All</a></div>
                             <ul class="task-list">
-                                <li ng-repeat="task in tasks">
+                                <li ng-repeat="task in tasks track by $index">
                                     <div>{{task.text}}</div>
                                     <span class="smallText"><span>{{task.start}}</span>&nbsp;<strong>to</strong>&nbsp;<span>{{task.stop}}</span></span>
                                 </li>
