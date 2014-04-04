@@ -692,8 +692,8 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
     function alertNotification() {
         //FlashTitle();
         playSound();
-        vibrationNotification(nativeNotification());
-        setTimeout(function () { nativeNotification() }, 2000); // Set timeout because html5 Vibrate API does not take a callback
+        vibrationNotification(nativeNotification);
+        //setTimeout(function () { nativeNotification() }, 2000); // Set timeout because html5 Vibrate API does not take a callback
     }
 
     function nativeNotification() {
@@ -722,9 +722,14 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
         }
     }
 
-    function vibrationNotification() {
+    function vibrationNotification(callback) {
         if (navigator.vibrate) {
             navigator.vibrate([500, 200, 500]);
+        }
+
+        if (callback) {
+            nativeNotification();
+           // setTimeout(function () { nativeNotification() }, 2000); // Set timeout because html5 Vibrate API does not take a callback
         }
     }
 }]);
