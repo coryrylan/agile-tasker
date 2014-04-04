@@ -126,7 +126,7 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
         //FlashTitle();
         vibrationNotification();
         playSound();
-        setTimeout(nativeNotification(), 10000); // Set timeout because html5 Vibrate API does not take a callback
+        setTimeout(function () { nativeNotification() }, 1000); // Set timeout because html5 Vibrate API does not take a callback
     }
 
     function nativeNotification() {
