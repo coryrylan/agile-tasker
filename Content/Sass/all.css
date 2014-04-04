@@ -1,4 +1,4 @@
-﻿/*! normalize.css v3.0.0 | MIT License | git.io/normalize */
+/*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 /**
  * 1. Set default font family to sans-serif.
  * 2. Prevent iOS text size adjust after orientation change, without disabling
@@ -320,7 +320,7 @@ td, th {
 /*! 
     https://github.com/splintercode/CoreGrid
     MIT License http://opensource.org/licenses/MIT
-    Core Grid 1.0
+    Core Grid 1.1.1
 */
 *, *:before, *:after {
   /* Chrome 9-, Safari 5-, iOS 4.2-, Android 3-, Blackberry 7- */
@@ -413,9 +413,9 @@ td, th {
     width: 91.663%; }
   .col-12-sm {
     width: 100%; }
-  .visble-sm {
+  .visible-sm {
     display: block; }
-  .hidden_sm {
+  .hidden-sm {
     display: none; } }
 
 /* --- Primary Medium Auto Grid 720px and greater --- */
@@ -438,11 +438,11 @@ td, th {
     width: 66.664%; }
   .col-9, .col-9-md {
     width: 75%; }
-  .col-10, .col_10-md {
+  .col-10, .col-10-md {
     width: 83.33%; }
-  .col-11, .col_11-md {
+  .col-11, .col-11-md {
     width: 91.663%; }
-  .col-12, .col_12-md {
+  .col-12, .col-12-md {
     width: 100%; }
   .visible-md {
     display: block; }
