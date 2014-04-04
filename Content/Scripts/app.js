@@ -155,13 +155,20 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
     }
 
     function vibrationNotification(callback) {
+        navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
+
         if (navigator.vibrate) {
             navigator.vibrate([600, 300, 600, 300, 600]);
+            if (callback) {
+                callback();
+            }
+        }
+        else {
+            if (callback) {
+                callback();
+            }
         }
 
-        if (callback) {
-            callback();
-        }
     }
 }]);
 
