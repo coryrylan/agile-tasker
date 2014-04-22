@@ -1,15 +1,15 @@
 ﻿app = angular.module('AgileTasker', ['LocalForageModule']);
 app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localForage) {
 
-    /* --- Models --- */
-    $scope.options = [{ value: 15, label: 15 }, { value: 20, label: 20 }, { value: 25, label: 25 }, { value: 30, label: 30 }];
+    //#region Models
     $scope.tasks = [];
-    $localForage.bind($scope, {     // Bind Task list history to local storage
+    $localForage.bind($scope, {     
         key: 'tasks',
         defaultValue: { tasksJSON: ' ' },
         storeName: 'agileTaskStorage'
-    }); 
-    
+    }); // Binding Task list history to local storage
+
+    $scope.options = [{ value: 15, label: 15 }, { value: 20, label: 20 }, { value: 25, label: 25 }, { value: 30, label: 30 }]; 
     $scope.selectedOption = $scope.options[2];
     $scope.currentTime = $scope.selectedOption.value + ":" + "00";
     $scope.localTime = "";
@@ -17,20 +17,22 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
     $scope.isPlaying = false;
     $scope.settingVisible = true;
     $scope.sound = true;
+    //#endregion
 
+    //#region Globals
     var audio = new Audio();
     audio.src = Modernizr.audio.ogg ? 'Content/Audio/chime.ogg' :
                 Modernizr.audio.mp3 ? 'Content/Audio/chime.mp3' :
-                                      'Content/Audio/chime.m4a';
-    
+                                      'Content/Audio/chime.m4a';  
     var startTime = new Date().toLocaleTimeString();
-    var endTime = new Date().toLocaleTimeString();
+    var endTime   = new Date().toLocaleTimeString();
     var timerInterval = 0;
     var timerDate = new Date();
-    timerDate.setMinutes($scope.selectedOption.value);
-    timerDate.setSeconds(0);
+        timerDate.setMinutes($scope.selectedOption.value);
+        timerDate.setSeconds(0);
+    //#endregion
 
-    /* --- Click Events ---*/
+    //#region Click Events
     $scope.startTimer = function () {
         resetTimer();
         timerInterval = setInterval(intervalTimer, 1000);
@@ -56,9 +58,11 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
         $scope.sound = !$scope.sound;
         playSound();
     };
+    //#endregion
 
-    /* --- Timmer Helper Functons --- */
+    //#region Timmer Helper Functons
     setInterval(updateLocalTime, 1000);
+
     function updateLocalTime() {
         $scope.localTime = toLocalTime(new Date());
         $scope.$apply();
@@ -110,8 +114,9 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
 
         return minutes + ':' + seconds;
     }
+    //#endregion
 
-    /* --- Alert/Notification Helper Functions -- */
+    //#region Alert/Notification Helper Functions
     function pushTask() {
         var _text = "Unknown";
         if ($scope.taskText !== "") {
@@ -162,6 +167,7 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
             navigator.vibrate([500, 200, 500]);
         }
     }
+    //#endregion
 }]);
 
 app.controller('Dialog', function ($scope) {
@@ -194,6 +200,6 @@ app.directive('modalDialog', function () {
                 scope.show = false;
             };
         },
-        template: "<div class='ng-modal' ng-show='show'><div class='ng-modal-overlay' ng-click='hideModal()'></div><div class='ng-modal-dialog' ng-style='dialogStyle'><div class='ng-modal-close' ng-click='hideModal()'>X</div><div class='ng-modal-dialog-content' ng-transclude></div></div></div>" // See below
+        template: "<div class='ng-modal' ng-show='show'><div class='ng-modal-overlay' ng-click='hideModal()'></div><div class='ng-modal-dialog' ng-style='dialogStyle'><div class='ng-modal-close' ng-click='hideModal()'>X</div><div class='ng-modal-dialog-content' ng-transclude></div></div></div>"
     };
 });
