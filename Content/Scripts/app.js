@@ -17,6 +17,12 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
     $scope.isPlaying = false;
     $scope.settingVisible = true;
     $scope.sound = true;
+
+
+    // Views
+    $scope.showMain = true;
+    $scope.showAbout = false;
+
     //#endregion
 
     //#region Globals
