@@ -26,15 +26,23 @@
 <body>
     <div class="app-width" ng-controller="TimerCtrl">
         <section class="app">
+            
+            <nav class="primary-nav menu push-menu-left">
+                <a href="#" class="close-menu">Close</a>
+                <a href="#">Settings</a>
+                <a href="#">History</a>
+                <a href="#">About</a>
+            </nav>
             <header>
+                <button class="menu-btn toggle-push-left"><i class="icon-menu"></i></button>
                 AGILE TASKER
             </header>
             <main role="main">
                 <div>
                     <div class="timer-box">
-                        <div class="col-7-c currentTime">{{currentTime}}</div>
-                        <div class="col-5-c">
-                            <nav>
+                        <div class="col-6-md current-time">{{currentTime}}</div>
+                        <div class="col-6-md">
+                            <nav class="secondary-nav">
                                 <button id="Startbtn" ng-click="startTimer()" ng-disabled="isPlaying"><i class="icon-play"></i></button>
                                 <button ng-click="stopTimer()"><i class="icon-stop"></i></button>
                                 <select ng-model="selectedOption" ng-options="o.value for o in options" ng-change="stopTimer()"></select>
@@ -59,36 +67,48 @@
                     </section>
                 </div>
             </main>
-            <footer ng-controller="Dialog">
-                <i class="icon-cog" ng-click="toggleModal()"></i>
-                <modal-dialog show='modalShown' width='100%' height='70%'>
-                    <section class="settings">
-                        <div class="col-12">
-                            <p>A agile task timer to help you get things done! Take a focused 20 to 25 mins of work and take a small
-                             5 min break between each task. This helps keep your mental edge and gives your mind a chance to recoup.</p>
-                            <div>Built with:</div>
-                            <a href="http://angularjs.org/" target="_blank">
-                                <img src="Content/AngularJS.png" width="40" height="40" alt="Angular.js Logo" title="Angular.js" />
-                            </a>
-                            <i class="icon-html5" title="HTML5"></i>
-                            <i class="icon-css3" title="CSS3"></i>
-                            <a href="https://github.com/splintercode/ThinkAgile" target="_blank"><i class="icon-github-circled-1" title="Git/Github"></i> </a>
-                        </div>
-                        <div class="col-12">
-                            <div>Supported Browsers:</div>
-                            <a href="http://splintercode.github.io/AgileTasker/" target="_blank"><i class="icon-chrome" title="Chrome"></i></a>
-                            <a href="http://splintercode.github.io/AgileTasker/" target="_blank"><i class="icon-firefox" title="Firefox"></i></a>
-                            <a href="http://splintercode.github.io/AgileTasker/" target="_blank"><i class="icon-ie" title="Internet Explorer"></i>9+</a>
-                        </div>
-                        <div class="col-12">
-                            <div>Built by:</div>
-                            <a href="http://corycode.me" target="_blank">Cory Bateman</a>
-                            <div class="clear-both"></div>
-                        </div>
-                    </section>
-                </modal-dialog>
-                <i ng-class="{true: 'icon-volume-up', false: 'icon-volume-off'}[sound]" ng-click="toggleSound()"></i>
-                <span class="localTime float-right">{{localTime}}</span>
+            <footer>
+                <!--<span ng-controller="Dialog">
+                    <i class="icon-cog" ng-click="toggleModal()" title="Settings"></i>
+                    <modal-dialog show='modalShown' width='100%' height='70%'>
+                        <section class="settings"></section>
+                    </modal-dialog>
+                </span>-->
+
+                <i ng-class="{true: 'icon-volume-up', false: 'icon-volume-off'}[sound]" ng-click="toggleSound()" title="Volume"></i>
+                <span ng-controller="Dialog">
+                    <i class=" icon-help-circled" ng-click="toggleModal()" title="Help"></i>
+                    <modal-dialog show='modalShown' width='100%' height='70%'>
+                        <section class="help">
+                            <br />
+                            <div class="col-12">
+                                <p>
+                                    A agile task timer to help you get things done! Take a focused 20 to 25 mins of work and take a small
+                                    5 min break between each task. This helps keep your mental edge and gives your mind a chance to recoup.
+                                </p>
+                                <div>Built with:</div>
+                                <a href="http://angularjs.org/" target="_blank">
+                                    <img src="Content/AngularJS.png" width="40" height="40" alt="Angular.js Logo" title="Angular.js" />
+                                </a>
+                                <i class="icon-html5" title="HTML5"></i>
+                                <i class="icon-css3" title="CSS3"></i>
+                                <a href="https://github.com/splintercode/ThinkAgile" target="_blank"><i class="icon-github-circled-1" title="Git/Github"></i> </a>
+                            </div>
+                            <div class="col-12">
+                                <div>Supported Browsers:</div>
+                                <a href="http://splintercode.github.io/AgileTasker/" target="_blank"><i class="icon-chrome" title="Chrome"></i></a>
+                                <a href="http://splintercode.github.io/AgileTasker/" target="_blank"><i class="icon-firefox" title="Firefox"></i></a>
+                                <a href="http://splintercode.github.io/AgileTasker/" target="_blank"><i class="icon-ie" title="Internet Explorer"></i>9+</a>
+                            </div>
+                            <div class="col-12">
+                                <div>Built by:</div>
+                                <a href="http://corycode.me" target="_blank">Cory Bateman</a>
+                                <div class="clear-both"></div>
+                            </div>
+                        </section>
+                    </modal-dialog>
+                </span>
+                <div class="localTime float-right">{{localTime}}</div>
             </footer>
         </section>
     </div>
@@ -102,5 +122,45 @@
     <script src="Content/Scripts/notifications.js"></script>
     <script src="Content/Scripts/fitText.js"></script>
     <script src="Content/Scripts/app.js"></script>-->
+    <script>
+        (function (window) {
+
+            'use strict';
+
+            var body = document.body,
+                mask = document.createElement("div"),
+                togglePushLeft = document.querySelector(".toggle-push-left"),
+                activeNav
+            ;
+            mask.className = "mask";
+
+            /* push menu left */
+            togglePushLeft.addEventListener("click", function () {
+                //classie.add(body, "pml-open");
+                $(body).addClass("pml-open");
+                document.body.appendChild(mask);
+                activeNav = "pml-open";
+            });
+
+            /* hide active menu if mask is clicked */
+            mask.addEventListener("click", function () {
+                //classie.remove(body, activeNav);
+                $(body).removeClass(activeNav);
+                activeNav = "";
+                document.body.removeChild(mask);
+            });
+
+            /* hide active menu if close menu button is clicked */
+            [].slice.call(document.querySelectorAll(".close-menu")).forEach(function (el, i) {
+                el.addEventListener("click", function () {
+                    //classie.remove(body, activeNav);
+                    $(body).removeClass(activeNav);
+                    activeNav = "";
+                    document.body.removeChild(mask);
+                });
+            });
+
+        })(window);
+    </script>
 </body>
 </html>

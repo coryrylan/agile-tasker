@@ -3,232 +3,246 @@
     MIT License http://opensource.org/licenses/MIT 
 */
 
+$themeGreen: #5EBD6A;
+
 @font-face {
     font-family: 'open_sanslight';
     src: url('../OpenSans/OpenSans-Light-webfont.eot');
-    src: url('../OpenSans/OpenSans-Light-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../OpenSans/OpenSans-Light-webfont.woff') format('woff'),
-         url('../OpenSans/OpenSans-Light-webfont.ttf') format('truetype'),
-         url('../OpenSans/OpenSans-Light-webfont.svg#open_sanslight') format('svg');
+    src: url('../OpenSans/OpenSans-Light-webfont.eot?#iefix') format('embedded-opentype'), url('../OpenSans/OpenSans-Light-webfont.woff') format('woff'), url('../OpenSans/OpenSans-Light-webfont.ttf') format('truetype'), url('../OpenSans/OpenSans-Light-webfont.svg#open_sanslight') format('svg');
     font-weight: normal;
     font-style: normal;
 }
 
-body
-{
+body {
     font-family: 'open_sanslight', Helvetica, Arial, "Lucida Grande", sans-serif;
     font-weight: 300;
-	font-size:16px;
+    font-size: 16px;
     background: #575757;
     color: #2d2d2d;
 }
 
 *, *:before, *:after {
-  /* Chrome 9-, Safari 5-, iOS 4.2-, Android 3-, Blackberry 7- */
-  -webkit-box-sizing: border-box; 
-
-  /* Firefox (desktop or Android) 28- */
-  -moz-box-sizing: border-box;
-
-  /* Firefox 29+, IE 8+, Chrome 10+, Safari 5.1+, Opera 9.5+, iOS 5+, Opera Mini Anything, Blackberry 10+, Android 4+ */
-  box-sizing: border-box;
+    /* Chrome 9-, Safari 5-, iOS 4.2-, Android 3-, Blackberry 7- */
+    -webkit-box-sizing: border-box;
+    /* Firefox (desktop or Android) 28- */
+    -moz-box-sizing: border-box;
+    /* Firefox 29+, IE 8+, Chrome 10+, Safari 5.1+, Opera 9.5+, iOS 5+, Opera Mini Anything, Blackberry 10+, Android 4+ */
+    box-sizing: border-box;
 }
 
-*::selection
-{
-    background: #5EBD6A; /* Safari */
+*::selection {
+    background: $themeGreen; /* Safari */
     color: #FFF;
 }
 
-*::-moz-selection
-{
-    background: #5EBD6A; /* Firefox */
+*::-moz-selection {
+    background: $themeGreen; /* Firefox */
     color: #FFF;
 }
 
-.float-left{float:left;}
-.float-right{float:right;}
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
 
 .app-width {
-	width:100%;
-	margin:0 auto 0 auto;
+    width: 100%;
 }
 
 .app {
-	-moz-box-shadow: 0px 0px 2px 2px #4C4C4C;
-	-webkit-box-shadow: 0px 0px 2px 2px #4C4C4C;
-	box-shadow: 0px 0px 2px 2px #4C4C4C;
+    -moz-box-shadow: 0px 0px 2px 2px #4C4C4C;
+    -webkit-box-shadow: 0px 0px 2px 2px #4C4C4C;
+    box-shadow: 0px 0px 2px 2px #4C4C4C;
 }
 
 main, footer {
-	width:100%;
-	background:#EDEDED;
-	overflow:auto;
+    width: 100%;
+    background: #EDEDED;
+    overflow: auto;
 }
 
 a {
-	color:#74af7b;
+    color: $themeGreen;
 
-	&:hover{
-		color:#58b063;
-	}
+    &:hover {
+        color: $themeGreen;
+    }
 }
 
 header {
-	width:100%;
-	padding:6px;
-	border-bottom:0;
-	background: #5EBD6A;
-	color:#FFF;
-	font-size:1.5em;
-	text-align:center;
+    width: 100%;
+    padding: 6px;
+    border-bottom: 0;
+    background: $themeGreen;
+    color: #FFF;
+    font-size: 1.5em;
+    text-align: center;
+    position:relative;
+}
+
+.menu-btn {
+    display:inline-block;
+    position:absolute;
+    top:2px;
+    left:2px;
+    background:none;
+    border:none;
+}
+
+.primary-nav {   
 }
 
 footer {
-	border-top:1px solid #A6A6A6;
-	clear:both;
-	padding:4px;
+    border-top: 1px solid #A6A6A6;
+    clear: both;
+    padding: 4px;
 
-	i {
-		font-size:1.2em;
-		cursor:pointer;
-	}
+    i {
+        font-size: 1.4em;
+        cursor: pointer;
+    }
+
+    .localTime {
+        margin-top: 2px;
+    }
 }
 
 .timer-box {
-	width:100%;
-	padding:40px 10px;
-	background:#FFF;
-	overflow:auto;
-	border-bottom:2px solid #A6A6A6;
+    width: 100%;
+    padding: 40px 10px;
+    background: #FFF;
+    overflow: auto;
+    border-bottom: 2px solid #A6A6A6;
 
-	.col-7-c {
-		font-size:5.7em;
-		text-align:center;
-	}
+    .current-time {
+        font-size: 5.7em;
+        text-align: center;
+    }
 }
 
 .task-list-wrapper {
-	.col-7-c {
-		border-left:1px solid #A6A6A6;
+    .col-7-c {
+        border-left: 1px solid #A6A6A6;
 
-		ul {
-			min-height:160px;
-		}
-	}
+        ul {
+            min-height: 160px;
+        }
+    }
 
-	.col-7-c, .col-5-c {
-		margin-bottom:0;
-	}
+    .col-7-c, .col-5-c {
+        margin-bottom: 0;
+    }
 }
 
-.settings {
+.help {
 
-	a {
-		text-decoration:none;
-	}
+    a {
+        text-decoration: none;
+    }
 
-	i {
-		font-size:2.1em;
-		color:#2d2d2d;
-	}
+    i {
+        font-size: 2.1em;
+        color: #2d2d2d;
+    }
 
-	img {
-		margin-bottom:-8px;
-	}
+    img {
+        margin-bottom: -8px;
+    }
 
-	.icon-github-circled-1 {
-		font-size:2.5em;
-	}
+    .icon-github-circled-1 {
+        font-size: 2.5em;
+    }
 }
 
 .task-list {
-	list-style:none;
-	padding:0;
-	margin:0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 
-	li {
-		width:100%;
-		padding:10px 1%;
-		font-size:1em;
-		border-bottom:1px solid #A6A6A6;
+    li {
+        width: 100%;
+        padding: 10px 1%;
+        font-size: 1em;
+        border-bottom: 1px solid #A6A6A6;
 
-		&:nth-child(odd) { 
-			background:#FAFAFA;
-		}
-	}
+        &:nth-child(odd) {
+            background: #FAFAFA;
+        }
+    }
 }
 
 .text-small {
-	font-size:0.9em;
+    font-size: 0.9em;
 }
 
-nav {
-	margin:30px auto 0 auto;
-	max-width:280px;
-}
+.secondary-nav {
+    margin: 30px auto 0 auto;
 
-button {
-	background:#5EBD6A;
-	border:none;
-	color:#FFF;
-	font-size:1.5em;
-	padding:8px;
-	margin-left:1%;
-	width:30.33%;
+    button {
+        background: $themeGreen;
+        border: none;
+        color: #FFF;
+        font-size: 1.5em;
+        padding: 8px;
+        margin-left: 1%;
+        width: 30.33%;
 
-	&:hover {
-		background:#52A35C;
-	}
+        &:hover {
+            background: $themeGreen;
+        }
 
-	&:focus {
-		background:#5EBD6A;
-	}
+        &:focus {
+            background: $themeGreen;
+        }
+    }
 }
 
 select {
-	background:#FFF;
-	border-radius:0;
-	background:#FFF;
-	font-size:1.6em;
-	width:32.33%;
-	padding:4px 8px;
-	height:50px;
-	border:2px solid #636363;
+    background: #FFF;
+    border-radius: 0;
+    background: #FFF;
+    font-size: 1.6em;
+    width: 32.33%;
+    padding: 4px 8px;
+    height: 50px;
+    border: 2px solid #636363;
 }
 
-textarea{
-	width: 95%;
-	display:block;
-	padding: 1%;
-	margin: 2%;
-	margin: 10px auto;
-	height: 100px;
-	background:#FFF;
-	color:#2d2d2d;
-	border:1px solid #A6A6A6;
-	border-radius:2px;
+textarea {
+    width: 95%;
+    display: block;
+    padding: 1%;
+    margin: 2%;
+    margin: 10px auto;
+    height: 100px;
+    background: #FFF;
+    color: #2d2d2d;
+    border: 1px solid #A6A6A6;
+    border-radius: 2px;
 }
 
 .label {
-	padding: 10px 1% 10px 2.5%;
-	border-bottom: 1px solid #A6A6A6;
-	font-size: 1.3em;
+    padding: 10px 1% 10px 2.5%;
+    border-bottom: 1px solid #A6A6A6;
+    font-size: 1.3em;
 
-	a {
-		font-size: 0.8em;
-		margin: 2px 4px;
-	}
+    a {
+        font-size: 0.8em;
+        margin: 2px 4px;
+    }
 }
 
 .col-7-c, .col-5-c {
-	padding: 0;
+    padding: 0;
 }
 
 @media all and (max-width: 38em) {
-	html {
-		overflow-y:scroll; // Chrome App Override
-	}
+    html {
+        overflow-y: scroll; // Chrome App Override
+    }
 }
 
 /* ::-webkit-scrollbar {
@@ -247,52 +261,46 @@ textarea{
 } */
 
 @media all and (min-width: 38em) {
-	.col-7-c {
-		width:58.331%;
-	}
+    .col-7-c {
+        width: 58.331%;
+    }
 
-	.col-5-c {
-		width:41.665%;
-	}
+    .col-5-c {
+        width: 41.665%;
+    }
 
-	ul {
-		height:148px;
-		overflow-y:scroll;
-		max-width:99.8%;
-	}
+    ul {
+        height: 148px;
+        overflow-y: scroll;
+        max-width: 99.8%;
+    }
 }
 
 @media all and (min-width: 50em) {
-	header {
-		border-top-left-radius:4px;
-		border-top-right-radius:4px;
-		border:1px solid #2d2d2d;
-		border-bottom:0px;
-	}
+    header {
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        border: 1px solid #2d2d2d;
+        border-bottom: 0px;
+    }
 
-	nav {
-		margin:30px 0 0 0;
-	}
+    .secondary-nav {
+        max-width: 300px;
+    }
 
-	main, footer {
-		border: 1px solid #2d2d2d;
-	}
+    main, footer {
+        border: 1px solid #2d2d2d;
+    }
 
-	footer {
-		border-top:0;
-	}
+    footer {
+        border-top: 0;
+    }
 
-	.app-width {
-		padding:2%;
-		margin:20px auto 30px auto;
-		max-width:850px;
-	}
-
-	.task-list-wrapper {
-		.col-7-c {
-			ul {
-				min-height:190px;
-			}
-		}
-	}
+    .task-list-wrapper {
+        .col-7-c {
+            ul {
+                min-height: 190px;
+            }
+        }
+    }
 }
