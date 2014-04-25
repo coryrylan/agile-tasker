@@ -739,7 +739,7 @@ textarea {
 body {
   overflow-x: hidden; }
 
-#wrapper {
+#push-wrapper {
   position: relative;
   z-index: 10;
   top: 0;
@@ -748,25 +748,6 @@ body {
   -moz-transition: all 0.3s;
   -o-transition: all 0.3s;
   transition: all 0.3s; }
-
-section {
-  margin-bottom: 30px; }
-
-section h1 {
-  font-family: "Oswald", sans-serif;
-  margin-bottom: 10px; }
-
-section p {
-  margin-bottom: 30px; }
-
-section p:last-child {
-  margin-bottom: 0; }
-
-section:last-child {
-  margin-bottom: 0; }
-
-section.toggle {
-  text-align: center; }
 
 .mask {
   position: fixed;
@@ -845,11 +826,11 @@ nav.push-menu-left button.close-menu {
 nav.push-menu-left {
   left: -300px; }
 
-body.pml-open nav.push-menu-left {
+.pml-open nav.push-menu-left {
   left: 0; }
 
-body.pml-open #wrapper {
-  left: 300px; }
+.pml-open #push-wrapper {
+  left: 240px; }
 
 /* // Expand in
 [data-effeckt-type='expand-in']  {

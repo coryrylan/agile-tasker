@@ -20,8 +20,8 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
 
 
     // Views
-    $scope.showMain = true;
-    $scope.showAbout = false;
+    $scope.view = 'main';
+    //$scope.showNav = false;
 
     //#endregion
 
