@@ -1,3 +1,62 @@
-﻿.view-about {
+﻿@media all and (min-width: 50em) {
+    .view {
+        -webkit-animation: fadein 0.5s;
+        -moz-animation: fadein 0.5s;
+        -o-animation: fadein 0.5s;
+        animation: fadein 0.5s;
+    }
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Firefox */
+@-moz-keyframes fadein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Safari and Chrome */
+@-webkit-keyframes fadein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+​ .view-about {
     // display:none;
+}
+
+.view-settings {
+    .icon-volume-up, .icon-volume-off {
+        font-size: 1.4em;
+        cursor: pointer;
+    }
 }

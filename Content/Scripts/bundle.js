@@ -581,7 +581,6 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
 
     // Views
     $scope.view = 'main';
-    //$scope.showNav = false;
 
     //#endregion
 

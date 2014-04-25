@@ -17,7 +17,7 @@ body {
     font-family: 'open_sanslight', Helvetica, Arial, "Lucida Grande", sans-serif;
     font-weight: 300;
     font-size: 16px;
-    background: #575757;
+    background: #ffffff;
     color: #2d2d2d;
 }
 
@@ -52,16 +52,17 @@ body {
     width: 100%;
 }
 
-.app {
-    -moz-box-shadow: 0px 0px 2px 2px #4C4C4C;
-    -webkit-box-shadow: 0px 0px 2px 2px #4C4C4C;
-    box-shadow: 0px 0px 2px 2px #4C4C4C;
+.view{
+    //background:#EDEDED;
 }
 
-main, footer {
+footer {
     width: 100%;
     background: #EDEDED;
     overflow: auto;
+    position:fixed;
+    bottom:0;
+    left:0;
 }
 
 a {
@@ -80,7 +81,6 @@ header {
     color: #FFF;
     font-size: 1.5em;
     text-align: center;
-    position:relative;
 }
 
 .menu-btn {
@@ -137,8 +137,7 @@ footer {
     }
 }
 
-.help {
-
+.view-about {
     a {
         text-decoration: none;
     }
@@ -270,30 +269,14 @@ textarea {
     }
 
     ul {
-        height: 148px;
         overflow-y: scroll;
         max-width: 99.8%;
     }
 }
 
 @media all and (min-width: 50em) {
-    header {
-        border-top-left-radius: 4px;
-        border-top-right-radius: 4px;
-        border: 1px solid #2d2d2d;
-        border-bottom: 0px;
-    }
-
     .secondary-nav {
         max-width: 300px;
-    }
-
-    main, footer {
-        border: 1px solid #2d2d2d;
-    }
-
-    footer {
-        border-top: 0;
     }
 
     .task-list-wrapper {

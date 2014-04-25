@@ -524,7 +524,7 @@ body {
   font-family: 'open_sanslight', Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 300;
   font-size: 16px;
-  background: #575757;
+  background: #ffffff;
   color: #2d2d2d; }
 
 *, *:before, *:after {
@@ -554,15 +554,14 @@ body {
 .app-width {
   width: 100%; }
 
-.app {
-  -moz-box-shadow: 0px 0px 2px 2px #4C4C4C;
-  -webkit-box-shadow: 0px 0px 2px 2px #4C4C4C;
-  box-shadow: 0px 0px 2px 2px #4C4C4C; }
 
-main, footer {
+footer {
   width: 100%;
   background: #EDEDED;
-  overflow: auto; }
+  overflow: auto;
+  position: fixed;
+  bottom: 0;
+  left: 0; }
 
 a {
   color: #5EBD6A; }
@@ -576,8 +575,7 @@ header {
   background: #5EBD6A;
   color: #FFF;
   font-size: 1.5em;
-  text-align: center;
-  position: relative; }
+  text-align: center; }
 
 .menu-btn {
   display: inline-block;
@@ -615,14 +613,14 @@ footer {
 .task-list-wrapper .col-7-c, .task-list-wrapper .col-5-c {
   margin-bottom: 0; }
 
-.help a {
+.view-about a {
   text-decoration: none; }
-.help i {
+.view-about i {
   font-size: 2.1em;
   color: #2d2d2d; }
-.help img {
+.view-about img {
   margin-bottom: -8px; }
-.help .icon-github-circled-1 {
+.view-about .icon-github-circled-1 {
   font-size: 2.5em; }
 
 .task-list {
@@ -712,22 +710,12 @@ textarea {
   .col-5-c {
     width: 41.665%; }
   ul {
-    height: 148px;
     overflow-y: scroll;
     max-width: 99.8%; } }
 
 @media all and (min-width: 50em) {
-  header {
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    border: 1px solid #2d2d2d;
-    border-bottom: 0px; }
   .secondary-nav {
     max-width: 300px; }
-  main, footer {
-    border: 1px solid #2d2d2d; }
-  footer {
-    border-top: 0; }
   .task-list-wrapper .col-7-c ul {
     min-height: 190px; } }
 
@@ -749,14 +737,23 @@ body {
   -o-transition: all 0.3s;
   transition: all 0.3s; }
 
-.mask {
+
+.mask-on {
   position: fixed;
   top: 0;
   left: 0;
   z-index: 15;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8); }
+  background: rgba(0, 0, 0, 0.8);
+  -moz-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  -moz-transition-property: background;
+  -o-transition-property: background;
+  -webkit-transition-property: background;
+  transition-property: background; }
 
 /* ------------------------------------------------------------ *\
 |* ------------------------------------------------------------ *|
@@ -783,12 +780,11 @@ nav.menu a {
   font-weight: 300;
   color: #fff; }
 
-button.close-menu {
+.close-menu-btn {
   background-color: #5EBD6A;
   color: #fff; }
-
-button.close-menu:focus {
-  outline: none; }
+  .close-menu-btn:focus {
+    outline: none; }
 
 /* ------------------------------------------------------------ *\
 |* ------------------------------------------------------------ *|
@@ -817,7 +813,7 @@ nav.push-menu-left a {
   padding: 10px;
   font-size: 18px; }
 
-nav.push-menu-left button.close-menu {
+nav.push-menu-left .menu-btn {
   margin: 10px 0;
   padding: 10px 30px;
   background-color: #5EBD6A;
@@ -831,6 +827,22 @@ nav.push-menu-left {
 
 .pml-open #push-wrapper {
   left: 240px; }
+
+@media all and (min-width: 50em) {
+  body, footer {
+    padding-left: 238px; }
+  .pml-open #push-wrapper {
+    left: 0; }
+  .mask-on {
+    top: 0;
+    left: 0;
+    z-index: -15;
+    width: 0;
+    height: 0; }
+  nav.push-menu-left {
+    left: 0; }
+  .close-menu-btn, .menu-btn {
+    visibility: hidden !important; } }
 
 /* // Expand in
 [data-effeckt-type='expand-in']  {
@@ -978,5 +990,47 @@ nav.push-menu-left {
   font-size: 1.3em;
   display: inline-block; }
 
+@media all and (min-width: 50em) {
+  .view {
+    -webkit-animation: fadein 0.5s;
+    -moz-animation: fadein 0.5s;
+    -o-animation: fadein 0.5s;
+    animation: fadein 0.5s; } }
+
+@keyframes fadein {
+  from {
+    opacity: 0; }
+
+  to {
+    opacity: 1; } }
+
+/* Firefox */
+@-moz-keyframes fadein {
+  from {
+    opacity: 0; }
+
+  to {
+    opacity: 1; } }
+
+/* Safari and Chrome */
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0; }
+
+  to {
+    opacity: 1; } }
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+  from {
+    opacity: 0; }
+
+  to {
+    opacity: 1; } }
+
+
+.view-settings .icon-volume-up, .view-settings .icon-volume-off {
+  font-size: 1.4em;
+  cursor: pointer; }
 
 /*# sourceMappingURL=all.css.map */

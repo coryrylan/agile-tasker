@@ -25,84 +25,108 @@
 </head>
 <body ng-controller="TimerCtrl">
     <div class="app-width" ng-init="showPrimaryNav = false" ng-class="showPrimaryNav ? 'pml-open' : ' '">
-        <section class="app">
-            <nav class="primary-nav menu push-menu-left">
-                <a href="#" class="close-menu" ng-click="showPrimaryNav = false"><i class="icon-cancel float-right"></i></a>
-                <a href="#" ng-click="showPrimaryNav=false;view='main'">Timer</a>
-                <a href="#" ng-click="showPrimaryNav=false;view='settings'">Settings</a>
-                <a href="#" ng-click="showPrimaryNav=false;view='history'">History</a>
-                <a href="#" ng-click="showPrimaryNav=false;view='about'">About</a>
-            </nav>
-            <div id="push-wrapper">
-                <header>
-                    <button class="menu-btn toggle-push-left float-right" ng-click="showPrimaryNav = !showPrimaryNav"><i class="icon-menu"></i></button>
-                    AGILE TASKER
-                </header>
-                <main role="main" class="view-main" ng-show="view=='main'">
-                    <div class="timer-box">
-                        <div class="col-6-md current-time">{{currentTime}}</div>
-                        <div class="col-6-md">
-                            <nav class="secondary-nav">
-                                <button id="Startbtn" ng-click="startTimer()" ng-disabled="isPlaying"><i class="icon-play"></i></button>
-                                <button ng-click="stopTimer()"><i class="icon-stop"></i></button>
-                                <select ng-model="selectedOption" ng-options="o.value for o in options" ng-change="stopTimer()"></select>
-                            </nav>
-                        </div>
+        <nav class="primary-nav menu push-menu-left">
+            <a href="#" class="close-menu-btn" ng-click="showPrimaryNav = false"><i class="icon-cancel float-right"></i></a>
+            <a href="#" ng-click="showPrimaryNav=false;view='main'">Timer</a>
+            <a href="#" ng-click="showPrimaryNav=false;view='settings'">Settings</a>
+            <a href="#" ng-click="showPrimaryNav=false;view='history'">History</a>
+            <a href="#" ng-click="showPrimaryNav=false;view='about'">About</a>
+        </nav>
+        <div id="push-wrapper">
+            <!-- #region Header -->
+            <header>
+                <button class="menu-btn toggle-push-left float-right" ng-click="showPrimaryNav = !showPrimaryNav"><i class="icon-menu"></i></button>
+                AGILE TASKER
+            </header>
+            <!-- #endregion -->
+
+            <!-- #region View Main -->
+            <main role="main" class="view view-main" ng-show="view=='main'">
+                <div class="timer-box">
+                    <div class="col-6-md current-time">{{currentTime}}</div>
+                    <div class="col-6-md">
+                        <nav class="secondary-nav">
+                            <button id="Startbtn" ng-click="startTimer()" ng-disabled="isPlaying"><i class="icon-play"></i></button>
+                            <button ng-click="stopTimer()"><i class="icon-stop"></i></button>
+                            <select ng-model="selectedOption" ng-options="o.value for o in options" ng-change="stopTimer()"></select>
+                        </nav>
                     </div>
-                    <section class="task-list-wrapper">
-                        <div class="col-5-c">
-                            <div class="label">Current Task</div>
-                            <textarea ng-model="taskText" placeholder="Add Task" ng-maxlength="100" ng-disabled="isPlaying"></textarea>
-                        </div>
-                        <div class="col-7-c">
-                            <div class="label">Completed Tasks <a href="#0" ng-click="clearList()" class="float-right small">Clear All</a></div>
-                            <ul class="task-list">
-                                <li ng-repeat="task in tasks track by $index">
-                                    <div>{{task.text}}</div>
-                                    <span class="smallText"><span>{{task.start}}</span>&nbsp;<strong>to</strong>&nbsp;<span>{{task.stop}}</span></span>
-                                </li>
-                            </ul>
-                        </div>
-                    </section>
-                </main>
-                <section class="view-settings" ng-show="view=='settings'">
-                    <h1>Settings</h1>
-                    <i ng-class="{true: 'icon-volume-up', false: 'icon-volume-off'}[sound]" ng-click="toggleSound()" title="Volume"></i>
+                </div>
+                <section class="task-list-wrapper">
+                    <div class="col-5-c">
+                        <div class="label">Current Task</div>
+                        <textarea ng-model="taskText" placeholder="Add Task" ng-maxlength="100" ng-disabled="isPlaying"></textarea>
+                    </div>
+                    <div class="col-7-c">
+                        <div class="label">Completed Tasks <a href="#0" ng-click="clearList()" class="float-right small">Clear All</a></div>
+                        <ul class="task-list">
+                            <li ng-repeat="task in tasks track by $index">
+                                <div>{{task.text}}</div>
+                                <span class="smallText"><span>{{task.start}}</span>&nbsp;<strong>to</strong>&nbsp;<span>{{task.stop}}</span></span>
+                            </li>
+                        </ul>
+                    </div>
                 </section>
-                <section class="view-history" ng-show="view=='history'">
-                    <h1>History</h1>
-                </section>
-                <secion class="view-about" ng-show="view=='about'">
-                    <div class="col-12">
-                        <p>
-                            A agile task timer to help you get things done! Take a focused 20 to 25 mins of work and take a small
-                            5 min break between each task. This helps keep your mental edge and gives your mind a chance to recoup.
-                        </p>
-                        <div>Built with:</div>
-                        <a href="http://angularjs.org/" target="_blank">
-                            <img src="Content/AngularJS.png" width="40" height="40" alt="Angular.js Logo" title="Angular.js" />
-                        </a>
-                        <i class="icon-html5" title="HTML5"></i>
-                        <i class="icon-css3" title="CSS3"></i>
-                        <a href="https://github.com/splintercode/ThinkAgile" target="_blank"><i class="icon-github-circled-1" title="Git/Github"></i> </a>
-                    </div>
-                    <div class="col-12">
-                        <div>Supported Browsers:</div>
-                        <a href="http://splintercode.github.io/AgileTasker/" target="_blank"><i class="icon-chrome" title="Chrome"></i></a>
-                        <a href="http://splintercode.github.io/AgileTasker/" target="_blank"><i class="icon-firefox" title="Firefox"></i></a>
-                        <a href="http://splintercode.github.io/AgileTasker/" target="_blank"><i class="icon-ie" title="Internet Explorer"></i>9+</a>
-                    </div>
-                    <div class="col-12">
-                        <div>Built by:</div>
-                        <a href="http://corycode.me" target="_blank">Cory Bateman</a>
-                        <div class="clear-both"></div>
-                    </div>
-                </secion>
-                <footer>
-                    <div class="localTime float-right">{{localTime}}</div>
-                </footer>
-            </div>
-        </section>
+            </main>
+            <!-- #endregion -->
+
+            <!-- #region View Settings -->
+            <section class="view view-settings col-12" ng-show="view=='settings'">
+                <h2>Settings</h2>
+                <p>Volume <i ng-class="{true: 'icon-volume-up', false: 'icon-volume-off'}[sound]" ng-click="toggleSound()" title="Volume"></i></p>
+            </section>
+            <!-- #endregion -->
+
+            <!-- #region View History -->
+            <section class="view view-history col-12" ng-show="view=='history'">
+                <h2>History</h2>
+                <div class="label">Completed Tasks <a href="#0" ng-click="clearList()" class="float-right small">Clear All</a></div>
+                <ul class="task-list">
+                    <li ng-repeat="task in tasks track by $index">
+                        <div>{{task.text}}</div>
+                        <span class="smallText"><span>{{task.start}}</span>&nbsp;<strong>to</strong>&nbsp;<span>{{task.stop}}</span></span>
+                    </li>
+                </ul>
+            </section>
+            <!-- #endregion -->
+
+            <!-- #region View About -->
+            <secion class="view view-about col-12" ng-show="view=='about'">
+                <h2>About</h2>
+                <div>
+                    <p>
+                        A agile task & time management timer to help you get things done! Take a focused 20 to 25 mins of work and take a small
+                        5 min break between each task. This helps keep your mental edge and gives your mind a chance to recoup.
+                    </p>
+                    <div>Built with:</div>
+                    <a href="http://angularjs.org/" target="_blank">
+                        <img src="Content/AngularJS.png" width="40" height="40" alt="Angular.js Logo" title="Angular.js" />
+                    </a>
+                    <i class="icon-html5" title="HTML5"></i>
+                    <i class="icon-css3" title="CSS3"></i>
+                    <a href="https://github.com/splintercode/ThinkAgile" target="_blank"><i class="icon-github-circled-1" title="Git/Github"></i> </a>
+                </div>
+                <div>
+                    <div>Supported Browsers:</div>
+                    <a href="http://splintercode.github.io/AgileTasker/" target="_blank"><i class="icon-chrome" title="Chrome"></i></a>
+                    <a href="http://splintercode.github.io/AgileTasker/" target="_blank"><i class="icon-firefox" title="Firefox"></i></a>
+                    <a href="http://splintercode.github.io/AgileTasker/" target="_blank"><i class="icon-ie" title="Internet Explorer"></i>9+</a>
+                </div>
+                <div>
+                    <div>Built by:</div>
+                    <a href="http://corycode.me" target="_blank">Cory Bateman</a>
+                    <div class="clear-both"></div>
+                </div>
+            </secion>
+            <!-- #endregion -->
+
+            <!-- #region View Footer -->
+            <footer>
+                <i ng-class="{true: 'icon-volume-up', false: 'icon-volume-off'}[sound]" ng-click="toggleSound()" title="Volume"></i>
+                <div class="localTime float-right">{{localTime}}</div>
+            </footer>
+            <!-- #endregion -->
+        </div>
     </div>
 
     <!--<span ng-controller="Dialog">
@@ -158,6 +182,6 @@
         //    });
         //})(window);
     </script>
-    <div ng-click="showPrimaryNav = false" ng-init="showPrimaryNav = false" ng-class="showPrimaryNav ? 'mask' : ' '"></div>
+    <div class="mask" ng-click="showPrimaryNav = false" ng-init="showPrimaryNav = false" ng-class="showPrimaryNav ? 'mask-on' : ' '"></div>
 </body>
 </html>

@@ -4,8 +4,9 @@
 |* ------------------------------------------------------------ *|
 \* ------------------------------------------------------------ */
 body {
-    overflow-x: hidden
+    overflow-x: hidden;
 }
+
 #push-wrapper {
     position: relative;
     z-index: 10;
@@ -16,7 +17,11 @@ body {
     -o-transition: all 0.3s;
     transition: all 0.3s;
 }
+
 .mask {
+}
+
+.mask-on {
     position: fixed;
     top: 0;
     left: 0;
@@ -24,6 +29,14 @@ body {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.8);
+    -moz-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+    transition: all 0.4s;
+    -moz-transition-property: background;
+    -o-transition-property: background;
+    -webkit-transition-property: background;
+    transition-property: background;
 }
 /* ------------------------------------------------------------ *\
 |* ------------------------------------------------------------ *|
@@ -41,21 +54,25 @@ nav.menu {
     -o-transition: all 0.3s;
     transition: all 0.3s;
 }
+
 nav.menu ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
+
 nav.menu a {
     font-weight: 300;
     color: #fff;
 }
-button.close-menu {
+
+.close-menu-btn {
     background-color: $themeGreen;
     color: #fff;
-}
-button.close-menu:focus {
-    outline: none
+
+    &:focus {
+        outline: none;
+    }
 }
 
 /* ------------------------------------------------------------ *\
@@ -68,36 +85,69 @@ nav.push-menu-left {
     width: 240px;
     height: 100%;
 }
+
 nav.push-menu-left li {
     display: block;
     text-align: center;
     border-bottom: solid 1px #3184a1;
     border-top: solid 1px #b5dbe9;
 }
+
 nav.push-menu-left li:first-child {
-    border-top: none
+    border-top: none;
 }
+
 nav.push-menu-left li:last-child {
-    border-bottom: none
+    border-bottom: none;
 }
+
 nav.push-menu-left a {
     display: block;
     padding: 10px;
     font-size: 18px;
 }
 
-nav.push-menu-left button.close-menu {
+nav.push-menu-left .menu-btn {
     margin: 10px 0;
     padding: 10px 30px;
     background-color: $themeGreen;
     color: #fff;
 }
+
 nav.push-menu-left {
-    left: -300px
+    left: -300px;
 }
+
 .pml-open nav.push-menu-left {
-    left: 0
+    left: 0;
 }
+
 .pml-open #push-wrapper {
-    left: 240px
+    left: 240px;
+}
+
+@media all and (min-width: 50em) { 
+    body, footer {
+        padding-left:238px;
+    }
+
+    .pml-open #push-wrapper {
+        left:0;
+    }
+
+    .mask-on {
+        top: 0;
+        left: 0;
+        z-index: -15;
+        width: 0;
+        height: 0;
+    }
+
+    nav.push-menu-left {
+        left:0;
+    }
+
+    .close-menu-btn, .menu-btn {
+        visibility:hidden !important;
+    }
 }
