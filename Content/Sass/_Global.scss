@@ -41,6 +41,16 @@ body {
     color: #FFF;
 }
 
+h2 {
+    margin: 5px 0;
+    padding: 12px 0 6px 0;
+}
+
+p {
+    padding: 0;
+    margin: 8px 0;
+}
+
 .float-left {
     float: left;
 }
@@ -113,10 +123,11 @@ footer {
 
 .timer-box {
     width: 100%;
-    padding: 40px 10px;
+    margin-bottom: 10px;
+    padding: 25px 10px;
     background: #FFF;
     overflow: auto;
-    border-bottom: 2px solid #A6A6A6;
+    border-bottom: 1px solid #A6A6A6;
 
     .current-time {
         font-size: 5.7em;
@@ -216,11 +227,10 @@ select {
 }
 
 textarea {
-    width: 95%;
+    width: 100%;
     display: block;
     padding: 1%;
-    margin: 2%;
-    margin: 10px auto;
+    margin: 2px auto;
     height: 100px;
     background: #FFF;
     color: #2d2d2d;
@@ -229,7 +239,7 @@ textarea {
 }
 
 .label {
-    padding: 10px 1% 0 2.5%;
+    padding: 4px 0;
     font-size: 1.3em;
 
     a {

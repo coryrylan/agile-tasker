@@ -1,4 +1,17 @@
-﻿@media all and (min-width: 50em) {
+﻿.view-main {
+    .col-7-c {
+        margin-top: 40px;
+    }
+}
+
+.view-settings {
+    .icon-volume-up, .icon-volume-off {
+        font-size: 1.4em;
+        cursor: pointer;
+    }
+}
+
+@media all and (min-width: 50em) {
     .view {
         -webkit-animation: fadein 0.5s;
         -moz-animation: fadein 0.5s;
@@ -47,16 +60,5 @@
 
     to {
         opacity: 1;
-    }
-}
-
-​ .view-about {
-    // display:none;
-}
-
-.view-settings {
-    .icon-volume-up, .icon-volume-off {
-        font-size: 1.4em;
-        cursor: pointer;
     }
 }
