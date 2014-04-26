@@ -35,12 +35,12 @@
 </head>
 <body ng-controller="TimerCtrl">
     <div class="app-width" ng-init="showPrimaryNav = false" ng-class="showPrimaryNav ? 'pml-open' : ' '">
-        <nav class="primary-nav menu push-menu-left">
+        <nav class="primary-nav push-menu-left">
             <a href="#" class="close-menu-btn" ng-click="showPrimaryNav = false"><i class="icon-cancel float-right"></i></a>
-            <a href="#" ng-click="showPrimaryNav=false;view='main'">Timer</a>
-            <a href="#" ng-click="showPrimaryNav=false;view='settings'">Settings</a>
-            <a href="#" ng-click="showPrimaryNav=false;view='history'">History</a>
-            <a href="#" ng-click="showPrimaryNav=false;view='about'">About</a>
+            <a href="#" class="nav-link" ng-click="showPrimaryNav=false;view='main'">Timer</a>
+            <a href="#" class="nav-link" ng-click="showPrimaryNav=false;view='settings'">Settings</a>
+            <a href="#" class="nav-link" ng-click="showPrimaryNav=false;view='history'">History</a>
+            <a href="#" class="nav-link" ng-click="showPrimaryNav=false;view='about'">About</a>
         </nav>
         <div id="push-wrapper">
             <!-- #region Header -->

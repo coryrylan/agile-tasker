@@ -18,9 +18,6 @@ body {
     transition: all 0.3s;
 }
 
-.mask {
-}
-
 .mask-on {
     position: fixed;
     top: 0;
@@ -38,13 +35,17 @@ body {
     -webkit-transition-property: background;
     transition-property: background;
 }
+
 /* ------------------------------------------------------------ *\
 |* ------------------------------------------------------------ *|
-|* Menus
+|* Left Push Menus
 |* ------------------------------------------------------------ *|
 \* ------------------------------------------------------------ */
-/* general style for all menus */
-nav.menu {
+.push-menu-left {
+    top: 0;
+    width: 240px;
+    height: 100%;
+    left: -300px;
     position: fixed;
     z-index: 20;
     background-color: $themeGreen;
@@ -53,86 +54,57 @@ nav.menu {
     -moz-transition: all 0.3s;
     -o-transition: all 0.3s;
     transition: all 0.3s;
-}
 
-nav.menu ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
+    a {
+        display: block;
+        padding: 13px;
+        font-size: 1.4em;
+        text-decoration: none;
+        font-weight: 300;
+        color: #fff;
 
-nav.menu a {
-    font-weight: 300;
-    color: #fff;
-}
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 
-.close-menu-btn {
-    background-color: $themeGreen;
-    color: #fff;
+    .menu-btn {
+        margin: 10px 0;
+        padding: 10px 30px;
+        background-color: $themeGreen;
+        color: #fff;
+    }
 
-    &:focus {
-        outline: none;
+    .close-menu-btn {
+        background-color: $themeGreen;
+        color: #fff;
+        border: none;
+        margin-bottom: 6px;
+        padding: 10px;
+
+        &:focus {
+            outline: none;
+        }
     }
 }
 
-/* ------------------------------------------------------------ *\
-|* ------------------------------------------------------------ *|
-|* Left Push Menus
-|* ------------------------------------------------------------ *|
-\* ------------------------------------------------------------ */
-nav.push-menu-left {
-    top: 0;
-    width: 240px;
-    height: 100%;
+.pml-open {
+    .push-menu-left {
+        left: 0;
+    }
+
+    #push-wrapper {
+        left: 240px;
+    }
 }
 
-nav.push-menu-left li {
-    display: block;
-    text-align: center;
-    border-bottom: solid 1px #3184a1;
-    border-top: solid 1px #b5dbe9;
-}
-
-nav.push-menu-left li:first-child {
-    border-top: none;
-}
-
-nav.push-menu-left li:last-child {
-    border-bottom: none;
-}
-
-nav.push-menu-left a {
-    display: block;
-    padding: 10px;
-    font-size: 18px;
-}
-
-nav.push-menu-left .menu-btn {
-    margin: 10px 0;
-    padding: 10px 30px;
-    background-color: $themeGreen;
-    color: #fff;
-}
-
-nav.push-menu-left {
-    left: -300px;
-}
-
-.pml-open nav.push-menu-left {
-    left: 0;
-}
-
-.pml-open #push-wrapper {
-    left: 240px;
-}
-
-@media all and (min-width: 50em) { 
+@media all and (min-width: 50em) {
     body, footer {
-        padding-left:238px;
+        padding-left: 238px;
     }
 
     .pml-open #push-wrapper {
-        left:0;
+        left: 0;
     }
 
     .mask-on {
@@ -144,10 +116,10 @@ nav.push-menu-left {
     }
 
     nav.push-menu-left {
-        left:0;
+        left: 0;
     }
 
     .close-menu-btn, .menu-btn {
-        visibility:hidden !important;
+        visibility: hidden !important;
     }
 }
