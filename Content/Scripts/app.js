@@ -2,26 +2,30 @@
 app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localForage) {
 
     //#region Models
+    // Binding Task list history to local storage
     $scope.tasks = [];
     $localForage.bind($scope, {     
         key: 'tasks',
         defaultValue: { tasksJSON: ' ' },
         storeName: 'agileTaskStorage'
-    }); // Binding Task list history to local storage
+    }); 
 
+    $scope.sound = true;
+    //$localForage.bind($scope, {
+    //    key: 'sound',
+    //    defaultValue: true,
+    //    storeName: 'agileTaskStorage'
+    //});
+
+    $scope.breakTimes = [{ value: 5, label: 5 }, { value: 10, label: 10 }, { value: 15, label: 15 }];
+    $scope.selectedBreakTime = $scope.breakTimes[0];
     $scope.options = [{ value: 15, label: 15 }, { value: 20, label: 20 }, { value: 25, label: 25 }, { value: 30, label: 30 }]; 
-    $scope.selectedOption = $scope.options[2];
-    $scope.currentTime = $scope.selectedOption.value + ":" + "00";
+    $scope.selectedTime = $scope.options[2];
+    $scope.currentTime = $scope.selectedTime.value + ":" + "00";
     $scope.localTime = "";
     $scope.taskText = "";
     $scope.isPlaying = false;
     $scope.settingVisible = true;
-    $scope.sound = true;
-
-
-    // Views
-    $scope.view = 'main';
-
     //#endregion
 
     //#region Globals
@@ -33,7 +37,7 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
     var endTime   = new Date().toLocaleTimeString();
     var timerInterval = 0;
     var timerDate = new Date();
-        timerDate.setMinutes($scope.selectedOption.value);
+        timerDate.setMinutes($scope.selectedTime.value);
         timerDate.setSeconds(0);
     //#endregion
 
@@ -100,8 +104,8 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
 
     function resetTimer() {
         clearInterval(timerInterval);
-        $scope.currentTime = $scope.selectedOption.value + ":" + "00";
-        timerDate.setMinutes($scope.selectedOption.value);  // $scope.selectedOption.value
+        $scope.currentTime = $scope.selectedTime.value + ":" + "00";
+        timerDate.setMinutes($scope.selectedTime.value);  // $scope.selectedOption.value
         timerDate.setSeconds(0);                            // Test Switch 
     }
 

@@ -52,14 +52,14 @@
             </header>
             <!-- #endregion -->
             <!-- #region View Main -->
-            <main role="main" class="view view-main" ng-show="view=='main'">
+            <main role="main" class="view view-main" ng-init="view='main'" ng-show="view=='main'">
                 <div class="timer-box">
                     <div class="col-6-md current-time">{{currentTime}}</div>
                     <div class="col-6-md">
                         <nav class="secondary-nav">
                             <button id="Startbtn" ng-click="startTimer()" ng-disabled="isPlaying"><i class="icon-play"></i></button>
                             <button ng-click="stopTimer()"><i class="icon-stop"></i></button>
-                            <select ng-model="selectedOption" ng-options="o.value for o in options" ng-change="stopTimer()"></select>
+                            <select ng-model="selectedTime" ng-options="o.value for o in options" ng-change="stopTimer()"></select>
                         </nav>
                     </div>
                 </div>
@@ -87,7 +87,8 @@
             <!-- #region View Settings -->
             <section class="view view-settings col-12" ng-show="view=='settings'">
                 <h2>Settings</h2>
-                <p>Volume <i ng-class="{true: 'icon-volume-up', false: 'icon-volume-off'}[sound]" ng-click="toggleSound()" title="Volume"></i></p>
+                <p>Volume: <i ng-class="{true: 'icon-volume-up', false: 'icon-volume-off'}[sound]" ng-click="toggleSound()" title="Volume"></i></p>
+                <p>Break Duration: <select ng-model="selectedBreakTime" ng-options="t.value for t in breakTimes" ng-change="stopTimer()"></select></p>
             </section>
             <!-- #endregion -->
             <!-- #region View History -->
@@ -154,43 +155,6 @@
     <script src="Content/Scripts/notifications.js"></script>
     <script src="Content/Scripts/fitText.js"></script>
     <script src="Content/Scripts/app.js"></script>-->
-    <script>
-        //(function (window) {
-        //    'use strict';
-        //    var body = document.body,
-        //        mask = document.createElement("div"),
-        //        togglePushLeft = document.querySelector(".toggle-push-left"),
-        //        activeNav
-        //    ;
-        //    mask.className = "mask";
-
-        //    /* push menu left */
-        //    togglePushLeft.addEventListener("click", function () {
-        //        //classie.add(body, "pml-open");
-        //        $(body).addClass("pml-open");
-        //        document.body.appendChild(mask);
-        //        activeNav = "pml-open";
-        //    });
-
-        //    /* hide active menu if mask is clicked */
-        //    mask.addEventListener("click", function () {
-        //        //classie.remove(body, activeNav);
-        //        $(body).removeClass(activeNav);
-        //        activeNav = "";
-        //        document.body.removeChild(mask);
-        //    });
-
-        //    /* hide active menu if close menu button is clicked */
-        //    [].slice.call(document.querySelectorAll(".close-menu")).forEach(function (el, i) {
-        //        el.addEventListener("click", function () {
-        //            //classie.remove(body, activeNav);
-        //            $(body).removeClass(activeNav);
-        //            activeNav = "";
-        //            document.body.removeChild(mask);
-        //        });
-        //    });
-        //})(window);
-    </script>
     <div class="mask" ng-click="showPrimaryNav = false" ng-init="showPrimaryNav = false" ng-class="showPrimaryNav ? 'mask-on' : ' '"></div>
 </body>
 </html>
