@@ -570,12 +570,13 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
         storeName: 'agileTaskStorage'
     }); 
 
-    $scope.sound = true;
-    //$localForage.bind($scope, {
-    //    key: 'sound',
-    //    defaultValue: true,
-    //    storeName: 'agileTaskStorage'
-    //});
+    $scope.sound = {
+        play: true
+    };
+    $localForage.bind($scope, {
+        key: 'sound',
+        defaultValue: { play: true }
+    });
 
     $scope.breakTimes = [{ value: 5, label: 5 }, { value: 10, label: 10 }, { value: 15, label: 15 }];
     $scope.selectedBreakTime = $scope.breakTimes[0];
@@ -624,7 +625,7 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
     };
 
     $scope.toggleSound = function () {
-        $scope.sound = !$scope.sound;
+        $scope.sound.play = !$scope.sound.play;
         playSound();
     };
     //#endregion
@@ -718,7 +719,7 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
     }
 
     function playSound() {
-        if ($scope.sound) {
+        if ($scope.sound.play) {
             audio.pause();
             audio.currentTime = 0;
             audio.play();
