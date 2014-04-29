@@ -559,28 +559,12 @@ cc)}))})(window,document);!angular.$$csp()&&angular.element(document).find("head
 
 })(jQuery);
 app = angular.module('AgileTasker', ['LocalForageModule']);
-app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localForage) {
+app.controller('TimerCtrl', ['$scope', '$localForage', function ($scope, $localForage) {
 
     //#region Models
-    // Binding Task list history to local storage
-    $scope.tasks = [];
-    $localForage.bind($scope, {     
-        key: 'tasks',
-        defaultValue: { tasksJSON: ' ' },
-        storeName: 'agileTaskStorage'
-    }); 
-
-    $scope.sound = {
-        play: true
-    };
-    $localForage.bind($scope, {
-        key: 'sound',
-        defaultValue: { play: true }
-    });
-
     $scope.breakTimes = [{ value: 5, label: 5 }, { value: 10, label: 10 }, { value: 15, label: 15 }];
     $scope.selectedBreakTime = $scope.breakTimes[0];
-    $scope.options = [{ value: 15, label: 15 }, { value: 20, label: 20 }, { value: 25, label: 25 }, { value: 30, label: 30 }]; 
+    $scope.options = [{ value: 15, label: 15 }, { value: 20, label: 20 }, { value: 25, label: 25 }, { value: 30, label: 30 }];
     $scope.selectedTime = $scope.options[2];
     $scope.currentTime = $scope.selectedTime.value + ":" + "00";
     $scope.localTime = "";
@@ -593,13 +577,31 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
     var audio = new Audio();
     audio.src = Modernizr.audio.ogg ? 'Content/Audio/chime.ogg' :
                 Modernizr.audio.mp3 ? 'Content/Audio/chime.mp3' :
-                                      'Content/Audio/chime.m4a';  
+                                      'Content/Audio/chime.m4a';
     var startTime = new Date().toLocaleTimeString();
-    var endTime   = new Date().toLocaleTimeString();
+    var endTime = new Date().toLocaleTimeString();
     var timerInterval = 0;
     var timerDate = new Date();
-        timerDate.setMinutes($scope.selectedTime.value);
-        timerDate.setSeconds(0);
+    timerDate.setMinutes($scope.selectedTime.value);
+    timerDate.setSeconds(0);
+    //#endregion
+
+    //#region local storage models
+    $scope.tasks = [];
+    $localForage.bind($scope, {
+        key: 'tasks',
+        defaultValue: { tasksJSON: ' ' },
+        storeName: 'agileTaskStorage'
+    });
+
+    $scope.sound = {
+        play: true
+    };
+
+    $localForage.bind($scope, {
+        key: 'sound',
+        defaultValue: { play: true }
+    });
     //#endregion
 
     //#region Click Events
@@ -608,7 +610,7 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function($scope, $localFo
         timerInterval = setInterval(intervalTimer, 1000);
         startTime = new Date().toLocaleTimeString();
         $scope.isPlaying = true;
-        
+
         if (notify.permissionLevel() === notify.PERMISSION_DEFAULT) {
             notify.requestPermission();
         }
