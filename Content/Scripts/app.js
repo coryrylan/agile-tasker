@@ -13,19 +13,6 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function ($scope, $localF
     $scope.settingVisible = true;
     //#endregion
 
-    //#region Globals
-    var audio = new Audio();
-    audio.src = Modernizr.audio.ogg ? 'Content/Audio/chime.ogg' :
-                Modernizr.audio.mp3 ? 'Content/Audio/chime.mp3' :
-                                      'Content/Audio/chime.m4a';
-    var startTime = new Date().toLocaleTimeString();
-    var endTime = new Date().toLocaleTimeString();
-    var timerInterval = 0;
-    var timerDate = new Date();
-    timerDate.setMinutes($scope.selectedTime.value);
-    timerDate.setSeconds(0);
-    //#endregion
-
     //#region local storage models
     $scope.tasks = [];
     $localForage.bind($scope, {
@@ -42,6 +29,19 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function ($scope, $localF
         key: 'sound',
         defaultValue: { play: true }
     });
+    //#endregion
+
+    //#region Globals
+    var audio = new Audio();
+    audio.src = Modernizr.audio.ogg ? 'Content/Audio/chime.ogg' :
+                Modernizr.audio.mp3 ? 'Content/Audio/chime.mp3' :
+                                      'Content/Audio/chime.m4a';
+    var startTime = new Date().toLocaleTimeString();
+    var endTime = new Date().toLocaleTimeString();
+    var timerInterval = 0;
+    var timerDate = new Date();
+    timerDate.setMinutes($scope.selectedTime.value);
+    timerDate.setSeconds(0);
     //#endregion
 
     //#region Click Events
@@ -182,7 +182,7 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function ($scope, $localF
     //#endregion
 }]);
 
-app.controller('Dialog', function ($scope) {
+app.controller('Dialog', function ($scope) { // $scope may be renamed in minify and cause injection error
     $scope.modalShown = false;
     $scope.toggleModal = function () {
         $scope.modalShown = !$scope.modalShown;
