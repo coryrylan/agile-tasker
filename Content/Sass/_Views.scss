@@ -1,0 +1,89 @@
+﻿.view {
+    -webkit-animation: fadein 0.5s;
+    -moz-animation: fadein 0.5s;
+    -o-animation: fadein 0.5s;
+    animation: fadein 0.5s;
+    padding:0 15px;
+
+    @media all and (min-width: 56em) { 
+        font-size:1.4em;
+    }
+}
+
+.view-main {
+    padding:0;
+
+    textarea {
+        width: 100%;
+        display: block;
+        padding: 1%;
+        margin: 2px auto;
+        height: 100px;
+        background: #FFF;
+        color: #2d2d2d;
+        border: 1px solid #A6A6A6;
+        border-radius: 2px;
+    }
+
+    .col-7-c, .col-5-c {
+        padding: 8px 0 0 0;
+    }
+
+    .col-7-c {
+        margin-top: 40px;
+    }
+
+    @media all and (min-width: 50em) {
+        textarea {
+            font-size: 1.1em;
+            height: 130px;
+        }
+
+        .col-7-c {
+            width: 58.331%;
+            margin-top: 0;
+        }
+
+        .col-5-c {
+            width: 41.665%;
+        }
+
+        .col-6-c {
+            width: 50%;
+        }
+    }
+
+    @media all and (min-width: 68em) {
+        textarea {
+            height: 180px;
+        }
+    }
+}
+
+.view-settings {
+    .icon-volume-up, .icon-volume-off {
+        font-size: 1.4em;
+        cursor: pointer;
+    }
+}
+
+.view-about {
+    a {
+        text-decoration: none;
+    }
+
+    i {
+        font-size: 2.1em;
+        color: #2d2d2d;
+    }
+
+    img {
+        margin-bottom: -8px;
+        width:46px;
+        height:46px;
+    }
+
+    .icon-github-circled-1 {
+        font-size: 2.5em;
+    }
+}
