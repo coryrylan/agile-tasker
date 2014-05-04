@@ -13,13 +13,18 @@ $themeGreen: #5EBD6A;
     font-style: normal;
 }
 
+html {
+    // Chrome App Override
+    overflow: auto;
+}
+
 body {
     font-family: 'open_sanslight', Helvetica, Arial, "Lucida Grande", sans-serif;
     font-weight: 300;
     font-size: 16px;
     background: #ffffff;
     color: #2d2d2d;
-    padding-bottom: 36px;
+    overflow-x: hidden;
 }
 
 *, *:before, *:after {
@@ -49,6 +54,7 @@ h2 {
 p {
     padding: 0;
     margin: 8px 0;
+    max-width: 700px;
 }
 
 .float-left {
@@ -61,19 +67,6 @@ p {
 
 .app-width {
     width: 100%;
-}
-
-.view {
-    //background:#EDEDED;
-}
-
-footer {
-    width: 100%;
-    background: #EDEDED;
-    overflow: auto;
-    position: fixed;
-    bottom: 0;
-    left: 0;
 }
 
 a {
@@ -94,26 +87,21 @@ header {
     text-align: center;
 }
 
-.menu-btn {
-    display: inline-block;
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    background: none;
-    border: none;
-}
-
-.primary-nav {
-}
-
 footer {
     border-top: 1px solid #A6A6A6;
     clear: both;
     padding: 4px;
+    width: 100%;
+    background: #EDEDED;
+    overflow: auto;
+    position: fixed;
+    bottom: 0;
+    left: 0;
 
     i {
         font-size: 1.4em;
         cursor: pointer;
+        padding: 0 5px;
     }
 
     .localTime {
@@ -123,7 +111,6 @@ footer {
 
 .timer-box {
     width: 100%;
-    margin-bottom: 10px;
     padding: 25px 10px;
     background: #FFF;
     overflow: auto;
@@ -149,34 +136,17 @@ footer {
     }
 }
 
-.view-about {
-    a {
-        text-decoration: none;
-    }
-
-    i {
-        font-size: 2.1em;
-        color: #2d2d2d;
-    }
-
-    img {
-        margin-bottom: -8px;
-    }
-
-    .icon-github-circled-1 {
-        font-size: 2.5em;
-    }
-}
-
 .task-list {
     list-style: none;
-    padding: 0;
+    padding: 0 0 40px 0;
     margin: 10px 0;
+    overflow: auto;
+    overflow-x: hidden;
 
     li {
         width: 100%;
         padding: 10px 1%;
-        font-size: 1em;
+        font-size: 1.1em;
         border-bottom: 1px solid #A6A6A6;
 
         &:first-child {
@@ -187,20 +157,30 @@ footer {
             background: #FAFAFA;
         }
     }
+    /*@media all and (min-width: 38em) {
+        overflow-y: scroll;
+        max-width: 99.8%;
+    }*/
 }
 
-.text-small {
-    font-size: 0.9em;
+@media all and (min-width: 50em) {
+    .task-list-wrapper {
+        .col-7-c {
+            ul {
+                min-height: 190px;
+            }
+        }
+    }
 }
 
 .secondary-nav {
-    margin: 30px auto 0 auto;
+    margin: 10px auto 0 auto;
 
     button {
         background: $themeGreen;
         border: none;
         color: #FFF;
-        font-size: 1.5em;
+        font-size: 1.7em;
         padding: 8px;
         margin-left: 1%;
         width: 30.33%;
@@ -213,29 +193,46 @@ footer {
             background: $themeGreen;
         }
     }
-}
 
-select {
-    background: #FFF;
-    border-radius: 0;
-    background: #FFF;
-    font-size: 1.6em;
-    width: 32.33%;
-    padding: 4px 8px;
-    height: 50px;
-    border: 2px solid #636363;
-}
+    select {
+        background: #FFF;
+        border-radius: 0;
+        background: #FFF;
+        font-size: 1.7em;
+        width: 32.33%;
+        padding: 4px 8px;
+        height: 52px;
+        border: 2px solid #636363;
+        margin-left: 1%;
+    }
 
-textarea {
-    width: 100%;
-    display: block;
-    padding: 1%;
-    margin: 2px auto;
-    height: 100px;
-    background: #FFF;
-    color: #2d2d2d;
-    border: 1px solid #A6A6A6;
-    border-radius: 2px;
+    @media all and (min-width: 50em) {
+        margin: 10% auto 0 auto;
+    }
+
+    @media all and (min-width: 56em) {
+        button {
+            //font-size: 2.2em;
+        }
+
+        select {
+            //font-size: 2.2em;
+            height: 66px;
+        }
+    }
+
+    @media all and (min-width: 68em) {
+        max-width: 600px;
+
+        button {
+            font-size: 1.9em;
+        }
+
+        select {
+            font-size: 1.9em;
+            height: 72px;
+        }
+    }
 }
 
 .label {
@@ -248,17 +245,7 @@ textarea {
     }
 }
 
-.col-7-c, .col-5-c {
-    padding: 0;
-}
-
-@media all and (max-width: 38em) {
-    html {
-        overflow-y: scroll; // Chrome App Override
-    }
-}
-
-/* ::-webkit-scrollbar {
+::-webkit-scrollbar {
     height: 12px;
     width: 12px;
     background: #D1D1D1;
@@ -271,33 +258,4 @@ textarea {
 
 ::-webkit-scrollbar-corner {
     background: #000;
-} */
-
-@media all and (min-width: 38em) {
-    .col-7-c {
-        width: 58.331%;
-    }
-
-    .col-5-c {
-        width: 41.665%;
-    }
-
-    ul {
-        overflow-y: scroll;
-        max-width: 99.8%;
-    }
-}
-
-@media all and (min-width: 50em) {
-    .secondary-nav {
-        max-width: 300px;
-    }
-
-    .task-list-wrapper {
-        .col-7-c {
-            ul {
-                min-height: 190px;
-            }
-        }
-    }
 }

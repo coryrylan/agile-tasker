@@ -665,14 +665,14 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function ($scope, $localF
         $scope.$apply();
     }
 
-    function timeIsUp(){
+    function timeIsUp() {
         return (timerDate.getMinutes() === 0 && timerDate.getSeconds() === 0);
     }
 
     function resetTimer() {
         clearInterval(timerInterval);
         $scope.currentTime = $scope.selectedTime.value + ":" + "00";
-        timerDate.setMinutes($scope.selectedTime.value);  // $scope.selectedOption.value
+        timerDate.setMinutes(0);  // $scope.selectedOption.value
         timerDate.setSeconds(0);                            // Test Switch 
     }
 
@@ -703,7 +703,7 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function ($scope, $localF
         $scope.taskText = "";
     }
 
-    function alertNotification() {    
+    function alertNotification() {
         vibrationNotification();
         setTimeout(function () { nativeNotification(); playSound(); }, 1600); // Set timeout because html5 Vibrate API does not take a callback ( Alert stops vibration ) :(
     }
@@ -745,4 +745,25 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function ($scope, $localF
     //#endregion
 }]);
 
-jQuery(".current-time").fitText(0.4, { minFontSize: '20px', maxFontSize: '175px' });
+
+// Sizing functionality that must be done with JS
+
+jQuery(".current-time").fitText(0.4, { minFontSize: '96px', maxFontSize: '175px' });
+
+var windowHeight = $(window).height();
+var timmerHeight = $('.timer-box').height();
+if (Modernizr.mq('(min-width: 50em)')) {
+    $('.view-main  .task-list').height(windowHeight - timmerHeight - 320 + 'px');
+}
+
+$(window).resize(function () {
+    if (Modernizr.mq('(min-width: 50em)')) {
+        windowHeight = $(window).height();
+        timmerHeight = $('.timer-box').height();
+
+        $('.view-main  .task-list').height(windowHeight - timmerHeight - 320 + 'px');
+    }
+    else {
+        $('.view-main  .task-list').height('initial');
+    }
+});
