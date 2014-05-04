@@ -562,8 +562,8 @@ app = angular.module('AgileTasker', ['LocalForageModule']);
 app.controller('TimerCtrl', ['$scope', '$localForage', function ($scope, $localForage) {
 
     //#region Models
-    $scope.breakTimes = [{ value: 5, label: 5 }, { value: 10, label: 10 }, { value: 15, label: 15 }];
-    $scope.selectedBreakTime = $scope.breakTimes[0];
+    //$scope.breakTimes = [{ value: 5, label: 5 }, { value: 10, label: 10 }, { value: 15, label: 15 }];
+    //$scope.selectedBreakTime = $scope.breakTimes[0];
     $scope.options = [{ value: 15, label: 15 }, { value: 20, label: 20 }, { value: 25, label: 25 }, { value: 30, label: 30 }];
     $scope.selectedTime = $scope.options[2];
     $scope.currentTime = $scope.selectedTime.value + ":" + "00";
@@ -652,17 +652,21 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function ($scope, $localF
     }
 
     function intervalTimer() {
-        if (timerDate.getMinutes() === 0 && timerDate.getSeconds() === 0) {
+        if (timeIsUp()) {
             $scope.stopTimer();
             endTime = new Date().toLocaleTimeString();
             alertNotification();
-            pushTask();
+            saveTaskToHistory();
         } else {
             timerDate.setSeconds(timerDate.getSeconds() - 1);
             $scope.currentTime = getCurrentTime(timerDate);
             document.title = $scope.currentTime;
         }
         $scope.$apply();
+    }
+
+    function timeIsUp(){
+        return (timerDate.getMinutes() === 0 && timerDate.getSeconds() === 0);
     }
 
     function resetTimer() {
@@ -689,7 +693,7 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function ($scope, $localF
     //#endregion
 
     //#region Alert/Notification Helper Functions
-    function pushTask() {
+    function saveTaskToHistory() {
         var _text = "Unknown";
         if ($scope.taskText !== "") {
             _text = $scope.taskText;
@@ -699,8 +703,7 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function ($scope, $localF
         $scope.taskText = "";
     }
 
-    function alertNotification() {
-        // FlashTitle();     
+    function alertNotification() {    
         vibrationNotification();
         setTimeout(function () { nativeNotification(); playSound(); }, 1600); // Set timeout because html5 Vibrate API does not take a callback ( Alert stops vibration ) :(
     }
@@ -742,36 +745,4 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function ($scope, $localF
     //#endregion
 }]);
 
-app.controller('Dialog', function ($scope) { // $scope may be renamed in minify and cause injection error
-    $scope.modalShown = false;
-    $scope.toggleModal = function () {
-        $scope.modalShown = !$scope.modalShown;
-    };
-});
-
-app.directive('modalDialog', function () {
-    return {
-        restrict: 'E',
-        scope: {
-            show: '='
-        },
-        replace: true, // Replace with the template below
-        transclude: true, // we want to insert custom content inside the directive
-        link: function (scope, element, attrs) {
-            scope.dialogStyle = {};
-
-            if (attrs.width) {
-                scope.dialogStyle.width = attrs.width;
-            }
-
-            if (attrs.height) {
-                scope.dialogStyle.height = attrs.height;
-            }
-
-            scope.hideModal = function () {
-                scope.show = false;
-            };
-        },
-        template: "<div class='ng-modal' ng-show='show'><div class='ng-modal-overlay' ng-click='hideModal()'></div><div class='ng-modal-dialog' ng-style='dialogStyle'><div class='ng-modal-close' ng-click='hideModal()'><i class='icon-cancel'></i></div><div class='ng-modal-dialog-content' ng-transclude></div></div></div>"
-    };
-});
+jQuery(".current-time").fitText(0.4, { minFontSize: '20px', maxFontSize: '175px' });
