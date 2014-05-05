@@ -100,7 +100,7 @@
     "CompileOnBuild": true,
     "CompileOnSave": true,
     "GenerateSourceMaps": false,
-    "MinifyInPlace": true,
+    "MinifyInPlace": false,
     "OutputDirectory": null,
     "ShowPreviewPane": false
   },
