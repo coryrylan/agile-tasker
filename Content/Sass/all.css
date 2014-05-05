@@ -1,4 +1,4 @@
-﻿/*! normalize.css v3.0.0 | MIT License | git.io/normalize */
+/*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 /**
  * 1. Set default font family to sans-serif.
  * 2. Prevent iOS text size adjust after orientation change, without disabling
@@ -509,167 +509,6 @@ td, th {
   margin: 0 auto;
   padding: 0 2%; }
 
-@font-face {
-  font-family: 'fontello';
-  src: url('../Fontello/font/fontello.eot?61586391');
-  src: url('../Fontello/font/fontello.eot?61586391#iefix') format('embedded-opentype'), url('../Fontello/font/fontello.woff?61586391') format('woff'), url('../Fontello/font/fontello.ttf?61586391') format('truetype'), url('../Fontello/font/fontello.svg?61586391#fontello') format('svg');
-  font-weight: normal;
-  font-style: normal; }
-
-/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
-/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
-/*
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-  @font-face {
-    font-family: 'fontello';
-    src: url('../font/fontello.svg?61586391#fontello') format('svg');
-  }
-}
-*/
-[class^="icon-"]:before, [class*=" icon-"]:before {
-  font-family: "fontello";
-  font-style: normal;
-  font-weight: normal;
-  speak: none;
-  display: inline-block;
-  text-decoration: inherit;
-  width: 1em;
-  margin-right: 0.2em;
-  text-align: center;
-  /* opacity: .8; */
-  /* For safety - reset parent styles, that can break glyph codes*/
-  font-variant: normal;
-  text-transform: none;
-  /* fix buttons height, for twitter bootstrap */
-  line-height: 1em;
-  /* Animation center compensation - margins should be symmetric */
-  /* remove if not needed */
-  margin-left: 0.2em;
-  /* you can be more comfortable with increased icons size */
-  /* font-size: 120%; */
-  /* Uncomment for 3D effect */
-  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */ }
-
-.icon-spin1:before {
-  content: '\e800'; }
-
-/* '' */
-.icon-html5:before {
-  content: '\e810'; }
-
-/* '' */
-.icon-chrome:before {
-  content: '\e802'; }
-
-/* '' */
-.icon-opera:before {
-  content: '\e804'; }
-
-/* '' */
-.icon-ie:before {
-  content: '\e803'; }
-
-/* '' */
-.icon-ok:before {
-  content: '\e805'; }
-
-/* '' */
-.icon-ok-circled:before {
-  content: '\e806'; }
-
-/* '' */
-.icon-cancel:before {
-  content: '\e815'; }
-
-/* '' */
-.icon-cancel-circled:before {
-  content: '\e814'; }
-
-/* '' */
-.icon-help:before {
-  content: '\e808'; }
-
-/* '' */
-.icon-help-circled:before {
-  content: '\e807'; }
-
-/* '' */
-.icon-pencil:before {
-  content: '\e817'; }
-
-/* '' */
-.icon-print:before {
-  content: '\e81c'; }
-
-/* '' */
-.icon-keyboard:before {
-  content: '\e81d'; }
-
-/* '' */
-.icon-attention:before {
-  content: '\e816'; }
-
-/* '' */
-.icon-firefox:before {
-  content: '\e801'; }
-
-/* '' */
-.icon-cog:before {
-  content: '\e80a'; }
-
-/* '' */
-.icon-volume-off:before {
-  content: '\e812'; }
-
-/* '' */
-.icon-volume-up:before {
-  content: '\e813'; }
-
-/* '' */
-.icon-clock:before {
-  content: '\e819'; }
-
-/* '' */
-.icon-left-open:before {
-  content: '\e81b'; }
-
-/* '' */
-.icon-right-open:before {
-  content: '\e81a'; }
-
-/* '' */
-.icon-play:before {
-  content: '\e80c'; }
-
-/* '' */
-.icon-stop:before {
-  content: '\e80b'; }
-
-/* '' */
-.icon-pause:before {
-  content: '\e80d'; }
-
-/* '' */
-.icon-chart-bar:before {
-  content: '\e80e'; }
-
-/* '' */
-.icon-coffee:before {
-  content: '\e818'; }
-
-/* '' */
-.icon-css3:before {
-  content: '\e80f'; }
-
-/* '' */
-.icon-github-circled:before {
-  content: '\e811'; }
-
-/* '' */
-.icon-menu:before {
-  content: '\e809'; }
-
-/* '' */
 /*!
     Cory Bateman http://www.corycode.me 
     MIT License http://opensource.org/licenses/MIT 
@@ -1035,16 +874,14 @@ footer {
   display: inline-block; }
 
 .view {
+  -webkit-animation: fadein 0.5s;
+  -moz-animation: fadein 0.5s;
+  -o-animation: fadein 0.5s;
+  animation: fadein 0.5s;
   padding: 0 15px; }
   @media all and (min-width: 56em) {
     .view {
       font-size: 1.4em; } }
-  @media all and (min-width: 68em) {
-    .view {
-      -webkit-animation: fadein 0.5s;
-      -moz-animation: fadein 0.5s;
-      -o-animation: fadein 0.5s;
-      animation: fadein 0.5s; } }
 
 .view-main {
   padding: 0; }
