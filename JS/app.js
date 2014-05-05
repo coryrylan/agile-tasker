@@ -1,6 +1,22 @@
-﻿app = angular.module('AgileTasker', ['LocalForageModule']);
-app.controller('TimerCtrl', ['$scope', '$localForage', function ($scope, $localForage) {
+﻿var app = angular.module('AgileTasker', ['ngRoute', 'LocalForageModule']);
 
+app.config(['$routeProvider', function ($routeProvider) {
+    $routeProvider.when('/', {
+        templateUrl: '/Partials/timer.html'
+    });
+    $routeProvider.when('/about', {
+        templateUrl: '/Partials/about.html'
+    });
+    $routeProvider.when('/history', {
+        templateUrl: '/Partials/history.html'
+    });
+    $routeProvider.when('/settings', {
+        templateUrl: '/Partials/settings.html'
+    });
+    $routeProvider.otherwise({redirectTo: '/'});
+}]);
+
+app.controller('TimerCtrl', ['$scope', '$localForage', function ($scope, $localForage) {
     //#region Models
     //$scope.breakTimes = [{ value: 5, label: 5 }, { value: 10, label: 10 }, { value: 15, label: 15 }];
     //$scope.selectedBreakTime = $scope.breakTimes[0];
@@ -112,7 +128,7 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function ($scope, $localF
     function resetTimer() {
         clearInterval(timerInterval);
         $scope.currentTime = $scope.selectedTime.value + ":" + "00";
-        timerDate.setMinutes($scope.selectedOption.value);  // $scope.selectedOption.value
+        timerDate.setMinutes($scope.selectedTime.value);  // $scope.selectedTime.value
         timerDate.setSeconds(0);                            // Test Switch 
     }
 

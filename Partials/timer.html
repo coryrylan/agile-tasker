@@ -1,0 +1,34 @@
+﻿<section role="main" class="view view-main" ng-init="setTimerView()"> <!--ng-init="view='main'" ng-show="view=='main'"-->
+    <div class="timer-box">
+        <div class="col-6-c current-time" ng-bind="currentTime"></div>
+        <div class="col-6-c">
+            <nav class="secondary-nav">
+                <button id="Startbtn" ng-click="startTimer()" ng-disabled="isPlaying"><i class="icon-play"></i></button>
+                <button ng-click="stopTimer()"><i class="icon-stop"></i></button>
+                <select ng-model="selectedTime" ng-options="o.value for o in options" ng-change="stopTimer()"></select>
+            </nav>
+        </div>
+    </div>
+    <section class="task-list-wrapper">
+        <div class="col-5-c">
+            <div class="col-12">
+                <div class="label">Current Task</div>
+                <textarea ng-model="taskText" placeholder="Add Task" ng-maxlength="100" ng-disabled="isPlaying"></textarea>
+            </div>
+        </div>
+        <div class="col-7-c">
+            <div class="col-12">
+                <div class="label">Completed Tasks <a href="#0" ng-click="clearList()" class="float-right small">Clear All</a></div>
+                <ul class="task-list">
+                    <li ng-repeat="task in tasks track by $index">
+                        <div>{{task.text}}</div>
+                        <span class="smallText"><span>{{task.start}}</span>&nbsp;<strong>to</strong>&nbsp;<span>{{task.stop}}</span></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</section>
+<script>
+setTimerView();
+</script>
