@@ -8,4 +8,5 @@
   <file>/Content/Scripts/notifications.js</file>
   <file>/Content/Scripts/fitText.js</file>
   <file>/Content/Scripts/app.js</file>
+  <file>/Content/Scripts/appSizing.js</file>
 </bundle>
