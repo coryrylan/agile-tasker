@@ -1,17 +1,20 @@
 ﻿.view {
-    -webkit-animation: fadein 0.5s;
-    -moz-animation: fadein 0.5s;
-    -o-animation: fadein 0.5s;
-    animation: fadein 0.5s;
-    padding:0 15px;
+    padding: 0 15px;
 
-    @media all and (min-width: 56em) { 
-        font-size:1.4em;
+    @media all and (min-width: 56em) {
+        font-size: 1.4em;
+    }
+
+    @media all and (min-width: 68em) {
+        -webkit-animation: fadein 0.5s;
+        -moz-animation: fadein 0.5s;
+        -o-animation: fadein 0.5s;
+        animation: fadein 0.5s;
     }
 }
 
 .view-main {
-    padding:0;
+    padding: 0;
 
     textarea {
         width: 100%;
@@ -79,8 +82,8 @@
 
     img {
         margin-bottom: -8px;
-        width:46px;
-        height:46px;
+        width: 46px;
+        height: 46px;
     }
 
     .icon-github-circled-1 {
