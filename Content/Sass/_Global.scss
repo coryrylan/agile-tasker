@@ -3,7 +3,7 @@
     MIT License http://opensource.org/licenses/MIT 
 */
 
-$themeGreen: #5EBD6A;
+$themeGreen: #4cb658;
 
 @font-face {
     font-family: 'open_sanslight';
@@ -71,6 +71,8 @@ p {
 
 a {
     color: $themeGreen;
+    cursor:pointer;
+    text-decoration:underline;
 
     &:hover {
         color: $themeGreen;
@@ -85,6 +87,10 @@ header {
     color: #FFF;
     font-size: 1.5em;
     text-align: center;
+
+    @media all and (min-width: 68em) {
+        font-size: 1.8em;
+    }
 }
 
 footer {
@@ -119,6 +125,10 @@ footer {
     .current-time {
         font-size: 5.7em;
         text-align: center;
+    }
+
+    @media all and (min-width: 68em) {
+        padding: 60px 10px;
     }
 }
 
@@ -186,11 +196,14 @@ footer {
         width: 30.33%;
 
         &:hover {
-            background: $themeGreen;
+            background: darken($themeGreen, 5%);
         }
 
         &:focus {
             background: $themeGreen;
+        }
+
+        &:active {
         }
     }
 
@@ -201,7 +214,7 @@ footer {
         font-size: 1.7em;
         width: 32.33%;
         padding: 4px 8px;
-        height: 52px;
+        height: 56px;
         border: 2px solid #636363;
         margin-left: 1%;
     }

@@ -1,32 +1,50 @@
-﻿var app = angular.module('AgileTasker', ['LocalForageModule']);
+﻿var app = angular.module('AgileTasker', ['ngRoute', 'LocalForageModule']);
 
-app.controller('TimerCtrl', ['$scope', '$localForage', function ($scope, $localForage) {
+app.config(['$routeProvider', function ($routeProvider) {
+    $routeProvider.when('/', {
+        templateUrl: '/Partials/timer.html'
+    });
+    $routeProvider.when('/about', {
+        templateUrl: '/Partials/about.html'
+    });
+    $routeProvider.when('/history', {
+        templateUrl: '/Partials/history.html'
+    });
+    $routeProvider.when('/settings', {
+        templateUrl: '/Partials/settings.html'
+    });
+    $routeProvider.otherwise({redirectTo: '/'});
+}]);
+
+app.factory('UserSettings',['$localForage', function ($localForage) {
+    _userSettings = {
+        sound: { play: true },
+        taskHistory: []
+    }
+    return _userSettings;
+}]);
+
+app.controller('MainCtrl', ['$scope', '$localForage', 'UserSettings', function ($scope, $localForage, UserSettings) {
+
+}]);
+
+app.controller('TimerCtrl', ['$scope', '$localForage', 'UserSettings', function ($scope, $localForage, UserSettings) {
 
     //#region Models
     $scope.options = [{ value: 15, label: 15 }, { value: 20, label: 20 }, { value: 25, label: 25 }, { value: 30, label: 30 }];
     $scope.selectedTime = $scope.options[2];
     $scope.currentTime = $scope.selectedTime.value + ":" + "00";
     $scope.localTime = "";
-    $scope.taskText = "";
+    $scope.taskText = { value: "" };  // Note: Must define object so child view can copy parent object for scope inheritence
     $scope.isPlaying = false;
-    $scope.settingVisible = true;
     //#endregion
 
-    //#region local storage models
-    $scope.tasks = [];
+    //#region Bind userSettings service to local storage
+    $scope.userSettings = UserSettings;
     $localForage.bind($scope, {
-        key: 'tasks',
-        defaultValue: { tasksJSON: ' ' },
-        storeName: 'agileTaskStorage'
-    });
-
-    $scope.sound = {
-        play: true
-    };
-
-    $localForage.bind($scope, {
-        key: 'sound',
-        defaultValue: { play: true }
+        key: 'userSettings',
+        defaultValue: UserSettings,
+        storeName: 'StorageSettings'
     });
     //#endregion
 
@@ -62,11 +80,11 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function ($scope, $localF
     };
 
     $scope.clearList = function () {
-        $scope.tasks = [];
+        $scope.userSettings.taskHistory = [];
     };
 
     $scope.toggleSound = function () {
-        $scope.sound.play = !$scope.sound.play;
+        $scope.userSettings.sound.play = !$scope.userSettings.sound.play;
         playSound();
     };
     //#endregion
@@ -111,7 +129,7 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function ($scope, $localF
     function resetTimer() {
         clearInterval(timerInterval);
         $scope.currentTime = $scope.selectedTime.value + ":" + "00";
-        timerDate.setMinutes(0);  // $scope.selectedOption.value
+        timerDate.setMinutes(0);  // $scope.selectedTime.value
         timerDate.setSeconds(0);                            // Test Switch 
     }
 
@@ -134,12 +152,13 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function ($scope, $localF
     //#region Alert/Notification Helper Functions
     function saveTaskToHistory() {
         var _text = "Unknown";
-        if ($scope.taskText !== "") {
-            _text = $scope.taskText;
+        console.log($scope.taskText.value);
+        if ($scope.taskText.value !== "") {
+            _text = $scope.taskText.value;
         }
 
-        $scope.tasks.push({ start: startTime, stop: endTime, text: _text });
-        $scope.taskText = "";
+        $scope.userSettings.taskHistory.push({ start: startTime, stop: endTime, text: _text });
+        $scope.taskText.value = "";
     }
 
     function alertNotification() {
@@ -163,7 +182,7 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function ($scope, $localF
     }
 
     function playSound() {
-        if ($scope.sound.play) {
+        if ($scope.userSettings.sound.play) {
             audio.pause();
             audio.currentTime = 0;
             audio.play();
@@ -182,15 +201,17 @@ app.controller('TimerCtrl', ['$scope', '$localForage', function ($scope, $localF
         }
     }
     //#endregion
+
 }]);
 
+//#region Needs to be directive (modifiying dom)
 app.controller('TimerSizing', ['$scope', function ($scope) {
     jQuery(".current-time").fitText(0.4, { minFontSize: '96px', maxFontSize: '175px' });
 
     var windowHeight = $(window).height();
-    var timmerHeight = $('.timer-box').height();
+    var timerHeight = $('.timer-box').height();
     if (Modernizr.mq('(min-width: 50em)')) {
-        $('.view-main  .task-list').height(windowHeight - timmerHeight - 320 + 'px');
+        $('.view-main  .task-list').height(windowHeight - timerHeight - 360 + 'px');
     }
 
     $(window).resize(function () {
@@ -198,52 +219,11 @@ app.controller('TimerSizing', ['$scope', function ($scope) {
             windowHeight = $(window).height();
             timmerHeight = $('.timer-box').height();
 
-            $('.view-main  .task-list').height(windowHeight - timmerHeight - 320 + 'px');
+            $('.view-main  .task-list').height(windowHeight - timerHeight - 360 + 'px');
         }
         else {
             $('.view-main  .task-list').height('initial');
         }
     });
 }]);
-
-//app.service('soundSettings', ['$scope', '$localForage', function ($scope, $localForage) {
-//    $scope.sound = {
-//        play: true
-//    };
-
-//    $localForage.bind($scope, {
-//        key: 'sound',
-//        defaultValue: { play: true }
-//    });
-
-//    return {
-//        getObject: function () {
-//            return $scope.sound;
-//        },
-//        setObject: function (value) {
-//            $scope.sound = value;
-//        }
-//    };
-//}]);
-
-//app.directive('soundButton', function () {
-//    return {
-//        restrict: 'E',
-//        template: '<i ng-class="{true: "icon-volume-up", false: "icon-volume-off"}[soundSettings.getObject.play]" ng-click="toggleSound()" title="Volume"></i>'
-//    };
-//});
-
-//app.directive('soundButton', ['$scope', 'soundSettings', function ($scope, soundSettings) {
-//    return {
-//        restrict: 'E',
-//        transclude: true,
-//        controller: function ($scope, soundSettings) {
-//            $scope.toggleSound = function () {
-//                soundSettings.getObject.play = !soundSettings.getObject.play;
-//                playSound();
-//            };
-//        },
-//        template:'<i ng-class="{true: "icon-volume-up", false: "icon-volume-off"}[soundSettings.getObject.play]" ng-click="toggleSound()" title="Volume"></i>'
-//    };
-//}]);
-
+//#endregion Start new controller

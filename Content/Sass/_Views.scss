@@ -1,15 +1,12 @@
 ﻿.view {
+    -webkit-animation: fadein 0.5s;
+    -moz-animation: fadein 0.5s;
+    -o-animation: fadein 0.5s;
+    animation: fadein 0.5s;
     padding: 0 15px;
 
     @media all and (min-width: 56em) {
         font-size: 1.4em;
-    }
-
-    @media all and (min-width: 68em) {
-        -webkit-animation: fadein 0.5s;
-        -moz-animation: fadein 0.5s;
-        -o-animation: fadein 0.5s;
-        animation: fadein 0.5s;
     }
 }
 
@@ -59,6 +56,10 @@
     @media all and (min-width: 68em) {
         textarea {
             height: 180px;
+        }
+
+        .col-7-c, .col-5-c {
+            padding: 10px;
         }
     }
 }

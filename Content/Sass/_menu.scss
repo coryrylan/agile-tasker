@@ -112,6 +112,11 @@
 
     nav.push-menu-left {
         left: 0;
+        padding-top:30px;
+
+        a {
+            font-size:1.6em;
+        }
     }
 
     .close-menu-btn, .menu-btn {
