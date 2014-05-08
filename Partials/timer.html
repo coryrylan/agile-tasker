@@ -1,11 +1,11 @@
 ﻿<section class="view view-main">
     <div class="timer-box" ng-controller="TimerSizing">
-        <div class=" col-6-c current-time" ng-bind="currentTime"></div>
+        <div class=" col-6-c current-time" ng-bind="settings.currentTime"></div>
         <div class="col-6-c">
             <nav class="secondary-nav">
                 <button id="Startbtn" ng-click="startTimer()" ng-disabled="isPlaying"><i class="icon-play"></i></button>
                 <button ng-click="stopTimer()"><i class="icon-stop"></i></button>
-                <select ng-model="selectedTime" ng-options="o.value for o in options" ng-change="stopTimer()"></select>
+                <select ng-model="settings.selectedTime" ng-options="o.value for o in settings.options" ng-change="stopTimer()"></select>
             </nav>
         </div>
     </div>
@@ -13,7 +13,7 @@
         <div class="col-5-c">
             <div class="col-12">
                 <div class="label">Current Task</div>
-                <textarea ng-model="taskText.value" placeholder="Add Task" ng-maxlength="100" ng-disabled="isPlaying"></textarea>
+                <textarea ng-model="settings.taskTextBox" placeholder="Add Task" ng-maxlength="100" ng-disabled="isPlaying"></textarea>
             </div>
         </div>
         <div class="col-7-c">

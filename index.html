@@ -49,7 +49,7 @@
             <main ng-view></main>
             <footer>
                 <i ng-class="{true: 'icon-volume-up', false: 'icon-volume-off'}[userSettings.sound.play]" ng-click="toggleSound()" title="Volume"></i>
-                <div class="localTime float-right">{{localTime}}</div>
+                <div data-clock class="localTime float-right"></div>
             </footer>
         </div>
     </div>

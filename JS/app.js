@@ -31,11 +31,15 @@ app.controller('MainCtrl', ['$scope', '$localForage', 'UserSettings', function (
 app.controller('TimerCtrl', ['$scope', '$localForage', 'UserSettings', function ($scope, $localForage, UserSettings) {
 
     //#region Models
-    $scope.options = [{ value: 15, label: 15 }, { value: 20, label: 20 }, { value: 25, label: 25 }, { value: 30, label: 30 }];
-    $scope.selectedTime = $scope.options[2];
-    $scope.currentTime = $scope.selectedTime.value + ":" + "00";
-    $scope.localTime = "";
-    $scope.taskText = { value: "" };  // Note: Must define object so child view can copy parent object for scope inheritence
+    $scope.settings = {
+        options: [{ value: 15, label: 15 }, { value: 20, label: 20 }, { value: 25, label: 25 }, { value: 30, label: 30 }],
+        currentTime: "",
+        selectedTime: {},
+        taskTextBox: ""
+    };
+    $scope.settings.selectedTime = $scope.settings.options[2];
+    $scope.settings.currentTime = $scope.settings.options[2].value + ":00";
+
     $scope.isPlaying = false;
     //#endregion
 
@@ -57,7 +61,7 @@ app.controller('TimerCtrl', ['$scope', '$localForage', 'UserSettings', function 
     var endTime = new Date().toLocaleTimeString();
     var timerInterval = 0;
     var timerDate = new Date();
-    timerDate.setMinutes($scope.selectedTime.value);
+    timerDate.setMinutes($scope.settings.selectedTime.value);
     timerDate.setSeconds(0);
     //#endregion
 
@@ -90,24 +94,6 @@ app.controller('TimerCtrl', ['$scope', '$localForage', 'UserSettings', function 
     //#endregion
 
     //#region Timmer Helper Functons
-    setInterval(updateLocalTime, 1000);
-
-    function updateLocalTime() {
-        $scope.localTime = toLocalTime(new Date());
-        $scope.$apply();
-    }
-
-    function toLocalTime(date) {
-        var h = date.getHours();
-        var m = date.getMinutes();
-        var x = h >= 12 ? 'pm' : 'am';
-        h = h % 12;
-        h = h ? h : 12;
-        m = m < 10 ? '0' + m : m;
-        var mytime = h + ':' + m + ' ' + x;
-        return mytime;
-    }
-
     function intervalTimer() {
         if (timeIsUp()) {
             $scope.stopTimer();
@@ -116,8 +102,8 @@ app.controller('TimerCtrl', ['$scope', '$localForage', 'UserSettings', function 
             saveTaskToHistory();
         } else {
             timerDate.setSeconds(timerDate.getSeconds() - 1);
-            $scope.currentTime = getCurrentTime(timerDate);
-            document.title = $scope.currentTime;
+            $scope.settings.currentTime = getCurrentTime(timerDate);
+            document.title = $scope.settings.currentTime;
         }
         $scope.$apply();
     }
@@ -128,8 +114,8 @@ app.controller('TimerCtrl', ['$scope', '$localForage', 'UserSettings', function 
 
     function resetTimer() {
         clearInterval(timerInterval);
-        $scope.currentTime = $scope.selectedTime.value + ":" + "00";
-        timerDate.setMinutes($scope.selectedTime.value);  // $scope.selectedTime.value
+        $scope.settings.currentTime = $scope.settings.selectedTime.value + ":" + "00";
+        timerDate.setMinutes($scope.settings.selectedTime.value);  // $scope.settings.selectedTime.value
         timerDate.setSeconds(0);                            // Test Switch 
     }
 
@@ -152,13 +138,13 @@ app.controller('TimerCtrl', ['$scope', '$localForage', 'UserSettings', function 
     //#region Alert/Notification Helper Functions
     function saveTaskToHistory() {
         var _text = "Unknown";
-        console.log($scope.taskText.value);
-        if ($scope.taskText.value !== "") {
-            _text = $scope.taskText.value;
+        console.log($scope.settings.taskTextBox);
+        if ($scope.settings.taskTextBox !== "") {
+            _text = $scope.settings.taskTextBox;
         }
 
         $scope.userSettings.taskHistory.push({ start: startTime, stop: endTime, text: _text });
-        $scope.taskText.value = "";
+        $scope.settings.taskTextBox = "";
     }
 
     function alertNotification() {
@@ -204,7 +190,7 @@ app.controller('TimerCtrl', ['$scope', '$localForage', 'UserSettings', function 
 
 }]);
 
-//#region Needs to be directive (modifiying dom)
+// Needs to be directive (modifiying dom)
 app.controller('TimerSizing', ['$scope', function ($scope) {
     jQuery(".current-time").fitText(0.4, { minFontSize: '96px', maxFontSize: '175px' });
 
@@ -226,4 +212,28 @@ app.controller('TimerSizing', ['$scope', function ($scope) {
         }
     });
 }]);
-//#endregion Start new controller
+
+// http://jsdo.it/can.i.do.web/zHbM
+app.directive('clock', function ($timeout, dateFilter) {
+    return function (scope, element, attrs) {
+        var timeoutId; // timeoutId, so that we can cancel the time updates
+
+        // schedule update in one second
+        function updateLater() {
+            // save the timeoutId for canceling
+            timeoutId = $timeout(function () {
+                element.text(dateFilter(new Date(), 'shortTime'));
+                updateLater(); // schedule another update
+            }, 1000);
+        }
+
+        // listen on DOM destroy (removal) event, and cancel the next UI update
+        // to prevent updating time ofter the DOM element was removed.
+        element.bind('$destroy', function () {
+            $timeout.cancel(timeoutId);
+        });
+
+        updateLater(); // kick off the UI update process.
+    }
+});
+
