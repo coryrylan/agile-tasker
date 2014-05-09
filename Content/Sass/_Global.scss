@@ -71,8 +71,8 @@ p {
 
 a {
     color: $themeGreen;
-    cursor:pointer;
-    text-decoration:underline;
+    cursor: pointer;
+    text-decoration: underline;
 
     &:hover {
         color: $themeGreen;
@@ -94,8 +94,8 @@ header {
 }
 
 main {
-    padding-bottom:40px;
-    overflow:hidden;
+    padding-bottom: 40px;
+    overflow: hidden;
 }
 
 footer {
@@ -137,26 +137,14 @@ footer {
     }
 }
 
-.task-list-wrapper {
-    .col-7-c {
-        border-left: 1px solid #A6A6A6;
-
-        ul {
-            min-height: 150px;
-        }
-    }
-
-    .col-7-c, .col-5-c {
-        margin-bottom: 0;
-    }
-}
-
 .task-list {
     list-style: none;
     padding: 0;
     margin: 10px 0;
     overflow: auto;
     overflow-x: hidden;
+    max-height: 160px;
+    height: 40%;
 
     li {
         width: 100%;
@@ -172,20 +160,18 @@ footer {
             background: #FAFAFA;
         }
     }
+
     @media all and (max-width: 50em) {
-        heigth:initial !important;
+        height: initial !important;
+        max-height: none;
     }
 }
 
-@media all and (min-width: 50em) {
-    .task-list-wrapper {
-        .col-7-c {
-            ul {
-                min-height: 170px;
-            }
-        }
+/*@media all and (min-height: 50em) {
+    .task-list {
+        min-height: 170px;
     }
-}
+}*/
 
 .secondary-nav {
     margin: 10px auto 0 auto;
@@ -218,7 +204,7 @@ footer {
         font-size: 1.7em;
         width: 32.33%;
         padding: 4px 8px;
-        height: 56px;
+        height: 52px;
         border: 2px solid #636363;
         margin-left: 1%;
     }
@@ -229,7 +215,7 @@ footer {
 
     @media all and (min-width: 56em) {
         select {
-            height: 66px;
+            height: 61px;
         }
     }
 
@@ -242,7 +228,7 @@ footer {
 
         select {
             font-size: 1.9em;
-            height: 72px;
+            height: 65px;
         }
     }
 }

@@ -102,7 +102,7 @@ app.controller('TimerCtrl', ['$scope', '$localForage', 'UserSettings', 'Notifica
         clearInterval(timerInterval);
         $scope.settings.currentTime = $scope.settings.selectedTime.value + ":" + "00";
         timerDate.setMinutes(0);  // $scope.settings.selectedTime.value
-        timerDate.setSeconds(0);                                   // Test Switch 
+        timerDate.setSeconds(0);                                   // test Switch 
     }
 
     function getCurrentTime(currentTime) {
@@ -136,27 +136,27 @@ app.controller('TimerCtrl', ['$scope', '$localForage', 'UserSettings', 'Notifica
 app.controller('TimerSizing', ['$scope', function ($scope) { // Needs to be directive (modifiying dom)
     jQuery(".current-time").fitText(0.4, { minFontSize: '96px', maxFontSize: '175px' });
 
-    var windowHeight = $(window).outerHeight(true);   
-    var timerHeight = $('.timer-box').outerHeight(true);
-    var listBox = $('.view-main  .task-list');
+    //var windowHeight = $(window).outerHeight(true);   
+    //var timerHeight = $('.timer-box').outerHeight(true);
+    //var listBox = $('.view-main  .task-list');
 
-    var sizeTaskList = function () {
-        if (Modernizr.mq('(min-width: 50em)')) {
-            listBox.height(windowHeight - timerHeight + 'px');
+    //var sizeTaskList = function () {
+    //    if (Modernizr.mq('(min-width: 50em)')) {
+    //        listBox.height(windowHeight - timerHeight + 'px');
 
-            if (Modernizr.mq('(min-height: 500px)')) {
-                listBox.height(windowHeight - timerHeight - 250 + 'px');
-            }
-        }
-        else {
-            listBox.height('initial');
-        }
-    };
-    sizeTaskList();
+    //        if (Modernizr.mq('(min-height: 500px)')) {
+    //            listBox.height(windowHeight - timerHeight - 250 + 'px');
+    //        }
+    //    }
+    //    else {
+    //        listBox.height('initial');
+    //    }
+    //};
+    //sizeTaskList();
 
-    $(window).resize(function () {
-        sizeTaskList();
-    });
+    //$(window).resize(function () {
+    //    sizeTaskList();
+    //});
 }]);
 
 app.factory('UserSettings', ['$localForage', function ($localForage) {

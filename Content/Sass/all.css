@@ -620,19 +620,14 @@ footer {
     .timer-box {
       padding: 60px 10px; } }
 
-.task-list-wrapper .col-7-c {
-  border-left: 1px solid #A6A6A6; }
-  .task-list-wrapper .col-7-c ul {
-    min-height: 150px; }
-.task-list-wrapper .col-7-c, .task-list-wrapper .col-5-c {
-  margin-bottom: 0; }
-
 .task-list {
   list-style: none;
   padding: 0;
   margin: 10px 0;
   overflow: auto;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  max-height: 160px;
+  height: 40%; }
   .task-list li {
     width: 100%;
     padding: 10px 1%;
@@ -644,12 +639,14 @@ footer {
       background: #FAFAFA; }
   @media all and (max-width: 50em) {
     .task-list {
-      heigth: initial !important; } }
+      height: initial !important;
+      max-height: none; } }
 
-@media all and (min-width: 50em) {
-  .task-list-wrapper .col-7-c ul {
-    min-height: 170px; } }
-
+/*@media all and (min-height: 50em) {
+    .task-list {
+        min-height: 170px;
+    }
+}*/
 .secondary-nav {
   margin: 10px auto 0 auto; }
   .secondary-nav button {
@@ -671,7 +668,7 @@ footer {
     font-size: 1.7em;
     width: 32.33%;
     padding: 4px 8px;
-    height: 56px;
+    height: 52px;
     border: 2px solid #636363;
     margin-left: 1%; }
   @media all and (min-width: 50em) {
@@ -679,7 +676,7 @@ footer {
       margin: 10% auto 0 auto; } }
   @media all and (min-width: 56em) {
     .secondary-nav select {
-      height: 66px; } }
+      height: 61px; } }
   @media all and (min-width: 68em) {
     .secondary-nav {
       max-width: 600px; }
@@ -687,7 +684,7 @@ footer {
         font-size: 1.9em; }
       .secondary-nav select {
         font-size: 1.9em;
-        height: 72px; } }
+        height: 65px; } }
 
 .label {
   padding: 4px 0;
@@ -895,7 +892,7 @@ footer {
   padding: 0 15px; }
   @media all and (min-width: 56em) {
     .view {
-      font-size: 1.4em; } }
+      font-size: 1.2em; } }
 
 .view-main {
   padding: 0; }
@@ -913,6 +910,12 @@ footer {
     padding: 8px 0 0 0; }
   .view-main .col-7-c {
     margin-top: 40px; }
+  .view-main .task-list-wrapper .col-7-c {
+    border-left: 1px solid #A6A6A6; }
+    .view-main .task-list-wrapper .col-7-c .col-12 {
+      padding-bottom: 0; }
+  .view-main .task-list-wrapper .col-7-c, .view-main .task-list-wrapper .col-5-c {
+    margin-bottom: 0; }
   @media all and (min-width: 50em) {
     .view-main textarea {
       font-size: 1.1em;
