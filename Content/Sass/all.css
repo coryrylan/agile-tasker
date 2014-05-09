@@ -586,6 +586,10 @@ header {
     header {
       font-size: 1.8em; } }
 
+main {
+  padding-bottom: 40px;
+  overflow: hidden; }
+
 footer {
   border-top: 1px solid #A6A6A6;
   clear: both;
@@ -619,20 +623,16 @@ footer {
 .task-list-wrapper .col-7-c {
   border-left: 1px solid #A6A6A6; }
   .task-list-wrapper .col-7-c ul {
-    min-height: 160px; }
+    min-height: 150px; }
 .task-list-wrapper .col-7-c, .task-list-wrapper .col-5-c {
   margin-bottom: 0; }
 
 .task-list {
   list-style: none;
-  padding: 0 0 40px 0;
+  padding: 0;
   margin: 10px 0;
   overflow: auto;
-  overflow-x: hidden;
-  /*@media all and (min-width: 38em) {
-        overflow-y: scroll;
-        max-width: 99.8%;
-    }*/ }
+  overflow-x: hidden; }
   .task-list li {
     width: 100%;
     padding: 10px 1%;
@@ -642,10 +642,13 @@ footer {
       border-top: 1px solid #A6A6A6; }
     .task-list li:nth-child(odd) {
       background: #FAFAFA; }
+  @media all and (max-width: 50em) {
+    .task-list {
+      heigth: initial !important; } }
 
 @media all and (min-width: 50em) {
   .task-list-wrapper .col-7-c ul {
-    min-height: 190px; } }
+    min-height: 170px; } }
 
 .secondary-nav {
   margin: 10px auto 0 auto; }

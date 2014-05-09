@@ -13,24 +13,14 @@ app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.when('/settings', {
         templateUrl: '/Partials/settings.html'
     });
-    $routeProvider.otherwise({redirectTo: '/'});
+    $routeProvider.otherwise({ redirectTo: '/' });
 }]);
 
-app.factory('UserSettings',['$localForage', function ($localForage) {
-    _userSettings = {
-        sound: { play: true },
-        taskHistory: []
-    }
-    return _userSettings;
-}]);
-
-app.controller('MainCtrl', ['$scope', '$localForage', 'UserSettings', function ($scope, $localForage, UserSettings) {
-
-}]);
-
-app.controller('TimerCtrl', ['$scope', '$localForage', 'UserSettings', function ($scope, $localForage, UserSettings) {
+app.controller('TimerCtrl', ['$scope', '$localForage', 'UserSettings', 'Notification', function ($scope, $localForage, UserSettings, Notification) {
 
     //#region Models
+    $scope.isPlaying = false;
+
     $scope.settings = {
         options: [{ value: 15, label: 15 }, { value: 20, label: 20 }, { value: 25, label: 25 }, { value: 30, label: 30 }],
         currentTime: "",
@@ -40,10 +30,7 @@ app.controller('TimerCtrl', ['$scope', '$localForage', 'UserSettings', function 
     $scope.settings.selectedTime = $scope.settings.options[2];
     $scope.settings.currentTime = $scope.settings.options[2].value + ":00";
 
-    $scope.isPlaying = false;
-    //#endregion
-
-    //#region Bind userSettings service to local storage
+    //Bind userSettings service to local storage
     $scope.userSettings = UserSettings;
     $localForage.bind($scope, {
         key: 'userSettings',
@@ -53,10 +40,6 @@ app.controller('TimerCtrl', ['$scope', '$localForage', 'UserSettings', function 
     //#endregion
 
     //#region Globals
-    var audio = new Audio();
-    audio.src = Modernizr.audio.ogg ? 'Content/Audio/chime.ogg' :
-                Modernizr.audio.mp3 ? 'Content/Audio/chime.mp3' :
-                                      'Content/Audio/chime.m4a';
     var startTime = new Date().toLocaleTimeString();
     var endTime = new Date().toLocaleTimeString();
     var timerInterval = 0;
@@ -89,7 +72,9 @@ app.controller('TimerCtrl', ['$scope', '$localForage', 'UserSettings', function 
 
     $scope.toggleSound = function () {
         $scope.userSettings.sound.play = !$scope.userSettings.sound.play;
-        playSound();
+        if ($scope.userSettings.sound.play == true) {
+            Notification.playAudio();
+        }
     };
     //#endregion
 
@@ -98,7 +83,8 @@ app.controller('TimerCtrl', ['$scope', '$localForage', 'UserSettings', function 
         if (timeIsUp()) {
             $scope.stopTimer();
             endTime = new Date().toLocaleTimeString();
-            alertNotification();
+            console.log($scope.userSettings.sound.play);
+            Notification.notify($scope.userSettings.sound.play);
             saveTaskToHistory();
         } else {
             timerDate.setSeconds(timerDate.getSeconds() - 1);
@@ -115,8 +101,8 @@ app.controller('TimerCtrl', ['$scope', '$localForage', 'UserSettings', function 
     function resetTimer() {
         clearInterval(timerInterval);
         $scope.settings.currentTime = $scope.settings.selectedTime.value + ":" + "00";
-        timerDate.setMinutes($scope.settings.selectedTime.value);  // $scope.settings.selectedTime.value
-        timerDate.setSeconds(0);                            // Test Switch 
+        timerDate.setMinutes(0);  // $scope.settings.selectedTime.value
+        timerDate.setSeconds(0);                                   // Test Switch 
     }
 
     function getCurrentTime(currentTime) {
@@ -133,12 +119,9 @@ app.controller('TimerCtrl', ['$scope', '$localForage', 'UserSettings', function 
 
         return minutes + ':' + seconds;
     }
-    //#endregion
 
-    //#region Alert/Notification Helper Functions
     function saveTaskToHistory() {
         var _text = "Unknown";
-        console.log($scope.settings.taskTextBox);
         if ($scope.settings.taskTextBox !== "") {
             _text = $scope.settings.taskTextBox;
         }
@@ -146,11 +129,50 @@ app.controller('TimerCtrl', ['$scope', '$localForage', 'UserSettings', function 
         $scope.userSettings.taskHistory.push({ start: startTime, stop: endTime, text: _text });
         $scope.settings.taskTextBox = "";
     }
+    //#endregion
 
-    function alertNotification() {
-        vibrationNotification();
-        setTimeout(function () { nativeNotification(); playSound(); }, 1600); // Set timeout because html5 Vibrate API does not take a callback ( Alert stops vibration ) :(
+}]);
+
+app.controller('TimerSizing', ['$scope', function ($scope) { // Needs to be directive (modifiying dom)
+    jQuery(".current-time").fitText(0.4, { minFontSize: '96px', maxFontSize: '175px' });
+
+    var windowHeight = $(window).outerHeight(true);   
+    var timerHeight = $('.timer-box').outerHeight(true);
+    var listBox = $('.view-main  .task-list');
+
+    var sizeTaskList = function () {
+        if (Modernizr.mq('(min-width: 50em)')) {
+            listBox.height(windowHeight - timerHeight + 'px');
+
+            if (Modernizr.mq('(min-height: 500px)')) {
+                listBox.height(windowHeight - timerHeight - 250 + 'px');
+            }
+        }
+        else {
+            listBox.height('initial');
+        }
+    };
+    sizeTaskList();
+
+    $(window).resize(function () {
+        sizeTaskList();
+    });
+}]);
+
+app.factory('UserSettings', ['$localForage', function ($localForage) {
+    _userSettings = {
+        sound: { play: true },
+        taskHistory: []
     }
+    return _userSettings;
+}]);
+
+app.factory('Notification', [function () {
+
+    var audio = new Audio();
+    audio.src = Modernizr.audio.ogg ? 'Content/Audio/chime.ogg' :
+                Modernizr.audio.mp3 ? 'Content/Audio/chime.mp3' :
+                                      'Content/Audio/chime.m4a';
 
     function nativeNotification() {
         if (notify.permissionLevel() === notify.PERMISSION_DEFAULT) {
@@ -167,14 +189,11 @@ app.controller('TimerCtrl', ['$scope', '$localForage', 'UserSettings', function 
         }
     }
 
-    function playSound() {
-        if ($scope.userSettings.sound.play) {
+    function toggleAudio(playSound) {
+        if (playSound === true) {
             audio.pause();
             audio.currentTime = 0;
             audio.play();
-        } else {
-            audio.pause();
-            audio.currentTime = 0;
         }
     }
 
@@ -186,35 +205,23 @@ app.controller('TimerCtrl', ['$scope', '$localForage', 'UserSettings', function 
             navigator.vibrate([500, 200, 500]);
         }
     }
-    //#endregion
 
-}]);
+    return {
+        notify: function (playSound) {
+            vibrationNotification();
+            setTimeout(function () { nativeNotification(); toggleAudio(playSound); }, 1600);
+            // Set timeout because html5 Vibrate API does not take a callback ( Alert stops vibration ) :(
+        },
 
-// Needs to be directive (modifiying dom)
-app.controller('TimerSizing', ['$scope', function ($scope) {
-    jQuery(".current-time").fitText(0.4, { minFontSize: '96px', maxFontSize: '175px' });
-
-    var windowHeight = $(window).height();
-    var timerHeight = $('.timer-box').height();
-    if (Modernizr.mq('(min-width: 50em)')) {
-        $('.view-main  .task-list').height(windowHeight - timerHeight - 360 + 'px');
+        playAudio: function () {
+            audio.pause();
+            audio.currentTime = 0;
+            audio.play();
+        }
     }
-
-    $(window).resize(function () {
-        if (Modernizr.mq('(min-width: 50em)')) {
-            windowHeight = $(window).height();
-            timmerHeight = $('.timer-box').height();
-
-            $('.view-main  .task-list').height(windowHeight - timerHeight - 360 + 'px');
-        }
-        else {
-            $('.view-main  .task-list').height('initial');
-        }
-    });
 }]);
 
-// http://jsdo.it/can.i.do.web/zHbM
-app.directive('clock', function ($timeout, dateFilter) {
+app.directive('clock', function ($timeout, dateFilter) { // http://jsdo.it/can.i.do.web/zHbM
     return function (scope, element, attrs) {
         var timeoutId; // timeoutId, so that we can cancel the time updates
 
@@ -236,4 +243,3 @@ app.directive('clock', function ($timeout, dateFilter) {
         updateLater(); // kick off the UI update process.
     }
 });
-

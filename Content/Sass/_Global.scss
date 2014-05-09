@@ -93,6 +93,11 @@ header {
     }
 }
 
+main {
+    padding-bottom:40px;
+    overflow:hidden;
+}
+
 footer {
     border-top: 1px solid #A6A6A6;
     clear: both;
@@ -137,7 +142,7 @@ footer {
         border-left: 1px solid #A6A6A6;
 
         ul {
-            min-height: 160px;
+            min-height: 150px;
         }
     }
 
@@ -148,7 +153,7 @@ footer {
 
 .task-list {
     list-style: none;
-    padding: 0 0 40px 0;
+    padding: 0;
     margin: 10px 0;
     overflow: auto;
     overflow-x: hidden;
@@ -167,17 +172,16 @@ footer {
             background: #FAFAFA;
         }
     }
-    /*@media all and (min-width: 38em) {
-        overflow-y: scroll;
-        max-width: 99.8%;
-    }*/
+    @media all and (max-width: 50em) {
+        heigth:initial !important;
+    }
 }
 
 @media all and (min-width: 50em) {
     .task-list-wrapper {
         .col-7-c {
             ul {
-                min-height: 190px;
+                min-height: 170px;
             }
         }
     }
@@ -224,12 +228,7 @@ footer {
     }
 
     @media all and (min-width: 56em) {
-        button {
-            //font-size: 2.2em;
-        }
-
         select {
-            //font-size: 2.2em;
             height: 66px;
         }
     }
