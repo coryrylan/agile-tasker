@@ -582,6 +582,11 @@ header {
   color: #FFF;
   font-size: 1.5em;
   text-align: center; }
+  @media all and (min-width: 50em) {
+    header {
+      position: fixed;
+      top: 0;
+      left: 0; } }
   @media all and (min-width: 68em) {
     header {
       font-size: 1.8em; } }
@@ -626,8 +631,7 @@ footer {
   margin: 10px 0;
   overflow: auto;
   overflow-x: hidden;
-  max-height: 160px;
-  height: 40%; }
+  min-height: 160px; }
   .task-list li {
     width: 100%;
     padding: 10px 1%;
@@ -639,52 +643,7 @@ footer {
       background: #FAFAFA; }
   @media all and (max-width: 50em) {
     .task-list {
-      height: initial !important;
-      max-height: none; } }
-
-/*@media all and (min-height: 50em) {
-    .task-list {
-        min-height: 170px;
-    }
-}*/
-.secondary-nav {
-  margin: 10px auto 0 auto; }
-  .secondary-nav button {
-    background: #4cb658;
-    border: none;
-    color: #FFF;
-    font-size: 1.7em;
-    padding: 8px;
-    margin-left: 1%;
-    width: 30.33%; }
-    .secondary-nav button:hover {
-      background: #43a54d; }
-    .secondary-nav button:focus {
-      background: #4cb658; }
-  .secondary-nav select {
-    background: #FFF;
-    border-radius: 0;
-    background: #FFF;
-    font-size: 1.7em;
-    width: 32.33%;
-    padding: 4px 8px;
-    height: 52px;
-    border: 2px solid #636363;
-    margin-left: 1%; }
-  @media all and (min-width: 50em) {
-    .secondary-nav {
-      margin: 10% auto 0 auto; } }
-  @media all and (min-width: 56em) {
-    .secondary-nav select {
-      height: 61px; } }
-  @media all and (min-width: 68em) {
-    .secondary-nav {
-      max-width: 600px; }
-      .secondary-nav button {
-        font-size: 1.9em; }
-      .secondary-nav select {
-        font-size: 1.9em;
-        height: 65px; } }
+      heigth: initial !important; } }
 
 .label {
   padding: 4px 0;
@@ -800,6 +759,46 @@ footer {
   .close-menu-btn, .menu-btn {
     visibility: hidden !important; } }
 
+/* Secondary Navigation for timer */
+.secondary-nav {
+  margin: 10px auto 0 auto; }
+  .secondary-nav button {
+    background: #4cb658;
+    border: none;
+    color: #FFF;
+    font-size: 1.7em;
+    padding: 8px;
+    margin-left: 1%;
+    width: 30.33%; }
+    .secondary-nav button:hover {
+      background: #43a54d; }
+    .secondary-nav button:focus {
+      background: #4cb658; }
+  .secondary-nav select {
+    background: #FFF;
+    border-radius: 0;
+    background: #FFF;
+    font-size: 1.7em;
+    width: 32.33%;
+    padding: 4px 8px;
+    height: 52px;
+    border: 2px solid #636363;
+    margin-left: 1%; }
+  @media all and (min-width: 50em) {
+    .secondary-nav {
+      margin: 10% auto 0 auto; } }
+  @media all and (min-width: 56em) {
+    .secondary-nav select {
+      height: 66px; } }
+  @media all and (min-width: 68em) {
+    .secondary-nav {
+      max-width: 600px; }
+      .secondary-nav button {
+        font-size: 1.9em; }
+      .secondary-nav select {
+        font-size: 1.9em;
+        height: 72px; } }
+
 @keyframes fadein {
   from {
     opacity: 0; }
@@ -885,14 +884,17 @@ footer {
   display: inline-block; }
 
 .view {
-  -webkit-animation: fadein 0.5s;
-  -moz-animation: fadein 0.5s;
-  -o-animation: fadein 0.5s;
-  animation: fadein 0.5s;
+  /*-webkit-animation: fadein 0.5s;
+    -moz-animation: fadein 0.5s;
+    -o-animation: fadein 0.5s;
+    animation: fadein 0.5s;*/
   padding: 0 15px; }
+  @media all and (min-width: 50em) {
+    .view {
+      margin-top: 40px; } }
   @media all and (min-width: 56em) {
     .view {
-      font-size: 1.2em; } }
+      font-size: 1.4em; } }
 
 .view-main {
   padding: 0; }
@@ -907,22 +909,18 @@ footer {
     border: 1px solid #A6A6A6;
     border-radius: 2px; }
   .view-main .col-7-c, .view-main .col-5-c {
-    padding: 8px 0 0 0; }
+    padding: 8px 0 0 0;
+    margin-bottom: 0; }
   .view-main .col-7-c {
     margin-top: 40px; }
-  .view-main .task-list-wrapper .col-7-c {
-    border-left: 1px solid #A6A6A6; }
-    .view-main .task-list-wrapper .col-7-c .col-12 {
-      padding-bottom: 0; }
-  .view-main .task-list-wrapper .col-7-c, .view-main .task-list-wrapper .col-5-c {
-    margin-bottom: 0; }
   @media all and (min-width: 50em) {
     .view-main textarea {
       font-size: 1.1em;
       height: 130px; }
     .view-main .col-7-c {
       width: 58.331%;
-      margin-top: 0; }
+      margin-top: 0;
+      border-left: 1px solid #A6A6A6; }
     .view-main .col-5-c {
       width: 41.665%; }
     .view-main .col-6-c {

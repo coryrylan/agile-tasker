@@ -71,8 +71,8 @@ p {
 
 a {
     color: $themeGreen;
-    cursor: pointer;
-    text-decoration: underline;
+    cursor:pointer;
+    text-decoration:underline;
 
     &:hover {
         color: $themeGreen;
@@ -88,14 +88,20 @@ header {
     font-size: 1.5em;
     text-align: center;
 
+    @media all and (min-width: 50em) {
+        position:fixed;
+        top:0;
+        left:0;
+    }
+
     @media all and (min-width: 68em) {
         font-size: 1.8em;
     }
 }
 
 main {
-    padding-bottom: 40px;
-    overflow: hidden;
+    padding-bottom:40px;
+    overflow:hidden;
 }
 
 footer {
@@ -143,8 +149,7 @@ footer {
     margin: 10px 0;
     overflow: auto;
     overflow-x: hidden;
-    max-height: 160px;
-    height: 40%;
+    min-height: 160px;
 
     li {
         width: 100%;
@@ -162,74 +167,7 @@ footer {
     }
 
     @media all and (max-width: 50em) {
-        height: initial !important;
-        max-height: none;
-    }
-}
-
-/*@media all and (min-height: 50em) {
-    .task-list {
-        min-height: 170px;
-    }
-}*/
-
-.secondary-nav {
-    margin: 10px auto 0 auto;
-
-    button {
-        background: $themeGreen;
-        border: none;
-        color: #FFF;
-        font-size: 1.7em;
-        padding: 8px;
-        margin-left: 1%;
-        width: 30.33%;
-
-        &:hover {
-            background: darken($themeGreen, 5%);
-        }
-
-        &:focus {
-            background: $themeGreen;
-        }
-
-        &:active {
-        }
-    }
-
-    select {
-        background: #FFF;
-        border-radius: 0;
-        background: #FFF;
-        font-size: 1.7em;
-        width: 32.33%;
-        padding: 4px 8px;
-        height: 52px;
-        border: 2px solid #636363;
-        margin-left: 1%;
-    }
-
-    @media all and (min-width: 50em) {
-        margin: 10% auto 0 auto;
-    }
-
-    @media all and (min-width: 56em) {
-        select {
-            height: 61px;
-        }
-    }
-
-    @media all and (min-width: 68em) {
-        max-width: 600px;
-
-        button {
-            font-size: 1.9em;
-        }
-
-        select {
-            font-size: 1.9em;
-            height: 65px;
-        }
+        heigth:initial !important;
     }
 }
 

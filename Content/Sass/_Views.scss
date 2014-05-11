@@ -1,12 +1,16 @@
 ﻿.view {
-    -webkit-animation: fadein 0.5s;
+    /*-webkit-animation: fadein 0.5s;
     -moz-animation: fadein 0.5s;
     -o-animation: fadein 0.5s;
-    animation: fadein 0.5s;
+    animation: fadein 0.5s;*/
     padding: 0 15px;
 
+    @media all and (min-width: 50em) {
+        margin-top: 40px;
+    }
+
     @media all and (min-width: 56em) {
-        font-size: 1.2em;
+        font-size: 1.4em;
     }
 }
 
@@ -27,24 +31,11 @@
 
     .col-7-c, .col-5-c {
         padding: 8px 0 0 0;
+        margin-bottom: 0;
     }
 
     .col-7-c {
         margin-top: 40px;
-    }
-
-    .task-list-wrapper {
-        .col-7-c {
-            border-left: 1px solid #A6A6A6;
-
-            .col-12 {
-                padding-bottom: 0;
-            }
-        }
-
-        .col-7-c, .col-5-c {
-            margin-bottom: 0;
-        }
     }
 
     @media all and (min-width: 50em) {
@@ -56,6 +47,7 @@
         .col-7-c {
             width: 58.331%;
             margin-top: 0;
+            border-left: 1px solid #A6A6A6;
         }
 
         .col-5-c {
