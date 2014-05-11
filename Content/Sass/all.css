@@ -1,4 +1,4 @@
-﻿/*! normalize.css v3.0.0 | MIT License | git.io/normalize */
+/*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 /**
  * 1. Set default font family to sans-serif.
  * 2. Prevent iOS text size adjust after orientation change, without disabling
@@ -509,167 +509,6 @@ td, th {
   margin: 0 auto;
   padding: 0 2%; }
 
-@font-face {
-  font-family: 'fontello';
-  src: url('../Fontello/font/fontello.eot?61586391');
-  src: url('../Fontello/font/fontello.eot?61586391#iefix') format('embedded-opentype'), url('../Fontello/font/fontello.woff?61586391') format('woff'), url('../Fontello/font/fontello.ttf?61586391') format('truetype'), url('../Fontello/font/fontello.svg?61586391#fontello') format('svg');
-  font-weight: normal;
-  font-style: normal; }
-
-/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
-/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
-/*
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-  @font-face {
-    font-family: 'fontello';
-    src: url('../font/fontello.svg?61586391#fontello') format('svg');
-  }
-}
-*/
-[class^="icon-"]:before, [class*=" icon-"]:before {
-  font-family: "fontello";
-  font-style: normal;
-  font-weight: normal;
-  speak: none;
-  display: inline-block;
-  text-decoration: inherit;
-  width: 1em;
-  margin-right: 0.2em;
-  text-align: center;
-  /* opacity: .8; */
-  /* For safety - reset parent styles, that can break glyph codes*/
-  font-variant: normal;
-  text-transform: none;
-  /* fix buttons height, for twitter bootstrap */
-  line-height: 1em;
-  /* Animation center compensation - margins should be symmetric */
-  /* remove if not needed */
-  margin-left: 0.2em;
-  /* you can be more comfortable with increased icons size */
-  /* font-size: 120%; */
-  /* Uncomment for 3D effect */
-  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */ }
-
-.icon-spin1:before {
-  content: '\e800'; }
-
-/* '' */
-.icon-html5:before {
-  content: '\e810'; }
-
-/* '' */
-.icon-chrome:before {
-  content: '\e802'; }
-
-/* '' */
-.icon-opera:before {
-  content: '\e804'; }
-
-/* '' */
-.icon-ie:before {
-  content: '\e803'; }
-
-/* '' */
-.icon-ok:before {
-  content: '\e805'; }
-
-/* '' */
-.icon-ok-circled:before {
-  content: '\e806'; }
-
-/* '' */
-.icon-cancel:before {
-  content: '\e815'; }
-
-/* '' */
-.icon-cancel-circled:before {
-  content: '\e814'; }
-
-/* '' */
-.icon-help:before {
-  content: '\e808'; }
-
-/* '' */
-.icon-help-circled:before {
-  content: '\e807'; }
-
-/* '' */
-.icon-pencil:before {
-  content: '\e817'; }
-
-/* '' */
-.icon-print:before {
-  content: '\e81c'; }
-
-/* '' */
-.icon-keyboard:before {
-  content: '\e81d'; }
-
-/* '' */
-.icon-attention:before {
-  content: '\e816'; }
-
-/* '' */
-.icon-firefox:before {
-  content: '\e801'; }
-
-/* '' */
-.icon-cog:before {
-  content: '\e80a'; }
-
-/* '' */
-.icon-volume-off:before {
-  content: '\e812'; }
-
-/* '' */
-.icon-volume-up:before {
-  content: '\e813'; }
-
-/* '' */
-.icon-clock:before {
-  content: '\e819'; }
-
-/* '' */
-.icon-left-open:before {
-  content: '\e81b'; }
-
-/* '' */
-.icon-right-open:before {
-  content: '\e81a'; }
-
-/* '' */
-.icon-play:before {
-  content: '\e80c'; }
-
-/* '' */
-.icon-stop:before {
-  content: '\e80b'; }
-
-/* '' */
-.icon-pause:before {
-  content: '\e80d'; }
-
-/* '' */
-.icon-chart-bar:before {
-  content: '\e80e'; }
-
-/* '' */
-.icon-coffee:before {
-  content: '\e818'; }
-
-/* '' */
-.icon-css3:before {
-  content: '\e80f'; }
-
-/* '' */
-.icon-github-circled:before {
-  content: '\e811'; }
-
-/* '' */
-.icon-menu:before {
-  content: '\e809'; }
-
-/* '' */
 /*!
     Cory Bateman http://www.corycode.me 
     MIT License http://opensource.org/licenses/MIT 
@@ -701,12 +540,12 @@ body {
   box-sizing: border-box; }
 
 *::selection {
-  background: #5EBD6A;
+  background: #4cb658;
   /* Safari */
   color: #FFF; }
 
 *::-moz-selection {
-  background: #5EBD6A;
+  background: #4cb658;
   /* Firefox */
   color: #FFF; }
 
@@ -729,18 +568,32 @@ p {
   width: 100%; }
 
 a {
-  color: #5EBD6A; }
+  color: #4cb658;
+  cursor: pointer;
+  text-decoration: underline; }
   a:hover {
-    color: #5EBD6A; }
+    color: #4cb658; }
 
 header {
   width: 100%;
   padding: 6px;
   border-bottom: 0;
-  background: #5EBD6A;
+  background: #4cb658;
   color: #FFF;
   font-size: 1.5em;
   text-align: center; }
+  @media all and (min-width: 50em) {
+    header {
+      position: fixed;
+      top: 0;
+      left: 0; } }
+  @media all and (min-width: 68em) {
+    header {
+      font-size: 1.8em; } }
+
+main {
+  padding-bottom: 40px;
+  overflow: hidden; }
 
 footer {
   border-top: 1px solid #A6A6A6;
@@ -768,24 +621,17 @@ footer {
   .timer-box .current-time {
     font-size: 5.7em;
     text-align: center; }
-
-.task-list-wrapper .col-7-c {
-  border-left: 1px solid #A6A6A6; }
-  .task-list-wrapper .col-7-c ul {
-    min-height: 160px; }
-.task-list-wrapper .col-7-c, .task-list-wrapper .col-5-c {
-  margin-bottom: 0; }
+  @media all and (min-width: 68em) {
+    .timer-box {
+      padding: 60px 10px; } }
 
 .task-list {
   list-style: none;
-  padding: 0 0 40px 0;
+  padding: 0;
   margin: 10px 0;
   overflow: auto;
   overflow-x: hidden;
-  /*@media all and (min-width: 38em) {
-        overflow-y: scroll;
-        max-width: 99.8%;
-    }*/ }
+  min-height: 160px; }
   .task-list li {
     width: 100%;
     padding: 10px 1%;
@@ -795,49 +641,9 @@ footer {
       border-top: 1px solid #A6A6A6; }
     .task-list li:nth-child(odd) {
       background: #FAFAFA; }
-
-@media all and (min-width: 50em) {
-  .task-list-wrapper .col-7-c ul {
-    min-height: 190px; } }
-
-.secondary-nav {
-  margin: 10px auto 0 auto; }
-  .secondary-nav button {
-    background: #5EBD6A;
-    border: none;
-    color: #FFF;
-    font-size: 1.7em;
-    padding: 8px;
-    margin-left: 1%;
-    width: 30.33%; }
-    .secondary-nav button:hover {
-      background: #5EBD6A; }
-    .secondary-nav button:focus {
-      background: #5EBD6A; }
-  .secondary-nav select {
-    background: #FFF;
-    border-radius: 0;
-    background: #FFF;
-    font-size: 1.7em;
-    width: 32.33%;
-    padding: 4px 8px;
-    height: 52px;
-    border: 2px solid #636363;
-    margin-left: 1%; }
-  @media all and (min-width: 50em) {
-    .secondary-nav {
-      margin: 10% auto 0 auto; } }
-  @media all and (min-width: 56em) {
-    .secondary-nav select {
-      height: 66px; } }
-  @media all and (min-width: 68em) {
-    .secondary-nav {
-      max-width: 600px; }
-      .secondary-nav button {
-        font-size: 1.9em; }
-      .secondary-nav select {
-        font-size: 1.9em;
-        height: 72px; } }
+  @media all and (max-width: 50em) {
+    .task-list {
+      heigth: initial !important; } }
 
 .label {
   padding: 4px 0;
@@ -892,7 +698,7 @@ footer {
   left: -300px;
   position: fixed;
   z-index: 20;
-  background-color: #5EBD6A;
+  background-color: #4cb658;
   overflow: hidden;
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
@@ -910,10 +716,10 @@ footer {
   .push-menu-left .menu-btn {
     margin: 10px 0;
     padding: 10px 30px;
-    background-color: #5EBD6A;
+    background-color: #4cb658;
     color: #fff; }
   .push-menu-left .close-menu-btn {
-    background-color: #5EBD6A;
+    background-color: #4cb658;
     color: #fff;
     border: none;
     margin-bottom: 6px;
@@ -946,9 +752,52 @@ footer {
     width: 0;
     height: 0; }
   nav.push-menu-left {
-    left: 0; }
+    left: 0;
+    padding-top: 30px; }
+    nav.push-menu-left a {
+      font-size: 1.6em; }
   .close-menu-btn, .menu-btn {
     visibility: hidden !important; } }
+
+/* Secondary Navigation for timer */
+.secondary-nav {
+  margin: 10px auto 0 auto; }
+  .secondary-nav button {
+    background: #4cb658;
+    border: none;
+    color: #FFF;
+    font-size: 1.7em;
+    padding: 8px;
+    margin-left: 1%;
+    width: 30.33%; }
+    .secondary-nav button:hover {
+      background: #43a54d; }
+    .secondary-nav button:focus {
+      background: #4cb658; }
+  .secondary-nav select {
+    background: #FFF;
+    border-radius: 0;
+    background: #FFF;
+    font-size: 1.7em;
+    width: 32.33%;
+    padding: 4px 8px;
+    height: 52px;
+    border: 2px solid #636363;
+    margin-left: 1%; }
+  @media all and (min-width: 50em) {
+    .secondary-nav {
+      margin: 10% auto 0 auto; } }
+  @media all and (min-width: 56em) {
+    .secondary-nav select {
+      height: 66px; } }
+  @media all and (min-width: 68em) {
+    .secondary-nav {
+      max-width: 600px; }
+      .secondary-nav button {
+        font-size: 1.9em; }
+      .secondary-nav select {
+        font-size: 1.9em;
+        height: 72px; } }
 
 @keyframes fadein {
   from {
@@ -1035,16 +884,17 @@ footer {
   display: inline-block; }
 
 .view {
+  /*-webkit-animation: fadein 0.5s;
+    -moz-animation: fadein 0.5s;
+    -o-animation: fadein 0.5s;
+    animation: fadein 0.5s;*/
   padding: 0 15px; }
+  @media all and (min-width: 50em) {
+    .view {
+      margin-top: 40px; } }
   @media all and (min-width: 56em) {
     .view {
       font-size: 1.4em; } }
-  @media all and (min-width: 68em) {
-    .view {
-      -webkit-animation: fadein 0.5s;
-      -moz-animation: fadein 0.5s;
-      -o-animation: fadein 0.5s;
-      animation: fadein 0.5s; } }
 
 .view-main {
   padding: 0; }
@@ -1059,7 +909,8 @@ footer {
     border: 1px solid #A6A6A6;
     border-radius: 2px; }
   .view-main .col-7-c, .view-main .col-5-c {
-    padding: 8px 0 0 0; }
+    padding: 8px 0 0 0;
+    margin-bottom: 0; }
   .view-main .col-7-c {
     margin-top: 40px; }
   @media all and (min-width: 50em) {
@@ -1068,14 +919,17 @@ footer {
       height: 130px; }
     .view-main .col-7-c {
       width: 58.331%;
-      margin-top: 0; }
+      margin-top: 0;
+      border-left: 1px solid #A6A6A6; }
     .view-main .col-5-c {
       width: 41.665%; }
     .view-main .col-6-c {
       width: 50%; } }
   @media all and (min-width: 68em) {
     .view-main textarea {
-      height: 180px; } }
+      height: 180px; }
+    .view-main .col-7-c, .view-main .col-5-c {
+      padding: 10px; } }
 
 .view-settings .icon-volume-up, .view-settings .icon-volume-off {
   font-size: 1.4em;

@@ -2,10 +2,10 @@
   "name": "Agile Tasker",
   "description": "A small task timer to help agile thinking methodologies.",
   "manifest_version": 2,
-  "version": "1.4.0",
+  "version": "1.4.1",
   "app": {
     "background": {
-      "scripts": ["Content/Scripts/background.js"]
+      "scripts": ["JS/background.js"]
     }
   },
   "icons": {
