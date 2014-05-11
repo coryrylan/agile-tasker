@@ -576,16 +576,16 @@ var app = angular.module('AgileTasker', ['ngRoute', 'LocalForageModule']);
 
 app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.when('/', {
-        templateUrl: '/Partials/timer.html'
+        templateUrl: 'Partials/timer.html'
     });
     $routeProvider.when('/about', {
-        templateUrl: '/Partials/about.html'
+        templateUrl: 'Partials/about.html'
     });
     $routeProvider.when('/history', {
-        templateUrl: '/Partials/history.html'
+        templateUrl: 'Partials/history.html'
     });
     $routeProvider.when('/settings', {
-        templateUrl: '/Partials/settings.html'
+        templateUrl: 'Partials/settings.html'
     });
     $routeProvider.otherwise({ redirectTo: '/' });
 }]);
