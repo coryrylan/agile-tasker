@@ -4,14 +4,7 @@
     -o-animation: fadein 0.5s;
     animation: fadein 0.5s;*/
     padding: 0 15px;
-
-    @media all and (min-width: 50em) {
-        margin-top: 40px;
-    }
-
-    @media all and (min-width: 56em) {
-        font-size: 1.4em;
-    }
+    min-height:370px;
 }
 
 .view-main {
@@ -38,7 +31,7 @@
         margin-top: 40px;
     }
 
-    @media all and (min-width: 50em) {
+   @include respond-min(40em) {
         textarea {
             font-size: 1.1em;
             height: 130px;
@@ -56,16 +49,6 @@
 
         .col-6-c {
             width: 50%;
-        }
-    }
-
-    @media all and (min-width: 68em) {
-        textarea {
-            height: 180px;
-        }
-
-        .col-7-c, .col-5-c {
-            padding: 10px;
         }
     }
 }

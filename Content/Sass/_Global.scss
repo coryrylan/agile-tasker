@@ -22,7 +22,7 @@ body {
     font-family: 'open_sanslight', Helvetica, Arial, "Lucida Grande", sans-serif;
     font-weight: 300;
     font-size: 16px;
-    background: #ffffff;
+    background: #2d2d2d;
     color: #2d2d2d;
     overflow-x: hidden;
 }
@@ -67,6 +67,14 @@ p {
 
 .app-width {
     width: 100%;
+    max-width:800px;
+    margin:0 auto;
+    position:relative;
+    overflow:hidden;
+
+   @include respond-min(50em) {
+        margin-top:40px;
+    }
 }
 
 a {
@@ -87,21 +95,11 @@ header {
     color: #FFF;
     font-size: 1.5em;
     text-align: center;
-
-    @media all and (min-width: 50em) {
-        position:fixed;
-        top:0;
-        left:0;
-    }
-
-    @media all and (min-width: 68em) {
-        font-size: 1.8em;
-    }
 }
 
 main {
-    padding-bottom:40px;
     overflow:hidden;
+    background:#FFF;
 }
 
 footer {
@@ -111,9 +109,6 @@ footer {
     width: 100%;
     background: #EDEDED;
     overflow: auto;
-    position: fixed;
-    bottom: 0;
-    left: 0;
 
     i {
         font-size: 1.4em;
@@ -137,10 +132,6 @@ footer {
         font-size: 5.7em;
         text-align: center;
     }
-
-    @media all and (min-width: 68em) {
-        padding: 60px 10px;
-    }
 }
 
 .task-list {
@@ -149,7 +140,7 @@ footer {
     margin: 10px 0;
     overflow: auto;
     overflow-x: hidden;
-    min-height: 160px;
+    min-height: 130px;
 
     li {
         width: 100%;
@@ -166,7 +157,7 @@ footer {
         }
     }
 
-    @media all and (max-width: 50em) {
+    @include respond-min(50em) {
         heigth:initial !important;
     }
 }

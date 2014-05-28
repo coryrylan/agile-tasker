@@ -32,7 +32,7 @@
     width: 240px;
     height: 100%;
     left: -300px;
-    position: fixed;
+    position: absolute;
     z-index: 20;
     background-color: $themeGreen;
     overflow: hidden;
@@ -93,38 +93,6 @@
     border: none;
 }
 
-@media all and (min-width: 68em) {
-    body, footer {
-        padding-left: 238px;
-    }
-
-    .pml-open #push-wrapper {
-        left: 0;
-    }
-
-    .mask-on {
-        top: 0;
-        left: 0;
-        z-index: -15;
-        width: 0;
-        height: 0;
-    }
-
-    nav.push-menu-left {
-        left: 0;
-        padding-top:30px;
-
-        a {
-            font-size:1.6em;
-        }
-    }
-
-    .close-menu-btn, .menu-btn {
-        visibility: hidden !important;
-    }
-}
-
-
 /* Secondary Navigation for timer */
 .secondary-nav {
     margin: 10px auto 0 auto;
@@ -162,26 +130,7 @@
         margin-left: 1%;
     }
 
-    @media all and (min-width: 50em) {
-        margin: 10% auto 0 auto;
-    }
-
-    @media all and (min-width: 56em) {
-        select {
-            height: 66px;
-        }
-    }
-
-    @media all and (min-width: 68em) {
-        max-width: 600px;
-
-        button {
-            font-size: 1.9em;
-        }
-
-        select {
-            font-size: 1.9em;
-            height: 72px;
-        }
+    @include respond-min(40em) {
+        margin: 40px auto 0 auto;
     }
 }
