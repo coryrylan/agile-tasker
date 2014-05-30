@@ -4,7 +4,12 @@
     -o-animation: fadein 0.5s;
     animation: fadein 0.5s;*/
     padding: 0 15px;
-    min-height:370px;
+    min-height: 405px;
+
+    @include respond-min(40em) {
+        height: 405px;
+        overflow:hidden;
+    }
 }
 
 .view-main {
@@ -29,9 +34,10 @@
 
     .col-7-c {
         margin-top: 40px;
+        min-height: 210px;
     }
 
-   @include respond-min(40em) {
+    @include respond-min(40em) {
         textarea {
             font-size: 1.1em;
             height: 130px;
@@ -78,5 +84,13 @@
 
     .icon-github-circled-1 {
         font-size: 2.5em;
+    }
+}
+
+.view-history {
+    @include respond-min(40em) {
+        .task-list {
+            max-height: 288px;
+        }
     }
 }

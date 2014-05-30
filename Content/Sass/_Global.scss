@@ -67,20 +67,20 @@ p {
 
 .app-width {
     width: 100%;
-    max-width:800px;
-    margin:0 auto;
-    position:relative;
-    overflow:hidden;
+    max-width: 740px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
 
-   @include respond-min(50em) {
-        margin-top:40px;
+    @include respond-min(47.5em) {
+        margin-top: 40px;
     }
 }
 
 a {
     color: $themeGreen;
-    cursor:pointer;
-    text-decoration:underline;
+    cursor: pointer;
+    text-decoration: underline;
 
     &:hover {
         color: $themeGreen;
@@ -98,8 +98,8 @@ header {
 }
 
 main {
-    overflow:hidden;
-    background:#FFF;
+    overflow: hidden;
+    background: #FFF;
 }
 
 footer {
@@ -137,10 +137,9 @@ footer {
 .task-list {
     list-style: none;
     padding: 0;
-    margin: 10px 0;
+    margin: 10px 0 0 0;
     overflow: auto;
     overflow-x: hidden;
-    min-height: 130px;
 
     li {
         width: 100%;
@@ -157,8 +156,8 @@ footer {
         }
     }
 
-    @include respond-min(50em) {
-        heigth:initial !important;
+    @include respond-min(40em) {
+        max-height: 140px;
     }
 }
 
