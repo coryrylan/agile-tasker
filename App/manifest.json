@@ -5,11 +5,11 @@
   "version": "1.4.1",
   "app": {
     "background": {
-      "scripts": ["JS/background.js"]
+      "scripts": ["Js/Config/background.js"]
     }
   },
   "icons": {
-    "128": "Content/icon.png"
+    "128": "Content/Images/icon.png"
   },
   "permissions": [
     "notifications"

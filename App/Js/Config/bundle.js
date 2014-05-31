@@ -572,9 +572,18 @@ function(){this.$get=function(){return{}}});n.directive("ngView",x);n.directive(
     };
 
 })(jQuery);
-var app = angular.module('AgileTasker', ['ngRoute', 'LocalForageModule']);
+"use strict";
 
-app.config(['$routeProvider', function ($routeProvider) {
+// Declare app level module which depends on filters, and services
+var app = angular.module('AgileTasker', [
+    'ngRoute',
+    'LocalForageModule',
+    'app.filters',
+    'app.services',
+    'app.directives',
+    'app.controllers'
+])
+.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.when('/', {
         templateUrl: 'Partials/timer.html'
     });
@@ -589,9 +598,12 @@ app.config(['$routeProvider', function ($routeProvider) {
     });
     $routeProvider.otherwise({ redirectTo: '/' });
 }]);
+'use strict';
 
-app.controller('TimerCtrl', ['$scope', '$localForage', 'UserSettings', 'Notification', function ($scope, $localForage, UserSettings, Notification) {
+/* Controllers */
+angular.module('app.controllers', [])
 
+.controller('TimerCtrl', ['$scope', '$localForage', 'UserSettings', 'Notification', function ($scope, $localForage, UserSettings, Notification) {
     //#region Models
     $scope.isPlaying = false;
 
@@ -601,6 +613,7 @@ app.controller('TimerCtrl', ['$scope', '$localForage', 'UserSettings', 'Notifica
         selectedTime: {},
         taskTextBox: ""
     };
+
     $scope.settings.selectedTime = $scope.settings.options[2];
     $scope.settings.currentTime = $scope.settings.options[2].value + ":00";
 
@@ -646,7 +659,7 @@ app.controller('TimerCtrl', ['$scope', '$localForage', 'UserSettings', 'Notifica
 
     $scope.toggleSound = function () {
         $scope.userSettings.sound.play = !$scope.userSettings.sound.play;
-        if ($scope.userSettings.sound.play == true) {
+        if ($scope.userSettings.sound.play === true) {
             Notification.playAudio();
         }
     };
@@ -705,21 +718,68 @@ app.controller('TimerCtrl', ['$scope', '$localForage', 'UserSettings', 'Notifica
     }
     //#endregion
 
-}]);
+}])
 
-app.controller('TimerSizing', ['$scope', function ($scope) { // Needs to be directive (modifiying dom)
+.controller('TimerSizing', ['$scope', function ($scope) { // Needs to be directive (modifiying dom)
     jQuery(".current-time").fitText(0.4, { minFontSize: '96px', maxFontSize: '175px' });
 }]);
 
-app.factory('UserSettings', ['$localForage', function ($localForage) {
+'use strict';
+
+/* Directives */
+angular.module('app.directives', [])
+  .directive('appVersion', ['version', function(version) {
+      return function(scope, elm, attrs) {
+          elm.text(version);
+      };
+}])
+
+.directive('clock', ['$timeout', 'dateFilter', function ($timeout, dateFilter) { // http://jsdo.it/can.i.do.web/zHbM
+    return function (scope, element, attrs) {
+        var timeoutId; // timeoutId, so that we can cancel the time updates
+
+        // schedule update in one second
+        function updateLater() {
+            // save the timeoutId for canceling
+            timeoutId = $timeout(function () {
+                element.text(dateFilter(new Date(), 'shortTime'));
+                updateLater(); // schedule another update
+            }, 1000);
+        }
+
+        // listen on DOM destroy (removal) event, and cancel the next UI update
+        // to prevent updating time ofter the DOM element was removed.
+        element.bind('$destroy', function () {
+            $timeout.cancel(timeoutId);
+        });
+
+        updateLater(); // kick off the UI update process.
+    }
+}]);
+'use strict';
+
+/* Filters */
+angular.module('app.filters', []).
+
+filter('interpolate', ['version', function (version) {
+    return function (text) {
+        return String(text).replace(/\%VERSION\%/mg, version);
+    };
+}]);
+'use strict';
+
+/* Services */
+angular.module('app.services', []).value('version', '0.5.0')
+
+.factory('UserSettings', ['$localForage', function ($localForage) {
     _userSettings = {
         sound: { play: true },
         taskHistory: []
     }
     return _userSettings;
-}]);
+}])
 
-app.factory('Notification', [function () {
+.factory('Notification', [function () {
 
     var audio = new Audio();
     audio.src = Modernizr.audio.ogg ? 'Content/Audio/chime.ogg' :
@@ -772,26 +832,3 @@ app.factory('Notification', [function () {
         }
     }
 }]);
-
-app.directive('clock', function ($timeout, dateFilter) { // http://jsdo.it/can.i.do.web/zHbM
-    return function (scope, element, attrs) {
-        var timeoutId; // timeoutId, so that we can cancel the time updates
-
-        // schedule update in one second
-        function updateLater() {
-            // save the timeoutId for canceling
-            timeoutId = $timeout(function () {
-                element.text(dateFilter(new Date(), 'shortTime'));
-                updateLater(); // schedule another update
-            }, 1000);
-        }
-
-        // listen on DOM destroy (removal) event, and cancel the next UI update
-        // to prevent updating time ofter the DOM element was removed.
-        element.bind('$destroy', function () {
-            $timeout.cancel(timeoutId);
-        });
-
-        updateLater(); // kick off the UI update process.
-    }
-});
