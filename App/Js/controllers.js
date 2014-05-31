@@ -117,7 +117,6 @@ angular.module('app.controllers', [])
         $scope.settings.taskTextBox = "";
     }
     //#endregion
-
 }])
 
 .controller('TimerSizing', ['$scope', function ($scope) { // Needs to be directive (modifiying dom)

@@ -717,7 +717,6 @@ angular.module('app.controllers', [])
         $scope.settings.taskTextBox = "";
     }
     //#endregion
-
 }])
 
 .controller('TimerSizing', ['$scope', function ($scope) { // Needs to be directive (modifiying dom)
@@ -728,7 +727,8 @@ angular.module('app.controllers', [])
 
 /* Directives */
 angular.module('app.directives', [])
-  .directive('appVersion', ['version', function(version) {
+
+.directive('appVersion', ['version', function (version) {
       return function(scope, elm, attrs) {
           elm.text(version);
       };
