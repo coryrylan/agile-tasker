@@ -515,8 +515,8 @@ td, th {
 */
 @font-face {
   font-family: 'open_sanslight';
-  src: url('../OpenSans/OpenSans-Light-webfont.eot');
-  src: url('../OpenSans/OpenSans-Light-webfont.eot?#iefix') format('embedded-opentype'), url('../OpenSans/OpenSans-Light-webfont.woff') format('woff'), url('../OpenSans/OpenSans-Light-webfont.ttf') format('truetype'), url('../OpenSans/OpenSans-Light-webfont.svg#open_sanslight') format('svg');
+  src: url('../Fonts/OpenSans/OpenSans-Light-webfont.eot');
+  src: url('../Fonts/OpenSans/OpenSans-Light-webfont.eot?#iefix') format('embedded-opentype'), url('../Fonts/OpenSans/OpenSans-Light-webfont.woff') format('woff'), url('../Fonts/OpenSans/OpenSans-Light-webfont.ttf') format('truetype'), url('../Fonts/OpenSans/OpenSans-Light-webfont.svg#open_sanslight') format('svg');
   font-weight: normal;
   font-style: normal; }
 
@@ -527,7 +527,7 @@ body {
   font-family: 'open_sanslight', Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 300;
   font-size: 16px;
-  background: #ffffff;
+  background: #2d2d2d;
   color: #2d2d2d;
   overflow-x: hidden; }
 
@@ -565,7 +565,14 @@ p {
   float: right; }
 
 .app-width {
-  width: 100%; }
+  width: 100%;
+  max-width: 740px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden; }
+  @media screen and (min-width: 47.5em) {
+    .app-width {
+      margin-top: 40px; } }
 
 a {
   color: #4cb658;
@@ -582,18 +589,10 @@ header {
   color: #FFF;
   font-size: 1.5em;
   text-align: center; }
-  @media all and (min-width: 50em) {
-    header {
-      position: fixed;
-      top: 0;
-      left: 0; } }
-  @media all and (min-width: 68em) {
-    header {
-      font-size: 1.8em; } }
 
 main {
-  padding-bottom: 40px;
-  overflow: hidden; }
+  overflow: hidden;
+  background: #FFF; }
 
 footer {
   border-top: 1px solid #A6A6A6;
@@ -601,10 +600,7 @@ footer {
   padding: 4px;
   width: 100%;
   background: #EDEDED;
-  overflow: auto;
-  position: fixed;
-  bottom: 0;
-  left: 0; }
+  overflow: auto; }
   footer i {
     font-size: 1.4em;
     cursor: pointer;
@@ -621,17 +617,13 @@ footer {
   .timer-box .current-time {
     font-size: 5.7em;
     text-align: center; }
-  @media all and (min-width: 68em) {
-    .timer-box {
-      padding: 60px 10px; } }
 
 .task-list {
   list-style: none;
   padding: 0;
-  margin: 10px 0;
+  margin: 10px 0 0 0;
   overflow: auto;
-  overflow-x: hidden;
-  min-height: 160px; }
+  overflow-x: hidden; }
   .task-list li {
     width: 100%;
     padding: 10px 1%;
@@ -641,9 +633,9 @@ footer {
       border-top: 1px solid #A6A6A6; }
     .task-list li:nth-child(odd) {
       background: #FAFAFA; }
-  @media all and (max-width: 50em) {
+  @media screen and (min-width: 40em) {
     .task-list {
-      heigth: initial !important; } }
+      max-height: 140px; } }
 
 .label {
   padding: 4px 0;
@@ -696,7 +688,7 @@ footer {
   width: 240px;
   height: 100%;
   left: -300px;
-  position: fixed;
+  position: absolute;
   z-index: 20;
   background-color: #4cb658;
   overflow: hidden;
@@ -740,25 +732,6 @@ footer {
   background: none;
   border: none; }
 
-@media all and (min-width: 68em) {
-  body, footer {
-    padding-left: 238px; }
-  .pml-open #push-wrapper {
-    left: 0; }
-  .mask-on {
-    top: 0;
-    left: 0;
-    z-index: -15;
-    width: 0;
-    height: 0; }
-  nav.push-menu-left {
-    left: 0;
-    padding-top: 30px; }
-    nav.push-menu-left a {
-      font-size: 1.6em; }
-  .close-menu-btn, .menu-btn {
-    visibility: hidden !important; } }
-
 /* Secondary Navigation for timer */
 .secondary-nav {
   margin: 10px auto 0 auto; }
@@ -784,20 +757,9 @@ footer {
     height: 52px;
     border: 2px solid #636363;
     margin-left: 1%; }
-  @media all and (min-width: 50em) {
+  @media screen and (min-width: 40em) {
     .secondary-nav {
-      margin: 10% auto 0 auto; } }
-  @media all and (min-width: 56em) {
-    .secondary-nav select {
-      height: 66px; } }
-  @media all and (min-width: 68em) {
-    .secondary-nav {
-      max-width: 600px; }
-      .secondary-nav button {
-        font-size: 1.9em; }
-      .secondary-nav select {
-        font-size: 1.9em;
-        height: 72px; } }
+      margin: 40px auto 0 auto; } }
 
 @keyframes fadein {
   from {
@@ -888,13 +850,12 @@ footer {
     -moz-animation: fadein 0.5s;
     -o-animation: fadein 0.5s;
     animation: fadein 0.5s;*/
-  padding: 0 15px; }
-  @media all and (min-width: 50em) {
+  padding: 0 15px;
+  min-height: 405px; }
+  @media screen and (min-width: 40em) {
     .view {
-      margin-top: 40px; } }
-  @media all and (min-width: 56em) {
-    .view {
-      font-size: 1.4em; } }
+      height: 405px;
+      overflow: hidden; } }
 
 .view-main {
   padding: 0; }
@@ -912,8 +873,9 @@ footer {
     padding: 8px 0 0 0;
     margin-bottom: 0; }
   .view-main .col-7-c {
-    margin-top: 40px; }
-  @media all and (min-width: 50em) {
+    margin-top: 40px;
+    min-height: 210px; }
+  @media screen and (min-width: 40em) {
     .view-main textarea {
       font-size: 1.1em;
       height: 130px; }
@@ -925,11 +887,6 @@ footer {
       width: 41.665%; }
     .view-main .col-6-c {
       width: 50%; } }
-  @media all and (min-width: 68em) {
-    .view-main textarea {
-      height: 180px; }
-    .view-main .col-7-c, .view-main .col-5-c {
-      padding: 10px; } }
 
 .view-settings .icon-volume-up, .view-settings .icon-volume-off {
   font-size: 1.4em;
@@ -946,5 +903,9 @@ footer {
   height: 46px; }
 .view-about .icon-github-circled-1 {
   font-size: 2.5em; }
+
+@media screen and (min-width: 40em) {
+  .view-history .task-list {
+    max-height: 288px; } }
 
 /*# sourceMappingURL=all.css.map */
