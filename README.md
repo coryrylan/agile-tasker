@@ -11,6 +11,7 @@ enabled IOS Web App soon.</p>
 
 <h2>Latest changes</h2>
 <ul>
+<li>Version 1.5.1 Minor UI fixes</li>
 <li>Version 1.4.1 - Minor Bug Fixes</li>
 <li>Version 1.4.0 - UI Update</li>
 <li>Version 1.3.1 - Minor bug fix for local storage</li>

@@ -1,7 +1,7 @@
 ﻿'use strict';
 
 /* Services */
-angular.module('app.services', []).value('version', '0.5.0')
+angular.module('app.services', []).value('version', '1.5.1')
 
 .factory('UserSettings', ['$localForage', function ($localForage) {
     _userSettings = {
