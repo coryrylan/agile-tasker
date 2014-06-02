@@ -4,13 +4,11 @@
     -o-animation: fadein 0.5s;
     animation: fadein 0.5s;*/
     padding: 0 15px;
+    min-height: 405px;
 
-    @media all and (min-width: 50em) {
-        margin-top: 40px;
-    }
-
-    @media all and (min-width: 56em) {
-        font-size: 1.4em;
+    @include respond-min(40em) {
+        height: 405px;
+        overflow:hidden;
     }
 }
 
@@ -36,9 +34,10 @@
 
     .col-7-c {
         margin-top: 40px;
+        min-height: 210px;
     }
 
-    @media all and (min-width: 50em) {
+    @include respond-min(40em) {
         textarea {
             font-size: 1.1em;
             height: 130px;
@@ -56,16 +55,6 @@
 
         .col-6-c {
             width: 50%;
-        }
-    }
-
-    @media all and (min-width: 68em) {
-        textarea {
-            height: 180px;
-        }
-
-        .col-7-c, .col-5-c {
-            padding: 10px;
         }
     }
 }
@@ -95,5 +84,13 @@
 
     .icon-github-circled-1 {
         font-size: 2.5em;
+    }
+}
+
+.view-history {
+    @include respond-min(40em) {
+        .task-list {
+            max-height: 288px;
+        }
     }
 }

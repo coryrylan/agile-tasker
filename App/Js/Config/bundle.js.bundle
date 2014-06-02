@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<bundle minify="true" runOnBuild="true" output="bundle.js" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://vswebessentials.com/schemas/v1/bundle.xsd">
+  <!--The order of the <file> elements determines the order of the file contents when bundled.-->
+  <file>/App/Js/Libraries/JQuery/jquery.js</file>
+  <file>/App/Js/Libraries/Angular/angular.js</file>
+  <file>/App/Js/Libraries/Angular/angular-route.min.js</file>
+  <file>/App/Js/Libraries/localForage/localforage.js</file>
+  <file>/App/Js/Libraries/localForage/angular-localForage.js</file>
+  <file>/App/Js/Libraries/notifications.js</file>
+  <file>/App/Js/Libraries/JQuery/fitText.js</file>
+  <file>/App/Js/app.js</file>
+  <file>/App/Js/controllers.js</file>
+  <file>/App/Js/directives.js</file>
+  <file>/App/Js/filters.js</file>
+  <file>/App/Js/services.js</file>
+</bundle>

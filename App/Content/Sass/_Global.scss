@@ -7,8 +7,8 @@ $themeGreen: #4cb658;
 
 @font-face {
     font-family: 'open_sanslight';
-    src: url('../OpenSans/OpenSans-Light-webfont.eot');
-    src: url('../OpenSans/OpenSans-Light-webfont.eot?#iefix') format('embedded-opentype'), url('../OpenSans/OpenSans-Light-webfont.woff') format('woff'), url('../OpenSans/OpenSans-Light-webfont.ttf') format('truetype'), url('../OpenSans/OpenSans-Light-webfont.svg#open_sanslight') format('svg');
+    src: url('../Fonts/OpenSans/OpenSans-Light-webfont.eot');
+    src: url('../Fonts/OpenSans/OpenSans-Light-webfont.eot?#iefix') format('embedded-opentype'), url('../Fonts/OpenSans/OpenSans-Light-webfont.woff') format('woff'), url('../Fonts/OpenSans/OpenSans-Light-webfont.ttf') format('truetype'), url('../Fonts/OpenSans/OpenSans-Light-webfont.svg#open_sanslight') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -22,7 +22,7 @@ body {
     font-family: 'open_sanslight', Helvetica, Arial, "Lucida Grande", sans-serif;
     font-weight: 300;
     font-size: 16px;
-    background: #ffffff;
+    background: #2d2d2d;
     color: #2d2d2d;
     overflow-x: hidden;
 }
@@ -67,12 +67,20 @@ p {
 
 .app-width {
     width: 100%;
+    max-width: 740px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+
+    @include respond-min(47.5em) {
+        margin-top: 40px;
+    }
 }
 
 a {
     color: $themeGreen;
-    cursor:pointer;
-    text-decoration:underline;
+    cursor: pointer;
+    text-decoration: underline;
 
     &:hover {
         color: $themeGreen;
@@ -87,21 +95,11 @@ header {
     color: #FFF;
     font-size: 1.5em;
     text-align: center;
-
-    @media all and (min-width: 50em) {
-        position:fixed;
-        top:0;
-        left:0;
-    }
-
-    @media all and (min-width: 68em) {
-        font-size: 1.8em;
-    }
 }
 
 main {
-    padding-bottom:40px;
-    overflow:hidden;
+    overflow: hidden;
+    background: #FFF;
 }
 
 footer {
@@ -111,9 +109,6 @@ footer {
     width: 100%;
     background: #EDEDED;
     overflow: auto;
-    position: fixed;
-    bottom: 0;
-    left: 0;
 
     i {
         font-size: 1.4em;
@@ -137,19 +132,14 @@ footer {
         font-size: 5.7em;
         text-align: center;
     }
-
-    @media all and (min-width: 68em) {
-        padding: 60px 10px;
-    }
 }
 
 .task-list {
     list-style: none;
     padding: 0;
-    margin: 10px 0;
+    margin: 10px 0 0 0;
     overflow: auto;
     overflow-x: hidden;
-    min-height: 160px;
 
     li {
         width: 100%;
@@ -166,8 +156,8 @@ footer {
         }
     }
 
-    @media all and (max-width: 50em) {
-        heigth:initial !important;
+    @include respond-min(40em) {
+        max-height: 140px;
     }
 }
 
