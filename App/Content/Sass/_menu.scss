@@ -29,10 +29,12 @@
 
 .push-menu-left {
     top: 0;
+    bottom: 0;
+    left: 0;
     width: 240px;
     height: 100%;
     left: -300px;
-    position: absolute;
+    position: fixed;
     z-index: 20;
     background-color: $themeGreen;
     overflow: hidden;
@@ -71,6 +73,10 @@
         &:focus {
             outline: none;
         }
+    }
+
+    @include respond-min($full-width-max) {
+        position:absolute;
     }
 }
 
