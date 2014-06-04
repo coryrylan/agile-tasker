@@ -527,9 +527,12 @@ body {
   font-family: 'open_sanslight', Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 300;
   font-size: 16px;
-  background: #2d2d2d;
+  background: #FFF;
   color: #2d2d2d;
   overflow-x: hidden; }
+  @media screen and (min-width: 48em) {
+    body {
+      background: #2d2d2d; } }
 
 *, *:before, *:after {
   /* Chrome 9-, Safari 5-, iOS 4.2-, Android 3-, Blackberry 7- */
@@ -566,13 +569,13 @@ p {
 
 .app-width {
   width: 100%;
-  max-width: 740px;
   margin: 0 auto;
   position: relative;
   overflow: hidden; }
-  @media screen and (min-width: 47.5em) {
+  @media screen and (min-width: 48.125em) {
     .app-width {
-      margin-top: 40px; } }
+      margin-top: 40px;
+      max-width: 740px; } }
 
 a {
   color: #4cb658;
@@ -588,11 +591,21 @@ header {
   background: #4cb658;
   color: #FFF;
   font-size: 1.5em;
-  text-align: center; }
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0; }
+  @media screen and (min-width: 48em) {
+    header {
+      position: relative; } }
 
 main {
   overflow: hidden;
-  background: #FFF; }
+  background: #FFF;
+  padding: 38px 0 30px 0; }
+  @media screen and (min-width: 48em) {
+    main {
+      padding: 0; } }
 
 footer {
   border-top: 1px solid #A6A6A6;
@@ -600,13 +613,19 @@ footer {
   padding: 4px;
   width: 100%;
   background: #EDEDED;
-  overflow: auto; }
+  overflow: auto;
+  position: fixed;
+  bottom: 0;
+  left: 0; }
   footer i {
     font-size: 1.4em;
     cursor: pointer;
     padding: 0 5px; }
   footer .localTime {
     margin-top: 2px; }
+  @media screen and (min-width: 48em) {
+    footer {
+      position: relative; } }
 
 .timer-box {
   width: 100%;
@@ -633,7 +652,7 @@ footer {
       border-top: 1px solid #A6A6A6; }
     .task-list li:nth-child(odd) {
       background: #FAFAFA; }
-  @media screen and (min-width: 40em) {
+  @media screen and (min-width: 48em) {
     .task-list {
       max-height: 140px; } }
 
@@ -685,10 +704,12 @@ footer {
 
 .push-menu-left {
   top: 0;
+  bottom: 0;
+  left: 0;
   width: 240px;
   height: 100%;
   left: -300px;
-  position: absolute;
+  position: fixed;
   z-index: 20;
   background-color: #4cb658;
   overflow: hidden;
@@ -718,6 +739,9 @@ footer {
     padding: 10px; }
     .push-menu-left .close-menu-btn:focus {
       outline: none; }
+  @media screen and (min-width: 48em) {
+    .push-menu-left {
+      position: absolute; } }
 
 .pml-open .push-menu-left {
   left: 0; }
@@ -852,7 +876,7 @@ footer {
     animation: fadein 0.5s;*/
   padding: 0 15px;
   min-height: 405px; }
-  @media screen and (min-width: 40em) {
+  @media screen and (min-width: 48em) {
     .view {
       height: 405px;
       overflow: hidden; } }
@@ -875,7 +899,7 @@ footer {
   .view-main .col-7-c {
     margin-top: 40px;
     min-height: 210px; }
-  @media screen and (min-width: 40em) {
+  @media screen and (min-width: 48em) {
     .view-main textarea {
       font-size: 1.1em;
       height: 130px; }
@@ -904,7 +928,9 @@ footer {
 .view-about .icon-github-circled-1 {
   font-size: 2.5em; }
 
-@media screen and (min-width: 40em) {
+.view-history .task-list {
+  max-height: none; }
+@media screen and (min-width: 48em) {
   .view-history .task-list {
     max-height: 288px; } }
 
