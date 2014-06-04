@@ -13,6 +13,9 @@ $themeGreen: #4cb658;
     font-style: normal;
 }
 
+$full-width-max: 48em;
+$full-width-app: 48.125em;
+
 html {
     // Chrome App Override
     overflow: auto;
@@ -22,9 +25,13 @@ body {
     font-family: 'open_sanslight', Helvetica, Arial, "Lucida Grande", sans-serif;
     font-weight: 300;
     font-size: 16px;
-    background: #2d2d2d;
+    background: #FFF;
     color: #2d2d2d;
     overflow-x: hidden;
+
+    @include respond-min($full-width-max) {
+        background: #2d2d2d;
+    }
 }
 
 *, *:before, *:after {
@@ -67,13 +74,13 @@ p {
 
 .app-width {
     width: 100%;
-    max-width: 740px;
     margin: 0 auto;
     position: relative;
     overflow: hidden;
 
-    @include respond-min(47.5em) {
+    @include respond-min($full-width-app) {
         margin-top: 40px;
+        max-width: 740px;
     }
 }
 
@@ -95,11 +102,23 @@ header {
     color: #FFF;
     font-size: 1.5em;
     text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    @include respond-min($full-width-max) {
+        position: relative;
+    }
 }
 
 main {
     overflow: hidden;
     background: #FFF;
+    padding: 38px 0 30px 0;
+
+    @include respond-min($full-width-max) {
+        padding: 0;
+    }
 }
 
 footer {
@@ -109,6 +128,9 @@ footer {
     width: 100%;
     background: #EDEDED;
     overflow: auto;
+    position: fixed;
+    bottom: 0;
+    left: 0;
 
     i {
         font-size: 1.4em;
@@ -118,6 +140,10 @@ footer {
 
     .localTime {
         margin-top: 2px;
+    }
+
+    @include respond-min($full-width-max) {
+        position: relative;
     }
 }
 
@@ -156,7 +182,7 @@ footer {
         }
     }
 
-    @include respond-min(40em) {
+    @include respond-min($full-width-max) {
         max-height: 140px;
     }
 }

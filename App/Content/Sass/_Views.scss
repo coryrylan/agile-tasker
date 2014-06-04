@@ -6,7 +6,7 @@
     padding: 0 15px;
     min-height: 405px;
 
-    @include respond-min(40em) {
+    @include respond-min($full-width-max) {
         height: 405px;
         overflow:hidden;
     }
@@ -37,7 +37,7 @@
         min-height: 210px;
     }
 
-    @include respond-min(40em) {
+    @include respond-min($full-width-max) {
         textarea {
             font-size: 1.1em;
             height: 130px;
@@ -88,7 +88,11 @@
 }
 
 .view-history {
-    @include respond-min(40em) {
+    .task-list {
+        max-height:none;
+    }
+
+    @include respond-min($full-width-max) {
         .task-list {
             max-height: 288px;
         }
