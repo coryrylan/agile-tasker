@@ -1,7 +1,7 @@
 ﻿'use strict';
 
 /* Services */
-angular.module('app.services', []).value('version', '1.5.2')
+angular.module('app.services', []).value('version', '1.5.3')
 
 .factory('UserSettings', ['$localForage', function ($localForage) {
     _userSettings = {
@@ -24,7 +24,7 @@ angular.module('app.services', []).value('version', '1.5.2')
         } else if (notify.permissionLevel() === notify.PERMISSION_GRANTED) {
             notify.createNotification('Agile Task Complete', {
                 body: 'Time to take a break!',
-                icon: 'Content/icon.png'
+                icon: 'Content/Images/icon.png'
             });
         } else if (notify.permissionLevel() === notify.PERMISSION_DENIED) {
             alert("Agile Task Complete");
