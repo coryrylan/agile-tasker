@@ -118,7 +118,3 @@ angular.module('app.controllers', [])
     }
     //#endregion
 }])
-
-.controller('TimerSizing', ['$scope', function ($scope) { // Needs to be directive (modifiying dom)
-    jQuery(".current-time").fitText(0.4, { minFontSize: '96px', maxFontSize: '175px' });
-}]);
