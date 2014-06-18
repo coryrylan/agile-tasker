@@ -25,8 +25,8 @@ describe("Filters", function () {
             expect($filter('interpolateVersion')).not.toBeNull();
         }));
 
-        //it('Should format version number', inject(function ($filter) {
-            //expect(interpolateVersion("1.5.1")).toEqual("v1.5.1");
+        //it('Should format version number', inject(function (interpolateVersion) {
+        //    expect(interpolateVersion("1.5.1")).toEqual("v1.5.1");
         //}));
     });
 });

@@ -3,6 +3,20 @@
 /* Directives */
 angular.module('app.directives', [])
 
+.directive('history',function () {
+    return {
+        restrict: 'E',
+        replace: true,
+        transclude: false,
+        template: '<a href="">' +
+                    'Test' +
+                  '</a>',
+        link: function (scope, element, attrs) {
+            // DOM manipulation/events here!
+        }
+    };
+})
+
 .directive('appVersion', ['version', function (version) {
       return function(scope, elm, attrs) {
           elm.text(version);

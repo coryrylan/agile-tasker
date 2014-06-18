@@ -17,7 +17,7 @@ angular.module('app.controllers', [])
     $scope.settings.selectedTime = $scope.settings.options[2];
     $scope.settings.currentTime = $scope.settings.options[2].value + ":00";
 
-    //Bind userSettings service to local storage
+    // Bind userSettings service to local storage
     $scope.userSettings = UserSettings;
     $localForage.bind($scope, {
         key: 'userSettings',
@@ -36,7 +36,13 @@ angular.module('app.controllers', [])
     //#endregion
 
     //#region Click Events
-    $scope.startTimer = function () {
+    $scope.startTimer = startTimer;
+    $scope.stopTimer = stopTimer;
+    $scope.clearList = clearHistory;
+    $scope.toggleSound = toggleSound;
+    //#endregion
+
+    function startTimer() {
         resetTimer();
         timerInterval = setInterval(intervalTimer, 1000);
         startTime = new Date().toLocaleTimeString();
@@ -45,25 +51,24 @@ angular.module('app.controllers', [])
         if (notify.permissionLevel() === notify.PERMISSION_DEFAULT) {
             notify.requestPermission();
         }
-    };
+    }
 
-    $scope.stopTimer = function () {
+    function stopTimer() {
         resetTimer();
         $scope.isPlaying = '';
         document.title = 'Agile Tasker';
     };
 
-    $scope.clearList = function () {
+    function clearHistory() {
         $scope.userSettings.taskHistory = [];
     };
 
-    $scope.toggleSound = function () {
+    function toggleSound() {
         $scope.userSettings.sound.play = !$scope.userSettings.sound.play;
         if ($scope.userSettings.sound.play === true) {
             Notification.playAudio();
         }
     };
-    //#endregion
 
     //#region Timmer Helper Functons
     function intervalTimer() {

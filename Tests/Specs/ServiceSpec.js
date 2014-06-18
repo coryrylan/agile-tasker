@@ -17,8 +17,16 @@ describe("Services", function () {
     });
 
     describe('Notification Service', function () {
-        //it('Has a Notification service', inject(function (Notification) {
-            // expect(Notification).not.toBeNull(); // Pass modernizr as dependency?
-        //}));
+        it('Has a Notification service', inject(function (Notification) {
+             expect(Notification).not.toBeNull(); // Pass modernizr as dependency?
+        }));
+
+        it('Has a notify() method', inject(function (Notification) {
+            expect(Notification.notify).not.toBeNull();
+        }));
+
+        it('Has a playAudio() method', inject(function (Notification) {
+            expect(Notification.playAudio).not.toBeNull();
+        }));
     });
 });
