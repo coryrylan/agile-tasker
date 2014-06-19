@@ -3,6 +3,10 @@
 /* Services */
 angular.module('app.services', []).value('version', '1.5.3')
 
+.factory('example', function () {
+    //..
+})
+
 .factory('UserSettings', ['$localForage', function ($localForage) {
     _userSettings = {
         sound: { play: true },

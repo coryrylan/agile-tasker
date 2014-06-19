@@ -1,24 +1,20 @@
 ﻿"use strict";
 
-// Example
-describe("My First Test", function () {
-    it("should be true", function () {
-        expect(true).toBe(true);
-    });
+beforeEach(function () {
+    module('app.filters');
 });
 
-// Example
-describe('JavaScript addition operator', function () {
-    it('adds two numbers together', function () {
-        expect(1 + 2).toEqual(3);
-    });
+describe("app Filter example", function () {
+    it('does exist', inject(function ($filter) {
+        expect($filter('example')).not.toBeNull();
+    }));
 });
 
 describe("Filters", function () {
 
-    beforeEach(function () {
-        module('AgileTasker');
-    });
+    //beforeEach(function () {
+    //    module('AgileTasker');
+    //});
 
     describe('version filter', function () {
         it('has a version filter', inject(function ($filter) {

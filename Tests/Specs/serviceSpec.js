@@ -1,5 +1,15 @@
 ﻿"use strict";
 
+beforeEach(function () {
+    module('app.services');
+});
+
+describe("app Service example", function () {
+    it('does exist', inject(function (example) {
+        expect(example).not.toBeNull();
+    }));
+});
+
 describe("Services", function () {
 
     beforeEach(function () {

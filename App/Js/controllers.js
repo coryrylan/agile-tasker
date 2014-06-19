@@ -3,6 +3,10 @@
 /* Controllers */
 angular.module('app.controllers', [])
 
+.controller('exampleCtrl', function () {
+    //..
+})
+
 .controller('TimerCtrl', ['$scope', '$localForage', 'UserSettings', 'Notification', function ($scope, $localForage, UserSettings, Notification) {
     //#region Models
     $scope.isPlaying = false;

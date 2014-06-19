@@ -3,7 +3,11 @@
 /* Directives */
 angular.module('app.directives', [])
 
-.directive('history',function () {
+.directive('example', function () {
+    //..
+})
+
+.directive('history', function () {
     return {
         restrict: 'E',
         replace: true,
@@ -18,9 +22,9 @@ angular.module('app.directives', [])
 })
 
 .directive('appVersion', ['version', function (version) {
-      return function(scope, elm, attrs) {
-          elm.text(version);
-      };
+    return function (scope, elm, attrs) {
+        elm.text(version);
+    };
 }])
 
 .directive('clock', ['$timeout', 'dateFilter', function ($timeout, dateFilter) { // http://jsdo.it/can.i.do.web/zHbM
