@@ -4,39 +4,38 @@ beforeEach(function () {
     module('app.services');
 });
 
-describe("app Service example", function () {
+describe("app.services Factory example", function () {
     it('does exist', inject(function (example) {
         expect(example).not.toBeNull();
     }));
 });
 
-describe("Services", function () {
+describe("app.services Factory notification (needs tests)", function () {
+    it('does exist', inject(function (notification) {
+        expect(notification).not.toBeNull();
+    }));
+});
 
-    beforeEach(function () {
-        module('AgileTasker');
-    });
+describe('app.services Factory userSettings', function () {
+    it('Should return history array object', inject(function (userSettings) {
+        expect(userSettings.taskHistory).toBeDefined();
+    }));
 
-    describe('User Settings Service', function () {
-        it('Should return history array object', inject(function (UserSettings) {
-            expect(UserSettings.taskHistory).toBeDefined();
-        }));
+    it('Should return that play is true', inject(function (userSettings) {
+        expect(userSettings.sound.play).toBe(true);
+    }));
+});
 
-        it('Should return that play is true', inject(function (UserSettings) {
-            expect(UserSettings.sound.play).toBe(true);
-        }));
-    });
+describe('app.services Factory notification', function () {
+    it('Has a Notification service', inject(function (notification) {
+        expect(notification).not.toBeNull(); // Pass modernizr as dependency?
+    }));
 
-    describe('Notification Service', function () {
-        it('Has a Notification service', inject(function (Notification) {
-             expect(Notification).not.toBeNull(); // Pass modernizr as dependency?
-        }));
+    it('Has a notify() method', inject(function (notification) {
+        expect(notification.notify).not.toBeNull();
+    }));
 
-        it('Has a notify() method', inject(function (Notification) {
-            expect(Notification.notify).not.toBeNull();
-        }));
-
-        it('Has a playAudio() method', inject(function (Notification) {
-            expect(Notification.playAudio).not.toBeNull();
-        }));
-    });
+    it('Has a playAudio() method', inject(function (notification) {
+        expect(notification.playAudio).not.toBeNull();
+    }));
 });

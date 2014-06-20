@@ -535,8 +535,9 @@ var app = angular.module('AgileTasker', [
     'app.services',
     'app.directives',
     'app.controllers'
-])
-.config(['$routeProvider', function ($routeProvider) {
+]);
+
+app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.when('/', {
         templateUrl: 'Partials/timer.html'
     });
@@ -554,9 +555,13 @@ var app = angular.module('AgileTasker', [
 'use strict';
 
 /* Controllers */
-angular.module('app.controllers', [])
+var appControllers = angular.module('app.controllers', []);
 
-.controller('TimerCtrl', ['$scope', '$localForage', 'UserSettings', 'Notification', function ($scope, $localForage, UserSettings, Notification) {
+appControllers.controller('exampleCtrl', function () {
+    //..
+})
+
+appControllers.controller('TimerCtrl', ['$scope', '$localForage', 'userSettings', 'notification', function ($scope, $localForage, userSettings, notification) {
     //#region Models
     $scope.isPlaying = false;
 
@@ -571,10 +576,10 @@ angular.module('app.controllers', [])
     $scope.settings.currentTime = $scope.settings.options[2].value + ":00";
 
     // Bind userSettings service to local storage
-    $scope.userSettings = UserSettings;
+    $scope.userSettings = userSettings;
     $localForage.bind($scope, {
         key: 'userSettings',
-        defaultValue: UserSettings,
+        defaultValue: userSettings,
         storeName: 'StorageSettings'
     });
     //#endregion
@@ -619,7 +624,7 @@ angular.module('app.controllers', [])
     function toggleSound() {
         $scope.userSettings.sound.play = !$scope.userSettings.sound.play;
         if ($scope.userSettings.sound.play === true) {
-            Notification.playAudio();
+            notification.playAudio();
         }
     };
 
@@ -629,7 +634,7 @@ angular.module('app.controllers', [])
             $scope.stopTimer();
             endTime = new Date().toLocaleTimeString();
             console.log($scope.userSettings.sound.play);
-            Notification.notify($scope.userSettings.sound.play);
+            notification.notify($scope.userSettings.sound.play);
             saveTaskToHistory();
         } else {
             timerDate.setSeconds(timerDate.getSeconds() - 1);
@@ -679,9 +684,13 @@ angular.module('app.controllers', [])
 'use strict';
 
 /* Directives */
-angular.module('app.directives', [])
+var appDirectives = angular.module('app.directives', []);
 
-.directive('history',function () {
+appDirectives.directive('example', function () {
+    //..
+})
+
+appDirectives.directive('history', function () {
     return {
         restrict: 'E',
         replace: true,
@@ -695,13 +704,13 @@ angular.module('app.directives', [])
     };
 })
 
-.directive('appVersion', ['version', function (version) {
-      return function(scope, elm, attrs) {
-          elm.text(version);
-      };
+appDirectives.directive('appVersion', ['version', function (version) {
+    return function (scope, elm, attrs) {
+        elm.text(version);
+    };
 }])
 
-.directive('clock', ['$timeout', 'dateFilter', function ($timeout, dateFilter) { // http://jsdo.it/can.i.do.web/zHbM
+appDirectives.directive('clock', ['$timeout', 'dateFilter', function ($timeout, dateFilter) { // http://jsdo.it/can.i.do.web/zHbM
     return function (scope, element, attrs) {
         var timeoutId; // timeoutId, so that we can cancel the time updates
 
@@ -726,9 +735,13 @@ angular.module('app.directives', [])
 'use strict';
 
 /* Filters */
-angular.module('app.filters', []).
+var appFilters = angular.module('app.filters', []);
 
-filter('interpolateVersion', ['version', function (version) {
+appFilters.filter('example', function () {
+    //..
+})
+
+appFilters.filter('interpolateVersion', ['version', function (version) {
     return function (text) {
         return String(text).replace(/\%VERSION\%/mg, version);
     };
@@ -736,17 +749,21 @@ filter('interpolateVersion', ['version', function (version) {
 'use strict';
 
 /* Services */
-angular.module('app.services', []).value('version', '1.5.3')
+var appServices = angular.module('app.services', []).value('version', '1.5.3');
 
-.factory('UserSettings', ['$localForage', function ($localForage) {
+appServices.factory('example', function () {
+    //..
+})
+
+appServices.factory('userSettings', function () {
     _userSettings = {
         sound: { play: true },
         taskHistory: []
     }
     return _userSettings;
-}])
+})
 
-.factory('Notification', [function () {
+appServices.factory('notification', function () {
 
     var audio = new Audio();
     audio.src = Modernizr.audio.ogg ? 'Content/Audio/chime.ogg' :
@@ -798,4 +815,4 @@ angular.module('app.services', []).value('version', '1.5.3')
             audio.play();
         }
     }
-}]);
+});

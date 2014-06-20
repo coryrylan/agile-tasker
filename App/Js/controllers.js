@@ -1,13 +1,13 @@
 ﻿'use strict';
 
 /* Controllers */
-angular.module('app.controllers', [])
+var appControllers = angular.module('app.controllers', []);
 
-.controller('exampleCtrl', function () {
+appControllers.controller('exampleCtrl', function () {
     //..
 })
 
-.controller('TimerCtrl', ['$scope', '$localForage', 'UserSettings', 'Notification', function ($scope, $localForage, UserSettings, Notification) {
+appControllers.controller('TimerCtrl', ['$scope', '$localForage', 'userSettings', 'notification', function ($scope, $localForage, userSettings, notification) {
     //#region Models
     $scope.isPlaying = false;
 
@@ -22,10 +22,10 @@ angular.module('app.controllers', [])
     $scope.settings.currentTime = $scope.settings.options[2].value + ":00";
 
     // Bind userSettings service to local storage
-    $scope.userSettings = UserSettings;
+    $scope.userSettings = userSettings;
     $localForage.bind($scope, {
         key: 'userSettings',
-        defaultValue: UserSettings,
+        defaultValue: userSettings,
         storeName: 'StorageSettings'
     });
     //#endregion
@@ -70,7 +70,7 @@ angular.module('app.controllers', [])
     function toggleSound() {
         $scope.userSettings.sound.play = !$scope.userSettings.sound.play;
         if ($scope.userSettings.sound.play === true) {
-            Notification.playAudio();
+            notification.playAudio();
         }
     };
 
@@ -80,7 +80,7 @@ angular.module('app.controllers', [])
             $scope.stopTimer();
             endTime = new Date().toLocaleTimeString();
             console.log($scope.userSettings.sound.play);
-            Notification.notify($scope.userSettings.sound.play);
+            notification.notify($scope.userSettings.sound.play);
             saveTaskToHistory();
         } else {
             timerDate.setSeconds(timerDate.getSeconds() - 1);

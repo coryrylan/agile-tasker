@@ -4,25 +4,18 @@ beforeEach(function () {
     module('app.filters');
 });
 
-describe("app Filter example", function () {
+describe("app.filters example", function () {
     it('does exist', inject(function ($filter) {
         expect($filter('example')).not.toBeNull();
     }));
 });
 
-describe("Filters", function () {
+describe('app.filters interpolateVersion', function () {
+    beforeEach(module(function ($provide) {
+        $provide.value('version', 'TEST_VER');
+    }));
 
-    //beforeEach(function () {
-    //    module('AgileTasker');
-    //});
-
-    describe('version filter', function () {
-        it('has a version filter', inject(function ($filter) {
-            expect($filter('interpolateVersion')).not.toBeNull();
-        }));
-
-        //it('Should format version number', inject(function (interpolateVersion) {
-        //    expect(interpolateVersion("1.5.1")).toEqual("v1.5.1");
-        //}));
-    });
+    it('should replace VERSION', inject(function (interpolateVersionFilter) {
+        expect(interpolateVersionFilter('before %VERSION% after')).toEqual('before TEST_VER after');
+    }));
 });

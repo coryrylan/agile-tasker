@@ -1,13 +1,13 @@
 ﻿'use strict';
 
 /* Directives */
-angular.module('app.directives', [])
+var appDirectives = angular.module('app.directives', []);
 
-.directive('example', function () {
+appDirectives.directive('example', function () {
     //..
 })
 
-.directive('history', function () {
+appDirectives.directive('history', function () {
     return {
         restrict: 'E',
         replace: true,
@@ -21,13 +21,13 @@ angular.module('app.directives', [])
     };
 })
 
-.directive('appVersion', ['version', function (version) {
+appDirectives.directive('appVersion', ['version', function (version) {
     return function (scope, elm, attrs) {
         elm.text(version);
     };
 }])
 
-.directive('clock', ['$timeout', 'dateFilter', function ($timeout, dateFilter) { // http://jsdo.it/can.i.do.web/zHbM
+appDirectives.directive('clock', ['$timeout', 'dateFilter', function ($timeout, dateFilter) { // http://jsdo.it/can.i.do.web/zHbM
     return function (scope, element, attrs) {
         var timeoutId; // timeoutId, so that we can cancel the time updates
 
