@@ -1,7 +1,7 @@
 ﻿'use strict';
 
 /* Services */
-var appServices = angular.module('app.services', []).value('version', '1.5.3');
+var appServices = angular.module('app.services', []).value('version', '1.5.4');
 
 appServices.factory('example', function () {
     //..
