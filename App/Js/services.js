@@ -1,17 +1,21 @@
 ﻿'use strict';
 
 /* Services */
-angular.module('app.services', []).value('version', '1.5.3')
+var appServices = angular.module('app.services', []).value('version', '1.5.4');
 
-.factory('UserSettings', ['$localForage', function ($localForage) {
+appServices.factory('example', function () {
+    //..
+})
+
+appServices.factory('userSettings', function () {
     _userSettings = {
         sound: { play: true },
         taskHistory: []
     }
     return _userSettings;
-}])
+})
 
-.factory('Notification', [function () {
+appServices.factory('notification', function () {
 
     var audio = new Audio();
     audio.src = Modernizr.audio.ogg ? 'Content/Audio/chime.ogg' :
@@ -63,4 +67,4 @@ angular.module('app.services', []).value('version', '1.5.3')
             audio.play();
         }
     }
-}]);
+});

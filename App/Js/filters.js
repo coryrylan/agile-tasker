@@ -1,9 +1,13 @@
 ﻿'use strict';
 
 /* Filters */
-angular.module('app.filters', []).
+var appFilters = angular.module('app.filters', []);
 
-filter('interpolate', ['version', function (version) {
+appFilters.filter('example', function () {
+    //..
+})
+
+appFilters.filter('interpolateVersion', ['version', function (version) {
     return function (text) {
         return String(text).replace(/\%VERSION\%/mg, version);
     };
