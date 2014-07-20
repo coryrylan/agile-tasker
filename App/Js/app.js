@@ -1,6 +1,5 @@
 ﻿"use strict";
 
-// Declare app level module which depends on filters, and services
 var app = angular.module('AgileTasker', [
     'ngRoute',
     'LocalForageModule',
@@ -8,8 +7,9 @@ var app = angular.module('AgileTasker', [
     'app.services',
     'app.directives',
     'app.controllers'
-])
-.config(['$routeProvider', function ($routeProvider) {
+]);
+
+app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.when('/', {
         templateUrl: 'Partials/timer.html'
     });

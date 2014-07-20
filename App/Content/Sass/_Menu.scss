@@ -3,10 +3,6 @@
     z-index: 10;
     top: 0;
     left: 0;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    transition: all 0.3s;
 }
 
 .mask-on {
@@ -17,17 +13,9 @@
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.8);
-    -moz-transition: all 0.4s;
-    -o-transition: all 0.4s;
-    -webkit-transition: all 0.4s;
-    transition: all 0.4s;
-    -moz-transition-property: background;
-    -o-transition-property: background;
-    -webkit-transition-property: background;
-    transition-property: background;
 }
 
-.push-menu-left {
+.nav {
     top: 0;
     bottom: 0;
     left: 0;
@@ -43,16 +31,21 @@
     -o-transition: all 0.3s;
     transition: all 0.3s;
 
-    a {
+    .nav__link {
         display: block;
         padding: 13px;
         font-size: 1.4em;
         text-decoration: none;
         font-weight: 300;
         color: #fff;
+        border-bottom: 1px solid darken($themeGreen, 10%);
 
-        &:hover {
-            text-decoration: underline;
+        &:nth-of-type(2) {
+            border-top: 1px solid darken($themeGreen, 10%);
+        }
+
+        &:hover, &:active, &:focus {
+            background: darken($themeGreen, 10%);
         }
     }
 
@@ -64,29 +57,29 @@
     }
 
     .close-menu-btn {
-        background-color: $themeGreen;
         color: #fff;
         border: none;
         margin-bottom: 6px;
         padding: 10px;
+        display: block;
+        overflow: auto;
+        position: absolute;
+        font-size: 1.5em;
+        right: 0;
 
-        &:focus {
+        &:focus, &:active {
             outline: none;
         }
     }
 
     @include respond-min($full-width-max) {
-        position:absolute;
+        position: absolute;
     }
 }
 
 .pml-open {
-    .push-menu-left {
+    .nav {
         left: 0;
-    }
-
-    #push-wrapper {
-        left: 240px;
     }
 }
 
@@ -125,7 +118,6 @@
     }
 
     select {
-        background: #FFF;
         border-radius: 0;
         background: #FFF;
         font-size: 1.7em;
