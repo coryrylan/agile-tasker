@@ -1,14 +1,11 @@
-﻿'use strict';
+﻿(function () {
+    'use strict';
 
-/* Filters */
-var appFilters = angular.module('app.filters', []);
+    var appFilters = angular.module('app.filters', []);
 
-appFilters.filter('example', function () {
-    //..
-})
-
-appFilters.filter('interpolateVersion', ['version', function (version) {
-    return function (text) {
-        return String(text).replace(/\%VERSION\%/mg, version);
-    };
-}]);
+    appFilters.filter('interpolateVersion', ['version', function (version) {
+        return function (text) {
+            return String(text).replace(/\%VERSION\%/mg, version);
+        };
+    }]);
+})();
