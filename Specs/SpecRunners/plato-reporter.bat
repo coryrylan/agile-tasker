@@ -1,1 +1,1 @@
-plato -r -d Reports src
+plato -r -d Reports -t "Agile Tasker" ../../App/Js/Src/

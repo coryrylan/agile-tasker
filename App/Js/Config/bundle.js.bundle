@@ -15,10 +15,10 @@
     <file>/App/Js/Libraries/localForage/localforage.js</file>
     <file>/App/Js/Libraries/localForage/angular-localForage.js</file>
     <file>/App/Js/Libraries/notifications.js</file>
-    <file>/App/Js/app.js</file>
-    <file>/App/Js/controllers.js</file>
-    <file>/App/Js/directives.js</file>
-    <file>/App/Js/filters.js</file>
-    <file>/App/Js/services.js</file>
+    <file>/App/Js/Src/app.js</file>
+    <file>/App/Js/Src/.js</file>
+    <file>/App/Js/Src/.js</file>
+    <file>/App/Js/Src/filters.js</file>
+    <file>/App/Js/Src/services.js</file>
   </files>
 </bundle>
