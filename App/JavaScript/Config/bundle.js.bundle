@@ -10,15 +10,15 @@
   </settings>
   <!--The order of the <file> elements determines the order of the files in the bundle.-->
   <files>
-    <file>/App/Js/Libraries/Angular/angular.js</file>
-    <file>/App/Js/Libraries/Angular/angular-route.min.js</file>
-    <file>/App/Js/Libraries/localForage/localforage.js</file>
-    <file>/App/Js/Libraries/localForage/angular-localForage.js</file>
-    <file>/App/Js/Libraries/notifications.js</file>
-    <file>/App/Js/Src/app.js</file>
-    <file>/App/Js/Src/.js</file>
-    <file>/App/Js/Src/.js</file>
-    <file>/App/Js/Src/filters.js</file>
-    <file>/App/Js/Src/services.js</file>
+    <file>/App/JavaScript/Libraries/Angular/angular.js</file>
+    <file>/App/JavaScript/Libraries/Angular/angular-route.min.js</file>
+    <file>/App/JavaScript/Libraries/localForage/localforage.js</file>
+    <file>/App/JavaScript/Libraries/localForage/angular-localForage.js</file>
+    <file>/App/JavaScript/Libraries/notifications.js</file>
+    <file>/App/JavaScript/Src/app.js</file>
+    <file>/App/JavaScript/Src/controllers.js</file>
+    <file>/App/JavaScript/Src/directives.js</file>
+    <file>/App/JavaScript/Src/filters.js</file>
+    <file>/App/JavaScript/Src/services.js</file>
   </files>
 </bundle>
