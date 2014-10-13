@@ -3,7 +3,7 @@
 
     var appControllers = angular.module('app.controllers', []);
 
-    appControllers.controller('TimerCtrl', ['$scope', '$localForage', 'userSettings', 'notification', function ($scope, $localForage, userSettings, notification) {
+    appControllers.controller('TimerCtrl', ['$scope', '$localForage', 'userSettingsService', 'notificationService', function ($scope, $localForage, userSettingsService, notificationService) {
         //#region Models
         $scope.isPlaying = false;
 
@@ -18,10 +18,10 @@
         $scope.settings.currentTime = $scope.settings.options[2].value + ":00";
 
         // Bind userSettings service to local storage
-        $scope.userSettings = userSettings;
+        $scope.userSettings = userSettingsService;
         $localForage.bind($scope, {
             key: 'userSettings',
-            defaultValue: userSettings,
+            defaultValue: userSettingsService,
             storeName: 'StorageSettings'
         });
         //#endregion
@@ -66,7 +66,7 @@
         function toggleSound() {
             $scope.userSettings.sound.play = !$scope.userSettings.sound.play;
             if ($scope.userSettings.sound.play === true) {
-                notification.playAudio();
+                notificationService.playAudio();
             }
         }
 
@@ -76,7 +76,7 @@
                 $scope.stopTimer();
                 endTime = new Date().toLocaleTimeString();
                 console.log($scope.userSettings.sound.play);
-                notification.notify($scope.userSettings.sound.play);
+                notificationService.notify($scope.userSettings.sound.play);
                 saveTaskToHistory();
             } else {
                 timerDate.setSeconds(timerDate.getSeconds() - 1);

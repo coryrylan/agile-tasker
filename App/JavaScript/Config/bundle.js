@@ -799,7 +799,7 @@ this.current.$$route){var c={},f=this;e.forEach(Object.keys(a),function(b){f.cur
 
     var appControllers = angular.module('app.controllers', []);
 
-    appControllers.controller('TimerCtrl', ['$scope', '$localForage', 'userSettings', 'notification', function ($scope, $localForage, userSettings, notification) {
+    appControllers.controller('TimerCtrl', ['$scope', '$localForage', 'userSettingsService', 'notificationService', function ($scope, $localForage, userSettingsService, notificationService) {
         //#region Models
         $scope.isPlaying = false;
 
@@ -814,10 +814,10 @@ this.current.$$route){var c={},f=this;e.forEach(Object.keys(a),function(b){f.cur
         $scope.settings.currentTime = $scope.settings.options[2].value + ":00";
 
         // Bind userSettings service to local storage
-        $scope.userSettings = userSettings;
+        $scope.userSettings = userSettingsService;
         $localForage.bind($scope, {
             key: 'userSettings',
-            defaultValue: userSettings,
+            defaultValue: userSettingsService,
             storeName: 'StorageSettings'
         });
         //#endregion
@@ -862,7 +862,7 @@ this.current.$$route){var c={},f=this;e.forEach(Object.keys(a),function(b){f.cur
         function toggleSound() {
             $scope.userSettings.sound.play = !$scope.userSettings.sound.play;
             if ($scope.userSettings.sound.play === true) {
-                notification.playAudio();
+                notificationService.playAudio();
             }
         }
 
@@ -872,7 +872,7 @@ this.current.$$route){var c={},f=this;e.forEach(Object.keys(a),function(b){f.cur
                 $scope.stopTimer();
                 endTime = new Date().toLocaleTimeString();
                 console.log($scope.userSettings.sound.play);
-                notification.notify($scope.userSettings.sound.play);
+                notificationService.notify($scope.userSettings.sound.play);
                 saveTaskToHistory();
             } else {
                 timerDate.setSeconds(timerDate.getSeconds() - 1);
@@ -920,33 +920,43 @@ this.current.$$route){var c={},f=this;e.forEach(Object.keys(a),function(b){f.cur
         //#endregion
     }]);
 })();
-
 (function () {
     'use strict';
 
     var appDirectives = angular.module('app.directives', []);
+})();
+(function () {
+    'use strict';
 
-    appDirectives.directive('history', function () {
+    var appDirectives = angular.module('app.directives');
+
+    appDirectives.directive('agileHistory', function () {
         return {
             restrict: 'E',
-            replace: true,
-            transclude: false,
-            template: '<a href="">' +
-                        'Test' +
-                      '</a>',
+            transclude: true,
+            scope: {
+                bindModel: '=ngModel'
+            },
+            template: [
+                '<ul class="task-list">',
+                    '<li ng-repeat="task in bindModel track by $index">',
+                        '<div>{{task.text}}</div>',
+                        '<span class="smallText"><span>{{task.start}}</span>&nbsp;<strong>to</strong>&nbsp;<span>{{task.stop}}</span></span>',
+                    '</li>',
+                '</ul>'
+            ].join(''),
             link: function (scope, element, attrs) {
 
             }
         };
     });
+})();
+(function () {
+    'use strict';
 
-    appDirectives.directive('appVersion', ['version', function (version) {
-        return function (scope, elm, attrs) {
-            elm.text(version);
-        };
-    }]);
+    var appDirectives = angular.module('app.directives');
 
-    appDirectives.directive('clock', ['$timeout', 'dateFilter', function ($timeout, dateFilter) { // http://jsdo.it/can.i.do.web/zHbM
+    appDirectives.directive('agile-clock', ['$timeout', 'dateFilter', function ($timeout, dateFilter) { // http://jsdo.it/can.i.do.web/zHbM
         return function (scope, element, attrs) {
             var timeoutId; // timeoutId, so that we can cancel the time updates
 
@@ -972,28 +982,19 @@ this.current.$$route){var c={},f=this;e.forEach(Object.keys(a),function(b){f.cur
 (function () {
     'use strict';
 
-    var appFilters = angular.module('app.filters', []);
-
-    appFilters.filter('interpolateVersion', ['version', function (version) {
-        return function (text) {
-            return String(text).replace(/\%VERSION\%/mg, version);
-        };
-    }]);
+    var appServices = angular.module('app.filters', []);
 })();
 (function () {
     'use strict';
 
-    var appServices = angular.module('app.services', []).value('version', '1.5.4');
+    var appServices = angular.module('app.services', []);
+})();
+(function () {
+    'use strict';
 
-    appServices.factory('userSettings', function () {
-        var _userSettings = {
-            sound: { play: true },
-            taskHistory: []
-        };
-        return _userSettings;
-    });
+    var appServices = angular.module('app.services');
 
-    appServices.factory('notification', function () {
+    appServices.factory('notificationService', function () {
 
         var audio = new Audio();
         audio.src = Modernizr.audio.ogg ? 'Content/Audio/chime.ogg' :
@@ -1045,5 +1046,18 @@ this.current.$$route){var c={},f=this;e.forEach(Object.keys(a),function(b){f.cur
                 audio.play();
             }
         };
+    });
+})();
+(function () {
+    'use strict';
+
+    var appServices = angular.module('app.services');
+
+    appServices.factory('userSettingsService', function () {
+        var _userSettings = {
+            sound: { play: true },
+            taskHistory: []
+        };
+        return _userSettings;
     });
 })();

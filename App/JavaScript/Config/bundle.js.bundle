@@ -18,7 +18,11 @@
     <file>/App/JavaScript/Src/app.js</file>
     <file>/App/JavaScript/Src/controllers.js</file>
     <file>/App/JavaScript/Src/directives.js</file>
+    <file>/App/JavaScript/Src/agile-history.js</file>
+    <file>/App/JavaScript/Src/agile-clock.js</file>
     <file>/App/JavaScript/Src/filters.js</file>
     <file>/App/JavaScript/Src/services.js</file>
+    <file>/App/JavaScript/Src/notificationService.js</file>
+    <file>/App/JavaScript/Src/userSettingsService.js</file>
   </files>
 </bundle>
