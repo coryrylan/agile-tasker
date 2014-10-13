@@ -3,28 +3,15 @@
 
     var appControllers = angular.module('app.controllers', []);
 
-    appControllers.controller('TimerCtrl', ['$scope', '$localForage', 'userSettingsService', 'notificationService', function ($scope, $localForage, userSettingsService, notificationService) {
-        //#region Models
+    appControllers.controller('TimerCtrl', ['$scope', '$localForage', 'appSettingsService', 'notificationService', 'timerService', function ($scope, $localForage, appSettingsService, notificationService, timerService) {
         $scope.isPlaying = false;
-
-        $scope.settings = {
-            options: [{ value: 15, label: 15 }, { value: 20, label: 20 }, { value: 25, label: 25 }, { value: 30, label: 30 }],
-            currentTime: "",
-            selectedTime: {},
-            taskTextBox: ""
-        };
-
-        $scope.settings.selectedTime = $scope.settings.options[2];
-        $scope.settings.currentTime = $scope.settings.options[2].value + ":00";
-
-        // Bind userSettings service to local storage
-        $scope.userSettings = userSettingsService;
+        $scope.settings = appSettingsService.defaultSettings;
+        $scope.userSettings = appSettingsService.userSettings;
         $localForage.bind($scope, {
             key: 'userSettings',
-            defaultValue: userSettingsService,
+            defaultValue: appSettingsService.userSettings,
             storeName: 'StorageSettings'
         });
-        //#endregion
 
         //#region Globals
         var startTime = new Date().toLocaleTimeString();
@@ -35,14 +22,7 @@
         timerDate.setSeconds(0);
         //#endregion
 
-        //#region Click Events
-        $scope.startTimer = startTimer;
-        $scope.stopTimer = stopTimer;
-        $scope.clearList = clearHistory;
-        $scope.toggleSound = toggleSound;
-        //#endregion
-
-        function startTimer() {
+        $scope.startTimer = function () {
             resetTimer();
             timerInterval = setInterval(intervalTimer, 1000);
             startTime = new Date().toLocaleTimeString();
@@ -51,24 +31,24 @@
             if (notify.permissionLevel() === notify.PERMISSION_DEFAULT) {
                 notify.requestPermission();
             }
-        }
+        };
 
-        function stopTimer() {
+        $scope.stopTimer = function () {
             resetTimer();
-            $scope.isPlaying = '';
+            $scope.isPlaying = false;
             document.title = 'Agile Tasker';
-        }
+        };
 
-        function clearHistory() {
+        $scope.clearHistory = function () {
             $scope.userSettings.taskHistory = [];
-        }
+        };
 
-        function toggleSound() {
+        $scope.toggleSound = function () {
             $scope.userSettings.sound.play = !$scope.userSettings.sound.play;
-            if ($scope.userSettings.sound.play === true) {
+            if ($scope.userSettings.sound.play) {
                 notificationService.playAudio();
             }
-        }
+        };
 
         //#region Timmer Helper Functons
         function intervalTimer() {
@@ -80,7 +60,7 @@
                 saveTaskToHistory();
             } else {
                 timerDate.setSeconds(timerDate.getSeconds() - 1);
-                $scope.settings.currentTime = getCurrentTime(timerDate);
+                $scope.settings.currentTime = timerService.getCurrentTimeFormated(timerDate);
                 document.title = $scope.settings.currentTime;
             }
             $scope.$apply();
@@ -94,22 +74,7 @@
             clearInterval(timerInterval);
             $scope.settings.currentTime = $scope.settings.selectedTime.value + ":" + "00";
             timerDate.setMinutes($scope.settings.selectedTime.value);  // $scope.settings.selectedTime.value
-            timerDate.setSeconds(0);                                   // Test Switch 
-        }
-
-        function getCurrentTime(currentTime) {
-            var minutes = currentTime.getMinutes();
-            var seconds = currentTime.getSeconds();
-
-            if (minutes < 10) {
-                minutes = '0' + minutes;
-            }
-
-            if (seconds < 10) {
-                seconds = '0' + seconds;
-            }
-
-            return minutes + ':' + seconds;
+            timerDate.setSeconds(0);
         }
 
         function saveTaskToHistory() {

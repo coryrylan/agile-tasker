@@ -17,6 +17,7 @@
 
     <!-- IOS Pinned Site App-->
     <link rel="apple-touch-icon-precomposed" href="Content/icon.png" />
+
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -28,24 +29,22 @@
 </head>
 <body ng-controller="TimerCtrl">
     <div class="app-width" ng-init="showPrimaryNav = false" ng-class="showPrimaryNav ? 'pml-open' : ' '">
-        <nav class="nav push-menu-left">
-            <a href="#" class="close-menu-btn" ng-click="showPrimaryNav = false"><i class="icon-cancel float-right"></i></a>
-            <a href="#/" class="nav__link" ng-click="showPrimaryNav = false">Timer</a>
-            <a href="#/settings" class="nav__link" ng-click="showPrimaryNav = false">Settings</a>
-            <a href="#/history" class="nav__link" ng-click="showPrimaryNav = false">History</a>
-            <a href="#/about" class="nav__link" ng-click="showPrimaryNav = false">About</a>
+        <nav class="nav push-menu-left" ng-click="showPrimaryNav = false">
+            <a href="#" class="close-menu-btn"><i class="icon-cancel float-right"></i></a>
+            <a href="#/" class="nav__link">Timer</a>
+            <a href="#/settings" class="nav__link">Settings</a>
+            <a href="#/history" class="nav__link">History</a>
+            <a href="#/about" class="nav__link">About</a>
         </nav>
-        <div id="push-wrapper">
-            <header>
-                <button class="menu-btn toggle-push-left float-right" ng-click="showPrimaryNav = !showPrimaryNav"><i class="icon-menu"></i></button>
-                AGILE TASKER
-            </header>
-            <main ng-view></main>
-            <footer>
-                <i ng-class="{true: 'icon-volume-up', false: 'icon-volume-off'}[userSettings.sound.play]" ng-click="toggleSound()" title="Volume"></i>
-                <div agile-clock class="localTime float-right"></div>
-            </footer>
-        </div>
+        <header>
+            <button class="menu-btn toggle-push-left float-right" ng-click="showPrimaryNav = !showPrimaryNav"><i class="icon-menu"></i></button>
+            AGILE TASKER
+        </header>
+        <main ng-view></main>
+        <footer>
+            <i ng-class="{true: 'icon-volume-up', false: 'icon-volume-off'}[userSettings.sound.play]" ng-click="toggleSound()" title="Volume"></i>
+            <div agile-clock class="localTime float-right"></div>
+        </footer>
     </div>
     <div class="mask" ng-click="showPrimaryNav = false" ng-init="showPrimaryNav = false" ng-class="showPrimaryNav ? 'mask-on' : ' '"></div>
     <script src="JavaScript/Config/bundle.js?v=1.32" async></script>

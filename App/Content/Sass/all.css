@@ -675,12 +675,6 @@ footer {
 ::-webkit-scrollbar-corner {
   background: #000; }
 
-#push-wrapper {
-  position: relative;
-  z-index: 10;
-  top: 0;
-  left: 0; }
-
 .mask-on {
   position: fixed;
   top: 0;
@@ -925,4 +919,3 @@ footer {
 @media screen and (min-width: 48em) {
   .view-history .task-list {
     max-height: 288px; } }
-
