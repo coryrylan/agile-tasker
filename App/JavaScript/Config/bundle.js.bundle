@@ -23,7 +23,7 @@
     <file>/App/JavaScript/Src/filters.js</file>
     <file>/App/JavaScript/Src/services.js</file>
     <file>/App/JavaScript/Src/notificationService.js</file>
-    <file>/App/JavaScript/Src/userSettingsService.js</file>
+    <file>/App/JavaScript/Src/appSettingsService.js</file>
     <file>/App/JavaScript/Src/timerService.js</file>
   </files>
 </bundle>
