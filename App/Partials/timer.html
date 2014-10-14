@@ -1,6 +1,6 @@
 ﻿<section class="view view-main">
     <div class="timer-box">
-        <div class="col-6-c current-time" ng-bind="currentTime"></div>
+        <div class="col-6-c current-time" ng-bind="settings.currentTime"></div>
         <div class="col-6-c">
             <nav class="secondary-nav">
                 <button id="Startbtn" ng-click="startTimer()" ng-disabled="isPlaying"><i class="icon-play"></i></button>
@@ -13,7 +13,7 @@
         <div class="col-5-c">
             <div class="col-12">
                 <div class="label">Current Task</div>
-                <textarea ng-model="settings.taskTextBox" placeholder="Add Task" ng-maxlength="100" ng-disabled="isPlaying"></textarea>
+                <textarea ng-model="taskTextBox" placeholder="Add Task" ng-maxlength="100" ng-disabled="isPlaying"></textarea>
             </div>
         </div>
         <div class="col-7-c">

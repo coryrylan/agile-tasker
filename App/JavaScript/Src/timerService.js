@@ -3,14 +3,14 @@
 
     var appServices = angular.module('app.services');
 
-    appServices.factory('timerService', ['$timeout', 'appSettingsService', function ($timeout, appSettingsService) {
+    appServices.factory('timerService', ['$timeout', '$interval', 'settingsService', function ($timeout, $interval, settingsService) {
         var timerService = {};
 
         var startTime = new Date().toLocaleTimeString();
         var endTime = new Date().toLocaleTimeString();
 
         timerService.timerDate = new Date();
-        timerService.timerDate.setMinutes(appSettingsService.defaultSettings.selectedTime.value); //$scope.settings.selectedTime.value
+        timerService.timerDate.setMinutes(settingsService.defaultSettings.selectedTime.value); //$scope.settings.selectedTime.value
         timerService.timerDate.setSeconds(0);
 
         // Should be a filter
@@ -30,28 +30,40 @@
         };
 
         timerService.startTimer = function () {
-            console.log('startTimer');
+            console.log('starting');
             startTime = new Date().toLocaleTimeString();
         }
 
-        timerService.update = function () {
+        timerService.update = function (timerInterval) {
+            console.log('update ' + timerService.timerDate);
             if (timeIsUp()) {
-                timerService.stopTimer();
-                timerService.saveHistory();
+                timerService.stopTimer(timerInterval);
             } else {
                 timerService.timerDate.setSeconds(timerService.timerDate.getSeconds() - 1);
             }
         }
 
-        timerService.stopTimer = function () {
+        timerService.stopTimer = function (timerInterval) {
+            console.log('stoping');
+            $interval.cancel(timerInterval);
             endTime = new Date().toLocaleTimeString();
-            appSettingsService.defaultSettings.currentTime = appSettingsService.defaultSettings.selectedTime.value + ":" + "00";
-            timerService.timerDate.setMinutes(appSettingsService.defaultSettings.selectedTime.value);
-            timerService.timerDate.setSeconds(0);
+            timerService.saveHistory();
+        }
+
+        timerService.resetTimer = function (timerInterval) {
+            console.log('reseting');
+            $interval.cancel(timerInterval);
         }
 
         timerService.saveHistory = function () {
+            console.log('saving');
+            var _text = "Unknown";
+            if (settingsService.defaultSettings.taskTextBox !== "") {
+                _text = settingsService.defaultSettings.taskTextBox;
+            }
 
+            settingsService.userSettings.taskHistory.push({ start: startTime, stop: endTime, text: _text });
+            settingsService.defaultSettings.taskTextBox = "";
         }
 
         function timeIsUp() {
