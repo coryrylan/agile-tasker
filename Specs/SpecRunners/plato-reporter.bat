@@ -1,1 +1,1 @@
-plato -r -d Reports -t "Agile Tasker" ../../App/JavaScript/Src/
+plato -r -d Reports -t "Agile Tasker" ../../App/JavaScript/Src/ & START %~dps0\Reports\index.html

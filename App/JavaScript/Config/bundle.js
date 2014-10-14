@@ -799,10 +799,14 @@ this.current.$$route){var c={},f=this;e.forEach(Object.keys(a),function(b){f.cur
 
     var appControllers = angular.module('app.controllers', []);
 
-    appControllers.controller('TimerCtrl', ['$scope', '$localForage', 'userSettings', 'notification', function ($scope, $localForage, userSettings, notification) {
-        //#region Models
-        $scope.isPlaying = false;
+    appControllers.controller('TimerCtrl', ['$scope', '$localForage', 'userSettings', 'notificationService', function ($scope, $localForage, userSettings, notificationService) {
+        var startTime = new Date().toLocaleTimeString();
+        var timerInterval = null;
+        var timerDate = new Date();
+        timerDate.setMinutes(25);
+        timerDate.setSeconds(0);
 
+        $scope.isPlaying = false;
         $scope.settings = {
             options: [{ value: 15, label: 15 }, { value: 20, label: 20 }, { value: 25, label: 25 }, { value: 30, label: 30 }],
             currentTime: "",
@@ -820,23 +824,11 @@ this.current.$$route){var c={},f=this;e.forEach(Object.keys(a),function(b){f.cur
             defaultValue: userSettings,
             storeName: 'StorageSettings'
         });
-        //#endregion
 
-        //#region Globals
-        var startTime = new Date().toLocaleTimeString();
-        var endTime = new Date().toLocaleTimeString();
-        var timerInterval = 0;
-        var timerDate = new Date();
-        timerDate.setMinutes($scope.settings.selectedTime.value);
-        timerDate.setSeconds(0);
-        //#endregion
-
-        //#region Click Events
         $scope.startTimer = startTimer;
         $scope.stopTimer = stopTimer;
         $scope.clearList = clearHistory;
         $scope.toggleSound = toggleSound;
-        //#endregion
 
         function startTimer() {
             resetTimer();
@@ -862,17 +854,15 @@ this.current.$$route){var c={},f=this;e.forEach(Object.keys(a),function(b){f.cur
         function toggleSound() {
             $scope.userSettings.sound.play = !$scope.userSettings.sound.play;
             if ($scope.userSettings.sound.play === true) {
-                notification.playAudio();
+                notificationService.playAudio();
             }
         }
 
-        //#region Timmer Helper Functons
         function intervalTimer() {
             if (timeIsUp()) {
                 $scope.stopTimer();
-                endTime = new Date().toLocaleTimeString();
                 console.log($scope.userSettings.sound.play);
-                notification.notify($scope.userSettings.sound.play);
+                notificationService.notify($scope.userSettings.sound.play);
                 saveTaskToHistory();
             } else {
                 timerDate.setSeconds(timerDate.getSeconds() - 1);
@@ -890,7 +880,7 @@ this.current.$$route){var c={},f=this;e.forEach(Object.keys(a),function(b){f.cur
             clearInterval(timerInterval);
             $scope.settings.currentTime = $scope.settings.selectedTime.value + ":" + "00";
             timerDate.setMinutes($scope.settings.selectedTime.value);  // $scope.settings.selectedTime.value
-            timerDate.setSeconds(0);                                   // Test Switch 
+            timerDate.setSeconds(0);
         }
 
         function getCurrentTime(currentTime) {
@@ -914,10 +904,9 @@ this.current.$$route){var c={},f=this;e.forEach(Object.keys(a),function(b){f.cur
                 _text = $scope.settings.taskTextBox;
             }
 
-            $scope.userSettings.taskHistory.push({ start: startTime, stop: endTime, text: _text });
+            $scope.userSettings.taskHistory.push({ start: startTime, stop: new Date().toLocaleTimeString(), text: _text });
             $scope.settings.taskTextBox = "";
         }
-        //#endregion
     }]);
 })();
 
@@ -926,27 +915,44 @@ this.current.$$route){var c={},f=this;e.forEach(Object.keys(a),function(b){f.cur
 
     var appDirectives = angular.module('app.directives', []);
 
-    appDirectives.directive('history', function () {
-        return {
-            restrict: 'E',
-            replace: true,
-            transclude: false,
-            template: '<a href="">' +
-                        'Test' +
-                      '</a>',
-            link: function (scope, element, attrs) {
-
-            }
-        };
-    });
-
     appDirectives.directive('appVersion', ['version', function (version) {
         return function (scope, elm, attrs) {
             elm.text(version);
         };
     }]);
+})();
+(function () {
+    'use strict';
 
-    appDirectives.directive('clock', ['$timeout', 'dateFilter', function ($timeout, dateFilter) { // http://jsdo.it/can.i.do.web/zHbM
+    var appDirectives = angular.module('app.directives');
+
+    appDirectives.directive('agileHistory', function () {
+        return {
+            restrict: 'E',
+            transclude: true,
+            scope: {
+                bindModel: '=ngModel'
+            },
+            template: [
+                '<ul class="task-list">',
+                    '<li ng-repeat="task in bindModel track by $index">',
+                        '<div>{{task.text}}</div>',
+                        '<span class="smallText"><span>{{task.start}}</span>&nbsp;<strong>to</strong>&nbsp;<span>{{task.stop}}</span></span>',
+                    '</li>',
+                '</ul>'
+            ].join(''),
+            link: function (scope, element, attrs) {
+
+            }
+        };
+    });
+})();
+(function () {
+    'use strict';
+
+    var appDirectives = angular.module('app.directives');
+
+    appDirectives.directive('agileClock', ['$timeout', 'dateFilter', function ($timeout, dateFilter) { // http://jsdo.it/can.i.do.web/zHbM
         return function (scope, element, attrs) {
             var timeoutId; // timeoutId, so that we can cancel the time updates
 
@@ -992,8 +998,26 @@ this.current.$$route){var c={},f=this;e.forEach(Object.keys(a),function(b){f.cur
         };
         return _userSettings;
     });
+})();
+(function () {
+    'use strict';
 
-    appServices.factory('notification', function () {
+    var appServices = angular.module('app.services');
+
+    appServices.factory('notificationService', function () {
+
+        var notificationService = {};
+
+        notificationService.notify = function (playSound) {
+            vibrationNotification();
+            setTimeout(function () { nativeNotification(); toggleAudio(playSound); }, 1600); // Set timeout because html5 Vibrate API does not take a callback ( Alert stops vibration )
+        };
+
+        notificationService.playAudio = function () {
+            audio.pause();
+            audio.currentTime = 0;
+            audio.play();
+        };
 
         var audio = new Audio();
         audio.src = Modernizr.audio.ogg ? 'Content/Audio/chime.ogg' :
@@ -1001,6 +1025,7 @@ this.current.$$route){var c={},f=this;e.forEach(Object.keys(a),function(b){f.cur
                                           'Content/Audio/chime.m4a';
 
         function nativeNotification() {
+            // Refactor to case statement
             if (notify.permissionLevel() === notify.PERMISSION_DEFAULT) {
                 notify.requestPermission();
             } else if (notify.permissionLevel() === notify.PERMISSION_GRANTED) {
@@ -1024,7 +1049,6 @@ this.current.$$route){var c={},f=this;e.forEach(Object.keys(a),function(b){f.cur
         }
 
         function vibrationNotification() {
-            // enable vibration support
             navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
 
             if (navigator.vibrate) {
@@ -1032,18 +1056,6 @@ this.current.$$route){var c={},f=this;e.forEach(Object.keys(a),function(b){f.cur
             }
         }
 
-        return {
-            notify: function (playSound) {
-                vibrationNotification();
-                setTimeout(function () { nativeNotification(); toggleAudio(playSound); }, 1600);
-                // Set timeout because html5 Vibrate API does not take a callback ( Alert stops vibration ) :(
-            },
-
-            playAudio: function () {
-                audio.pause();
-                audio.currentTime = 0;
-                audio.play();
-            }
-        };
+        return notificationService;
     });
 })();

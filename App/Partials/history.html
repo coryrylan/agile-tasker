@@ -1,11 +1,5 @@
 ﻿<section class="view view-history col-12">
     <h2>History</h2>
     <div class="label">Completed Tasks <a ng-click="clearList()" class="float-right small">Clear All</a></div>
-    <!--<history></history>-->
-    <ul class="task-list">
-        <li ng-repeat="task in userSettings.taskHistory track by $index">
-            <div>{{task.text}}</div>
-            <span class="smallText"><span>{{task.start}}</span>&nbsp;<strong>to</strong>&nbsp;<span>{{task.stop}}</span></span>
-        </li>
-    </ul>
+    <agile-history ng-model="userSettings.taskHistory"></agile-history>
 </section>

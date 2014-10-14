@@ -43,11 +43,11 @@
             <main ng-view></main>
             <footer>
                 <i ng-class="{true: 'icon-volume-up', false: 'icon-volume-off'}[userSettings.sound.play]" ng-click="toggleSound()" title="Volume"></i>
-                <div data-clock class="localTime float-right"></div>
+                <div agile-clock class="localTime float-right"></div>
             </footer>
         </div>
     </div>
     <div class="mask" ng-click="showPrimaryNav = false" ng-init="showPrimaryNav = false" ng-class="showPrimaryNav ? 'mask-on' : ' '"></div>
-    <script src="JavaScript/Config/bundle.js?v=1.32" async></script>
+    <script src="JavaScript/Config/bundle.js?v=1.5" async></script>
 </body>
 </html>
