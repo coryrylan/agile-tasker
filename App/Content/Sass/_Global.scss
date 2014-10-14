@@ -8,10 +8,7 @@ $themeGreen: #4cb658;
 @font-face {
     font-family: 'robotolight';
     src: url('../Fonts/Roboto/roboto-light-webfont.eot');
-    src: url('../Fonts/Roboto/roboto-light-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../Fonts/Roboto/roboto-light-webfont.woff') format('woff'),
-         url('../Fonts/Roboto/roboto-light-webfont.ttf') format('truetype'),
-         url('../Fonts/Roboto/roboto-light-webfont.svg#robotoregular') format('svg');
+    src: url('../Fonts/Roboto/roboto-light-webfont.eot?#iefix') format('embedded-opentype'), url('../Fonts/Roboto/roboto-light-webfont.woff') format('woff'), url('../Fonts/Roboto/roboto-light-webfont.ttf') format('truetype'), url('../Fonts/Roboto/roboto-light-webfont.svg#robotoregular') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -213,4 +210,12 @@ footer {
 
 ::-webkit-scrollbar-corner {
     background: #000;
+}
+
+.ng-hide {
+    /* this is just another form of hiding an element */
+    display: block !important;
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
 }
