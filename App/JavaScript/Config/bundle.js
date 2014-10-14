@@ -799,40 +799,127 @@ this.current.$$route){var c={},f=this;e.forEach(Object.keys(a),function(b){f.cur
 
     var appControllers = angular.module('app.controllers', []);
 
-    appControllers.controller('TimerCtrl', ['$scope', '$localForage', '$interval', 'settingsService', 'notificationService', 'timerService', function ($scope, $localForage, $interval, settingsService, notificationService, timerService) {
-
+    appControllers.controller('TimerCtrl', ['$scope', '$localForage', 'userSettings', 'notificationService', function ($scope, $localForage, userSettings, notificationService) {
+        var startTime = new Date().toLocaleTimeString();
         var timerInterval = null;
+        var timerDate = new Date();
+        timerDate.setMinutes(25);
+        timerDate.setSeconds(0);
+
         $scope.isPlaying = false;
-        $scope.taskTextBox = settingsService.defaultSettings.taskTextBox;
-        $scope.settings = settingsService.defaultSettings;
-        $scope.userSettings = settingsService.userSettings;
+        $scope.settings = {
+            options: [{ value: 15, label: 15 }, { value: 20, label: 20 }, { value: 25, label: 25 }, { value: 30, label: 30 }],
+            currentTime: "",
+            selectedTime: {},
+            taskTextBox: ""
+        };
+
+        $scope.settings.selectedTime = $scope.settings.options[2];
+        $scope.settings.currentTime = $scope.settings.options[2].value + ":00";
+
+        // Bind userSettings service to local storage
+        $scope.userSettings = userSettings;
         $localForage.bind($scope, {
             key: 'userSettings',
-            defaultValue: settingsService.userSettings,
+            defaultValue: userSettings,
             storeName: 'StorageSettings'
         });
 
-        $scope.startTimer = function () {
-            timerService.startTimer();
-            timerInterval = $interval(function () {
-                timerService.update(timerInterval);
-                $scope.settings.currentTime = timerService.getCurrentTimeFormated();
-                $scope.userSettings = settingsService.userSettings;
-            }, 1000);
+        $scope.startTimer = startTimer;
+        $scope.stopTimer = stopTimer;
+        $scope.clearList = clearHistory;
+        $scope.toggleSound = toggleSound;
+
+        function startTimer() {
+            resetTimer();
+            timerInterval = setInterval(intervalTimer, 1000);
+            startTime = new Date().toLocaleTimeString();
+            $scope.isPlaying = true;
+
+            if (notify.permissionLevel() === notify.PERMISSION_DEFAULT) {
+                notify.requestPermission();
+            }
         }
 
-        $scope.stopTimer = function () {
-            timerService.resetTimer(timerInterval);
+        function stopTimer() {
+            resetTimer();
+            $scope.isPlaying = '';
+            document.title = 'Agile Tasker';
+        }
+
+        function clearHistory() {
+            $scope.userSettings.taskHistory = [];
+        }
+
+        function toggleSound() {
+            $scope.userSettings.sound.play = !$scope.userSettings.sound.play;
+            if ($scope.userSettings.sound.play === true) {
+                notificationService.playAudio();
+            }
+        }
+
+        function intervalTimer() {
+            if (timeIsUp()) {
+                $scope.stopTimer();
+                console.log($scope.userSettings.sound.play);
+                notificationService.notify($scope.userSettings.sound.play);
+                saveTaskToHistory();
+            } else {
+                timerDate.setSeconds(timerDate.getSeconds() - 1);
+                $scope.settings.currentTime = getCurrentTime(timerDate);
+                document.title = $scope.settings.currentTime;
+            }
+            $scope.$apply();
+        }
+
+        function timeIsUp() {
+            return (timerDate.getMinutes() === 0 && timerDate.getSeconds() === 0);
+        }
+
+        function resetTimer() {
+            clearInterval(timerInterval);
             $scope.settings.currentTime = $scope.settings.selectedTime.value + ":" + "00";
-            timerService.timerDate.setMinutes($scope.settings.selectedTime.value);
-            timerService.timerDate.setSeconds(0);
+            timerDate.setMinutes($scope.settings.selectedTime.value);  // $scope.settings.selectedTime.value
+            timerDate.setSeconds(0);
+        }
+
+        function getCurrentTime(currentTime) {
+            var minutes = currentTime.getMinutes();
+            var seconds = currentTime.getSeconds();
+
+            if (minutes < 10) {
+                minutes = '0' + minutes;
+            }
+
+            if (seconds < 10) {
+                seconds = '0' + seconds;
+            }
+
+            return minutes + ':' + seconds;
+        }
+
+        function saveTaskToHistory() {
+            var _text = "Unknown";
+            if ($scope.settings.taskTextBox !== "") {
+                _text = $scope.settings.taskTextBox;
+            }
+
+            $scope.userSettings.taskHistory.push({ start: startTime, stop: new Date().toLocaleTimeString(), text: _text });
+            $scope.settings.taskTextBox = "";
         }
     }]);
 })();
+
 (function () {
     'use strict';
 
     var appDirectives = angular.module('app.directives', []);
+
+    appDirectives.directive('appVersion', ['version', function (version) {
+        return function (scope, elm, attrs) {
+            elm.text(version);
+        };
+    }]);
 })();
 (function () {
     'use strict';
@@ -865,7 +952,7 @@ this.current.$$route){var c={},f=this;e.forEach(Object.keys(a),function(b){f.cur
 
     var appDirectives = angular.module('app.directives');
 
-    appDirectives.directive('agile-clock', ['$timeout', 'dateFilter', function ($timeout, dateFilter) { // http://jsdo.it/can.i.do.web/zHbM
+    appDirectives.directive('agileClock', ['$timeout', 'dateFilter', function ($timeout, dateFilter) { // http://jsdo.it/can.i.do.web/zHbM
         return function (scope, element, attrs) {
             var timeoutId; // timeoutId, so that we can cancel the time updates
 
@@ -891,12 +978,26 @@ this.current.$$route){var c={},f=this;e.forEach(Object.keys(a),function(b){f.cur
 (function () {
     'use strict';
 
-    var appServices = angular.module('app.filters', []);
+    var appFilters = angular.module('app.filters', []);
+
+    appFilters.filter('interpolateVersion', ['version', function (version) {
+        return function (text) {
+            return String(text).replace(/\%VERSION\%/mg, version);
+        };
+    }]);
 })();
 (function () {
     'use strict';
 
-    var appServices = angular.module('app.services', []);
+    var appServices = angular.module('app.services', []).value('version', '1.5.4');
+
+    appServices.factory('userSettings', function () {
+        var _userSettings = {
+            sound: { play: true },
+            taskHistory: []
+        };
+        return _userSettings;
+    });
 })();
 (function () {
     'use strict';
@@ -957,105 +1058,4 @@ this.current.$$route){var c={},f=this;e.forEach(Object.keys(a),function(b){f.cur
 
         return notificationService;
     });
-})();
-(function () {
-    'use strict';
-
-    var appServices = angular.module('app.services');
-
-    appServices.factory('settingsService', function () {
-        var settingsService = {};
-
-        settingsService.userSettings = {
-            sound: { play: true },
-            taskHistory: []
-        };
-
-        settingsService.defaultSettings = {
-            options: [{ value: 0, label: 0 }, { value: 15, label: 15 }, { value: 20, label: 20 }, { value: 25, label: 25 }, { value: 30, label: 30 }],
-            currentTime: "",
-            selectedTime: {},
-            taskTextBox: ""
-        };
-
-        settingsService.defaultSettings.selectedTime = settingsService.defaultSettings.options[2];
-        settingsService.defaultSettings.currentTime = settingsService.defaultSettings.options[2].value + ":00";
-
-        return settingsService;
-    });
-})();
-(function () {
-    'use strict';
-
-    var appServices = angular.module('app.services');
-
-    appServices.factory('timerService', ['$timeout', '$interval', 'settingsService', function ($timeout, $interval, settingsService) {
-        var timerService = {};
-
-        var startTime = new Date().toLocaleTimeString();
-        var endTime = new Date().toLocaleTimeString();
-
-        timerService.timerDate = new Date();
-        timerService.timerDate.setMinutes(settingsService.defaultSettings.selectedTime.value); //$scope.settings.selectedTime.value
-        timerService.timerDate.setSeconds(0);
-
-        // Should be a filter
-        timerService.getCurrentTimeFormated = function () {
-            var minutes = timerService.timerDate.getMinutes();
-            var seconds = timerService.timerDate.getSeconds();
-
-            if (minutes < 10) {
-                minutes = '0' + minutes;
-            }
-
-            if (seconds < 10) {
-                seconds = '0' + seconds;
-            }
-
-            return minutes + ':' + seconds;
-        };
-
-        timerService.startTimer = function () {
-            console.log('starting');
-            startTime = new Date().toLocaleTimeString();
-        }
-
-        timerService.update = function (timerInterval) {
-            console.log('update ' + timerService.timerDate);
-            if (timeIsUp()) {
-                timerService.stopTimer(timerInterval);
-            } else {
-                timerService.timerDate.setSeconds(timerService.timerDate.getSeconds() - 1);
-            }
-        }
-
-        timerService.stopTimer = function (timerInterval) {
-            console.log('stoping');
-            $interval.cancel(timerInterval);
-            endTime = new Date().toLocaleTimeString();
-            timerService.saveHistory();
-        }
-
-        timerService.resetTimer = function (timerInterval) {
-            console.log('reseting');
-            $interval.cancel(timerInterval);
-        }
-
-        timerService.saveHistory = function () {
-            console.log('saving');
-            var _text = "Unknown";
-            if (settingsService.defaultSettings.taskTextBox !== "") {
-                _text = settingsService.defaultSettings.taskTextBox;
-            }
-
-            settingsService.userSettings.taskHistory.push({ start: startTime, stop: endTime, text: _text });
-            settingsService.defaultSettings.taskTextBox = "";
-        }
-
-        function timeIsUp() {
-            return (timerService.timerDate.getMinutes() === 0 && timerService.timerDate.getSeconds() === 0);
-        }
-
-        return timerService;
-    }]);
 })();

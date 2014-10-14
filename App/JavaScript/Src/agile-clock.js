@@ -3,7 +3,7 @@
 
     var appDirectives = angular.module('app.directives');
 
-    appDirectives.directive('agile-clock', ['$timeout', 'dateFilter', function ($timeout, dateFilter) { // http://jsdo.it/can.i.do.web/zHbM
+    appDirectives.directive('agileClock', ['$timeout', 'dateFilter', function ($timeout, dateFilter) { // http://jsdo.it/can.i.do.web/zHbM
         return function (scope, element, attrs) {
             var timeoutId; // timeoutId, so that we can cancel the time updates
 
