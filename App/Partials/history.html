@@ -1,5 +1,8 @@
 ﻿<section class="view view-history col-12">
     <h2>History</h2>
     <div class="label">Completed Tasks <a ng-click="clearList()" class="float-right small">Clear All</a></div>
+    <p ng-show="userSettings.taskHistory.length < 1">
+        Looks like you haven't completed any tasks yet!
+    </p>
     <agile-history ng-model="userSettings.taskHistory"></agile-history>
 </section>

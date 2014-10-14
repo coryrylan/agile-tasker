@@ -675,6 +675,13 @@ footer {
 ::-webkit-scrollbar-corner {
   background: #000; }
 
+.ng-hide {
+  /* this is just another form of hiding an element */
+  display: block !important;
+  position: absolute;
+  top: -9999px;
+  left: -9999px; }
+
 #push-wrapper {
   position: relative;
   z-index: 10;
@@ -925,4 +932,3 @@ footer {
 @media screen and (min-width: 48em) {
   .view-history .task-list {
     max-height: 288px; } }
-
