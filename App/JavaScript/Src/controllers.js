@@ -3,10 +3,14 @@
 
     var appControllers = angular.module('app.controllers', []);
 
-    appControllers.controller('TimerCtrl', ['$scope', '$localForage', 'userSettings', 'notification', function ($scope, $localForage, userSettings, notification) {
-        //#region Models
-        $scope.isPlaying = false;
+    appControllers.controller('TimerCtrl', ['$scope', '$localForage', 'userSettings', 'notificationService', function ($scope, $localForage, userSettings, notificationService) {
+        var startTime = new Date().toLocaleTimeString();
+        var timerInterval = null;
+        var timerDate = new Date();
+        timerDate.setMinutes(25);
+        timerDate.setSeconds(0);
 
+        $scope.isPlaying = false;
         $scope.settings = {
             options: [{ value: 15, label: 15 }, { value: 20, label: 20 }, { value: 25, label: 25 }, { value: 30, label: 30 }],
             currentTime: "",
@@ -24,23 +28,11 @@
             defaultValue: userSettings,
             storeName: 'StorageSettings'
         });
-        //#endregion
 
-        //#region Globals
-        var startTime = new Date().toLocaleTimeString();
-        var endTime = new Date().toLocaleTimeString();
-        var timerInterval = 0;
-        var timerDate = new Date();
-        timerDate.setMinutes($scope.settings.selectedTime.value);
-        timerDate.setSeconds(0);
-        //#endregion
-
-        //#region Click Events
         $scope.startTimer = startTimer;
         $scope.stopTimer = stopTimer;
         $scope.clearList = clearHistory;
         $scope.toggleSound = toggleSound;
-        //#endregion
 
         function startTimer() {
             resetTimer();
@@ -66,17 +58,15 @@
         function toggleSound() {
             $scope.userSettings.sound.play = !$scope.userSettings.sound.play;
             if ($scope.userSettings.sound.play === true) {
-                notification.playAudio();
+                notificationService.playAudio();
             }
         }
 
-        //#region Timmer Helper Functons
         function intervalTimer() {
             if (timeIsUp()) {
                 $scope.stopTimer();
-                endTime = new Date().toLocaleTimeString();
                 console.log($scope.userSettings.sound.play);
-                notification.notify($scope.userSettings.sound.play);
+                notificationService.notify($scope.userSettings.sound.play);
                 saveTaskToHistory();
             } else {
                 timerDate.setSeconds(timerDate.getSeconds() - 1);
@@ -94,7 +84,7 @@
             clearInterval(timerInterval);
             $scope.settings.currentTime = $scope.settings.selectedTime.value + ":" + "00";
             timerDate.setMinutes($scope.settings.selectedTime.value);  // $scope.settings.selectedTime.value
-            timerDate.setSeconds(0);                                   // Test Switch 
+            timerDate.setSeconds(0);
         }
 
         function getCurrentTime(currentTime) {
@@ -118,9 +108,8 @@
                 _text = $scope.settings.taskTextBox;
             }
 
-            $scope.userSettings.taskHistory.push({ start: startTime, stop: endTime, text: _text });
+            $scope.userSettings.taskHistory.push({ start: startTime, stop: new Date().toLocaleTimeString(), text: _text });
             $scope.settings.taskTextBox = "";
         }
-        //#endregion
     }]);
 })();
