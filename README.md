@@ -1,5 +1,5 @@
 <h1>Agile Tasker Web App Version 1.5.4</h1>
-<a href="http://splintercode.github.io/AgileTasker/App/" target="_blank">Agile Tasker</a>
+<a href="http://splintercode.github.io/agile-tasker/App/" target="_blank">Agile Tasker</a>
 <p>A small productivity Web App that simply is a countdown timer. The idea is to work in small sprints to help increase
 productivity and efficiency. I have found this invaluable in programming. Take 20 to 25 focused minutes on your problem. Then 
 take a 5 min break no matter where you are in the problem. This will let you keep your mental edge and recharge.</p>
